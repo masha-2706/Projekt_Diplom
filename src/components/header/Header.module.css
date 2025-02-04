@@ -1,8 +1,17 @@
-header {
-    height: 68px;
+.header {
+    /* height: 68px; */
+    height: 128px;
     background-color: #fffff1;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid tomato;
+   
+    padding: 0 40px;
+    align-items: center;
+  }
+  .logo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
   }

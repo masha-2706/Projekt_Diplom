@@ -5,3 +5,6 @@
 display: flex;
 gap: 28px;
   }
+  .cart{
+    width: 48px;
+  }
