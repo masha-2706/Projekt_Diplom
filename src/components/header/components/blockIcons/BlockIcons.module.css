@@ -1,0 +1,7 @@
+.heart {
+ stroke: #424436;
+  }
+.container{
+display: flex;
+gap: 28px;
+  }

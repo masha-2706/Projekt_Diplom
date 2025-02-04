@@ -1,0 +1,8 @@
+header {
+    height: 68px;
+    background-color: #fffff1;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid tomato;
+  }
