@@ -1,7 +1,7 @@
-export default function GreenButton ({ text, w, h, className }) {
+export default function GreenButton ({ text, className }) {
     
     return (
-    <button  width={w} height={h} className={className || ""}>
+    <button className={className || ""}>
      {text}   
     </button>
     );

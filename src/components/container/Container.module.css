@@ -1,6 +1,25 @@
 .container {
-  
+  background-color: bisque;
     max-width: 1440px;
     margin: 0 auto;
    
 }
+/* Медиа правила которые устанавливают на брэк поинт для контейнера изменение ширины для разных дивайсов */
+
+  @media (max-width: 1000px) {
+    .container {
+    background-color: rgb(234, 230, 238);
+    }
+  }
+  /* Для планшетов и устройств с шириной экрана до 768px */
+  @media (max-width: 768px) {
+    .container{
+    background-color: aqua;
+    }
+  }
+  /* Для мобильных устройств с шириной экрана до 480px */
+  @media (max-width: 480px) {
+    .container {
+    background-color: rgb(191, 191, 160);
+    }
+  }

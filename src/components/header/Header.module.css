@@ -1,8 +1,7 @@
 .header {
     /* height: 68px; */
     height: 128px;
-    background-color: #fffff1;
-    padding: 1rem;
+    /* background-color: #fffff1; */
     display: flex;
     justify-content: space-between;
    
@@ -14,4 +13,26 @@
     align-items: center;
     gap: 20px;
 
+  }
+
+  @media (max-width: 1000px) {
+    .header{
+      padding: 0 20px;
+   
+    }
+    .logo{
+      gap: 18px;
+    }
+  }
+  /* Для планшетов и устройств с шириной экрана до 768px */
+  @media (max-width: 768px) {
+    .logo{
+  gap:16px;
+    }
+  }
+  /* Для мобильных устройств с шириной экрана до 480px */
+  @media (max-width: 480px) {
+    .logo{
+      gap: 8px;
+        }
   }

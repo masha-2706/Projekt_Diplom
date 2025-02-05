@@ -10,3 +10,12 @@
     border: none;
     padding: 6px;
   }
+ 
+  /* Для планшетов и устройств с шириной экрана до 768px */
+  @media (max-width: 768px) {
+    .btn{
+    width: 52px ;
+    height:28px ;
+   
+    }
+  }
