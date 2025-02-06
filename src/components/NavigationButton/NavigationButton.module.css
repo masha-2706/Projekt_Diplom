@@ -1,0 +1,10 @@
+.navigationButton {
+    padding: 8px 16px;
+    color: #8B8B8B;
+    border: 1px solid #DDDDDD;
+    border-radius: 0.25rem;
+    background-color: transparent;
+
+    font-size: 1rem;
+    font-weight: 500;
+}
