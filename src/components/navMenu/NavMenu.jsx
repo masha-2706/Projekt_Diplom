@@ -5,7 +5,7 @@ import GreenButton from '../ui/GreenButton'
 
 function NavMenu() {
   return (
-    <div><GreenButton text= {"1 day discount!"} className={s.btn}/>
+    <div className={s.navMenuContainer}><GreenButton text= {"1 day discount!"} className={s.btn}/>
     <div className={s.nav}>
      <NavLink className={s.link} to='/'>Main Page</NavLink> 
      <NavLink className={s.link} to='/categories'>Categories</NavLink> 

@@ -20,7 +20,16 @@
       padding: 0 20px;
    
     }
+    @media (max-width: 768px) {
+      .header{
+        padding: 0 16px;
+      }
+
+      }
+
     .logo{
+      width:60px ;
+      height: 60px;
       gap: 18px;
     }
   }

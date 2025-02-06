@@ -1,3 +1,4 @@
+// Страница Номе
 import React from 'react'
 
 

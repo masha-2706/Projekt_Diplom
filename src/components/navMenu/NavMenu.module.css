@@ -8,13 +8,32 @@
     color: #424436; 
   
 }
+/* Для планшетов и устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+  .link {
+  
+    font-size: 14px;
+  }
+}
 
 .nav{
     display: flex;
-    gap: 32px;
+    gap: 32px;/*Это для 1440*/
   
 
 }
+@media (max-width: 1000px) {
+  .nav {
+    gap: 24px;
+  }
+}
+/* Для планшетов и устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+  .nav {
+    gap: 18px;
+  }
+}
+
 .btn{
     display: block;
     padding: 6px 16px;
@@ -46,5 +65,12 @@
   @media (max-width: 480px) {
     .container {
     background-color: rgb(191, 191, 160);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navMenuContainer{
+    background-color: rgb(191, 191, 160);
+    display: none;
     }
   }
