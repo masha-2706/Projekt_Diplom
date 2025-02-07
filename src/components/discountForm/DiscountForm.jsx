@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./FormStyles.module.css";
+import Button from "../button/Button";
 import handsImage from "./image.png";
 import error from './x-octagon.png';
 
@@ -40,7 +41,7 @@ function DiscountForm() {
       setIsSuccess(true);
       setShowMessage(true);
 
-      setFormData({ name: "", phone: "", email: "" }); 
+      setFormData({ name: "", phone: "", email: "" });
     } else {
       setMessage("Wrong input. Try again");
       setIsSuccess(false);
@@ -92,9 +93,7 @@ function DiscountForm() {
 
             {showMessage && (
               <div
-                className={`${styles.message} ${
-                  isSuccess ? styles.success : styles.error
-                }`}
+            
               >
                 {isSuccess ? (
                   <span className={styles.successText}>{message}</span>
@@ -107,9 +106,9 @@ function DiscountForm() {
               </div>
             )}
 
-            <button type="submit" className={styles.button}>
+            <Button type="submit" className={styles.button}>
               Get a discount
-            </button>
+            </Button>
           </form>
         </div>
       </div>
