@@ -22,7 +22,7 @@ function DiscountForm() {
       [name]: value,
     }));
 
-    setShowMessage(false); // Скрываем сообщение при изменении данных
+    setShowMessage(false); // скрываем сообщение при изменении данных
   };
 
   const validateInput = () => {
@@ -37,7 +37,7 @@ function DiscountForm() {
     e.preventDefault();
 
     if (validateInput()) {
-      setMessage("The discount has been successfully sent by email"); // Сообщение об успехе
+      setMessage("The discount has been successfully sent by email"); // сообщение об успехе
       setIsSuccess(true);
       setShowMessage(true);
 
@@ -92,9 +92,7 @@ function DiscountForm() {
             />
 
             {showMessage && (
-              <div
-            
-              >
+              <div    >
                 {isSuccess ? (
                   <span className={styles.successText}>{message}</span>
                 ) : (
