@@ -1,0 +1,26 @@
+.contentBlock {
+    margin: 80px 20px;
+}
+
+.contentBlock_header {
+    display: flex;
+    align-items: center;
+    color: #424436;
+}
+
+.contentBlock_header>h1 {
+    margin: 0 32px 0 0;
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.contentBlock_header_line {
+    flex-grow: 1;
+    height: 1px;
+    background: #DDDDDD;
+}
+
+*>h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
