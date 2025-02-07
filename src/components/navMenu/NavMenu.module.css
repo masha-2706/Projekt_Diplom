@@ -1,0 +1,76 @@
+.link{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    display: block;
+    text-decoration: none;
+    color: #424436; 
+  
+}
+/* Для планшетов и устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+  .link {
+  
+    font-size: 14px;
+  }
+}
+
+.nav{
+    display: flex;
+    gap: 32px;/*Это для 1440*/
+  
+
+}
+@media (max-width: 1000px) {
+  .nav {
+    gap: 24px;
+  }
+}
+/* Для планшетов и устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+  .nav {
+    gap: 18px;
+  }
+}
+
+.btn{
+    display: block;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20.16px;
+     text-align: center;
+     background: #92A134;
+     color: #FFFFFF;
+     border: 0;
+     margin:  auto;
+     margin-bottom: 12px;
+
+}
+@media (max-width: 1000px) {
+    .container {
+    background-color: rgb(234, 230, 238);
+    }
+  }
+  /* Для планшетов и устройств с шириной экрана до 768px */
+  @media (max-width: 768px) {
+    .container{
+    background-color: aqua;
+    }
+  }
+  /* Для мобильных устройств с шириной экрана до 480px */
+  @media (max-width: 480px) {
+    .container {
+    background-color: rgb(191, 191, 160);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navMenuContainer{
+    background-color: rgb(191, 191, 160);
+    display: none;
+    }
+  }
