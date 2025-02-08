@@ -4,3 +4,18 @@
     gap: 2rem;
     margin-top: 2.5rem;
 }
+
+/* адаптивность размера сетки под разрешение экрана */
+@media screen and (max-width: 768px) {
+    .contentBlock_categoriesContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .contentBlock_categoriesContainer {
+        grid-template-columns: 1fr;
+    }
+
+}

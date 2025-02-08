@@ -9,7 +9,7 @@ function Home() {
       <BannerHome />
       <ContentBlock title="Categories" quantity={4} type={'сategories'} navigationButtonLabel={'All categories'} />
       <DiscountForm />
-      <ContentBlock title="Sales" quantity={4} type={'sales'} navigationButtonLabel={'All sales'} />
+      <ContentBlock title="Sale" quantity={4} type={'sales'} navigationButtonLabel={'All sales'} />
     </div>
   );
 }

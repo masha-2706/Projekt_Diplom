@@ -17,7 +17,7 @@ export default function ContentBlock({ title, quantity, type, navigationButtonLa
         <section className={s.contentBlock}>
             {/* отрисовка заголовка и кнопки навигации */}
             <div className={s.contentBlock_header}>
-                <h1>{title}</h1>
+                <h2>{title}</h2>
                 <div className={s.contentBlock_header_line}></div>
                 <NavigationButton title={navigationButtonLabel} />
             </div>
