@@ -11,8 +11,8 @@ export default function Header() {
     <Container>
 
    <header className={s.header}>
-    <div className={s.logo}>
-    <img src="./logo/logo.png" alt="logo" width="66"/> 
+    <div className={s.logoContainer}>
+    <img className={s.logo} src="./logo/logo.png" alt="logo"/> 
     {/* логотип */}
     <ThemeBtn/>
     {/* кнопка для изменения темы (день /ночь) небходимы функции для переключения для этого необходимо ( в компонент icon кот находит в ui) необходимо передать  classname , id ) id -передано интерполяцией  */}

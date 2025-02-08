@@ -4,7 +4,18 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 600px;
-   
+   }
+
+  
+.title{
+  color:white;
+  font-family: Montserrat;
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 105.6px;
+  padding-top: 80px;
+  padding-left: 20px;
+
   }
   @media (max-width: 1000px) {
     .section {
@@ -23,48 +34,40 @@
     .section {
       background-image: url("/public/banner/hero768.jpg");
     }
+    .title{
+      font-size: 60px;
+      line-height: 66px;
+      padding-top: 60px;
+      padding-left: 20px;
+    }
+  
   }
 
-  .title{
-    font-size: 60px;
-    line-height: 66px;
-    padding-top: 60px;
-    padding-left: 20px;
-  }
-
+ 
   /* Для мобильных устройств с шириной экрана до 480px */
   @media (max-width: 480px) {
     .section {
       background-image: url("/public/banner/hero480.jpg");
     }
+    .title{
+      font-size: 60px;
+      line-height: 66px;
+      padding-top: 50px;
+      padding-left: 20px;
+    }
   }
 
-  .title{
-    font-size: 60px;
-    line-height: 66px;
-    padding-top: 50px;
-    padding-left: 20px;
-  }
+
 
   @media (max-width: 360px) {
     .section {
       background-image: url("/public/banner/hero360.jpg");
     }
+    .title{
+      font-size: 52px;
+      line-height: 52.2px;
+    }
   }
 
-  .title{
-    font-size: 52px;
-    line-height: 52.2px;
-  }
 
 
-.title{
-color:white;
-font-family: Montserrat;
-font-size: 90px;
-font-weight: 700;
-line-height: 105.6px;
-padding-top: 80px;
-padding-left: 20px;
-max-width: 900px;
-}
