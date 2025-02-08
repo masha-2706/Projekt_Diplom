@@ -5,11 +5,13 @@ import BannerHome from "../components/bannerHome/BannerHome";
 import DiscountForm from "../components/discountForm/DiscountForm";
 function Home() {
   return (
-    <div style={{ width: '1440px', backgroundColor: '#fffff1' }}>
+    <div>
       <BannerHome />
+      <div style={{ width: '1440px' }}> 
       <ContentBlock title="Categories" quantity={4} type={'сategories'} navigationButtonLabel={'All categories'} />
       <DiscountForm />
       <ContentBlock title="Sales" quantity={4} type={'sales'} navigationButtonLabel={'All sales'} />
+    </div>
     </div>
   );
 }
