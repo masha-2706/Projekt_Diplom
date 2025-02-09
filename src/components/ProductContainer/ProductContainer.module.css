@@ -5,3 +5,18 @@
     margin-top: 2.5rem;
     width: 100%;
 }
+
+/* адаптивность размера сетки под разрешение экрана */
+@media screen and (max-width: 768px) {
+    .productContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .productContainer {
+        grid-template-columns: 1fr;
+    }
+
+}
