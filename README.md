@@ -30,8 +30,8 @@
 
 ### Логика наименования рабочей ветки:
 `feature/sprint` актуальный номер спринта `_` номер задачи в Jira `/` имя блока или элемента
-   Пример `features/QF-1_QF-2/discount-form_button`
+- Пример `feature/QF-1_QF-2/discount-form_button`
 
 ### Логика наименования рабочей ветки- корректировки своего кода после обсуждения командой:
-Пример `features/QF-5/discount-form_button/correction`
+- Пример `feature/QF-5/discount-form_button/correction`
 
