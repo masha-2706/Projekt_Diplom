@@ -1,4 +1,4 @@
-export default function GreenButton ({ text, className }) {
+export default function Button ({ text, className }) {
     
     return (
     <button className={className || ""}>
