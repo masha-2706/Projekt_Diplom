@@ -1,5 +1,5 @@
 .contentBlock {
-    margin: 80px 40px;
+    margin: 5rem 2.5rem;
 }
 
 .contentBlock_header {
@@ -8,9 +8,9 @@
     color: #424436;
 }
 
-.contentBlock_header>h1 {
-    margin: 0 32px 0 0;
-    font-size: 64px;
+.contentBlock_header>h2 {
+    margin: 0 2rem 0 0;
+    font-size: 4rem;
     font-weight: 700;
 }
 
@@ -21,6 +21,6 @@
 }
 
 *>h3 {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
 }
