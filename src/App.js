@@ -1,23 +1,28 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Добавляем BrowserRouter
+import { Routes, Route } from "react-router";
+import Footer from './components/footer/Footer'
+
+
+import Home from './pages/Home'
 import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import BreadCrumbs from "./components/ui/breadCrumbs/BreadCrumbs"; // Импортируем хлебные крошки
-import Home from "./pages/Home";
+
 
 function App() {
   return (
+    <div className="App">
+      <Header/>
     
-      <div className="App">
-        <Header />
-        <BreadCrumbs /> 
-        <Routes>
-          <Route path="/" element={<Home />} />   
-        </Routes>
-        <Footer />
-      </div>
-  
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer/>
+    </div>
   );
 }
 
 export default App;
+
+// Это линк в Header
+{/* <Link to='/categories'>Categories</Link> 
+<Link to='/products'>All products</Link> 
+<Link to='/sales'>All sales</Link>  */}
