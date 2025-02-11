@@ -1,0 +1,47 @@
+.header {
+    /* height: 68px; */
+    height: 128px;
+    /* background-color: #fffff1; */
+    display: flex;
+    justify-content: space-between;
+   
+    padding: 0 40px;
+    align-items: center;
+  }
+  .logo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+  }
+
+  @media (max-width: 1000px) {
+    .header{
+      padding: 0 20px;
+   
+    }
+    @media (max-width: 768px) {
+      .header{
+        padding: 0 16px;
+      }
+
+      }
+
+    .logo{
+      width:60px ;
+      height: 60px;
+      gap: 18px;
+    }
+  }
+  /* Для планшетов и устройств с шириной экрана до 768px */
+  @media (max-width: 768px) {
+    .logo{
+  gap:16px;
+    }
+  }
+  /* Для мобильных устройств с шириной экрана до 480px */
+  @media (max-width: 480px) {
+    .logo{
+      gap: 8px;
+        }
+  }
