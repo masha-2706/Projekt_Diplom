@@ -1,11 +1,14 @@
 import React from 'react';
 import ContentBlock from '../components/ContentBlock/ContentBlock';
-import BannerHome from '../components/bannerHome/BannerHome';
+
 import DiscountForm from '../components/discountForm/DiscountForm';
+import Banner from '../components/banner/Banner';
+
+
 function Home() {
   return (
     <div>
-      <BannerHome />
+      <Banner/>
 
       <ContentBlock
         title="Categories"
@@ -16,6 +19,7 @@ function Home() {
       <DiscountForm />
       <ContentBlock
         title="Sales"
+       
         quantity={4}
         type={'sales'}
         navigationButtonLabel={'All sales'}

@@ -1,5 +1,10 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 .section {
-  background-image: url('/public/banner/hero1440.jpg'); /* изображение по умолчанию для десктопа */
+  background-image: url('../../media/banner/hero1440.jpg'); /* изображение по умолчанию для десктопа */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,8 +37,12 @@
 }
 
 @media (max-width: 1000px) {
+  .container {
+    max-width: 1000px;
+  
+  }
   .section {
-    background-image: url('/public/banner/hero1000.jpg');
+    background-image: url('../../media/banner/hero1000.jpg');
     padding-bottom: 120px;
   }
   .title {
@@ -45,8 +54,12 @@
 }
 /* Для планшетов и устройств с шириной экрана до 768px */
 @media (max-width: 768px) {
+  .container {
+    max-width: 768px;
+   
+  }
   .section {
-    background-image: url('/public/banner/hero768.jpg');
+    background-image: url('../../media/banner/hero768.jpg');
     padding-bottom: 326px;
   }
   .title {
@@ -59,8 +72,12 @@
 
 /* Для мобильных устройств с шириной экрана до 480px */
 @media (max-width: 480px) {
+  .container {
+    max-width: 480px;
+   
+  }
   .section {
-    background-image: url('/public/banner/hero480.jpg');
+    background-image: url('../../media/banner/hero480.jpg');
     padding-bottom: 215px;
   }
   .title {
@@ -77,8 +94,12 @@
 }
 
 @media (max-width: 360px) {
+  .container {
+    max-width: 360px;
+   
+  }
   .section {
-    background-image: url('/public/banner/hero360.jpg');
+    background-image: url('../../media/banner/hero360.jpg');
     padding-bottom: 251px;
   }
   .title {
@@ -86,3 +107,4 @@
     line-height: 52.2px;
   }
 }
+

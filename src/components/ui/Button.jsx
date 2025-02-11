@@ -1,8 +1,11 @@
-export default function Button ({ text, className }) {
+export default function Button ({ text, className, onClick, disabled = false }) {
     
     return (
-    <button className={className || ""}>
+    <button onClick={onClick} className={className || ""}>
      {text}   
     </button>
     );
   }
+
+
+  
