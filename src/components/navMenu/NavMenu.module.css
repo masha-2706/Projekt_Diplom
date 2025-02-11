@@ -6,8 +6,11 @@
     display: block;
     text-decoration: none;
     color: #424436; 
-  
 }
+.link:hover {
+  color: #92A134; 
+}
+
 /* Для планшетов и устройств с шириной экрана до 768px */
 @media (max-width: 768px) {
   .link {
