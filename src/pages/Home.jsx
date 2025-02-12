@@ -1,3 +1,8 @@
+import React from 'react';
+import ContentBlock from '../components/ContentBlock/ContentBlock';
+import DiscountForm from '../components/discountForm/DiscountForm';
+import Banner from '../components/banner/Banner';
+
 
 import React from 'react'
 import CardsContainer from '../components/CardsContainer/CardsContainer'
@@ -14,4 +19,4 @@ function Home() {
   );
 }
 
-export default Home
+export default Home;

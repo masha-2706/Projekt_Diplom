@@ -13,9 +13,7 @@ export default function ProductContainer({ category, quantity }) {
 
     //Получение данных о всех продуктах с сервера
     useEffect(() => {
-        fetch(`http://localhost:3333/products/all`)
-            .then(response => response.json())
-            .then(data => setProducts(data));
+        getAllProducts().then(data => setProducts(data));
     }, []);
 
 

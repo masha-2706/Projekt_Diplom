@@ -1,16 +1,13 @@
 import s from './CategoriesContainer.module.css'
 import { useEffect, useState } from "react"
 import CategoryCard from '../CategoryCard/CategoryCard'
+import { getAllCategories } from '../../services/baseBackEnd';
 
 export default function CategoriesContainer({ quantity }) {
 
     const [array, setArray] = useState([])
     //Получение данных о категориях с сервера
-    useEffect(() => {
-        fetch(`http://localhost:3333/categories/all`)
-            .then(response => response.json())
-            .then(data => setArray(data))
-    }, [])
+    useEffect(() => { getAllCategories().then(data => setArray(data)) }, []);
 
     // Если quantity = 0, то отображаем все категории
     if (quantity === 0) {

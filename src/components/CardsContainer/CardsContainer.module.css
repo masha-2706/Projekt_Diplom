@@ -1,5 +1,6 @@
 .CardsContainer {
     margin: 5rem 2.5rem;
+    max-width: 1360px;
 }
 
 .CardsContainer_header {
