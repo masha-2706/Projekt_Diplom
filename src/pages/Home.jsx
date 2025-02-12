@@ -1,12 +1,13 @@
+import React from 'react';
+import ContentBlock from '../components/ContentBlock/ContentBlock';
+import DiscountForm from '../components/discountForm/DiscountForm';
+import Banner from '../components/banner/Banner';
 
-import React from 'react'
-import ContentBlock from '../components/ContentBlock/ContentBlock'
-import BannerHome from "../components/bannerHome/BannerHome";
-import DiscountForm from "../components/discountForm/DiscountForm";
+
 function Home() {
   return (
     <div style={{ width: '1440px', backgroundColor: '#fffff1' }}> {/*мешает адаптиву style*/}
-      <BannerHome />
+      <Banner />
       <ContentBlock title="Categories" quantity={4} type={'сategories'} navigationButtonLabel={'All categories'} />
       <DiscountForm />
       <ContentBlock title="Sales" quantity={4} type={'sales'} navigationButtonLabel={'All sales'} />
@@ -14,4 +15,4 @@ function Home() {
   );
 }
 
-export default Home
+export default Home;
