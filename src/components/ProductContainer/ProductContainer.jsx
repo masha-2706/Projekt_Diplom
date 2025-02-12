@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import s from "./ProductContainer.module.css";
+import { getRandomArray } from "../../utils/cardRenderLogic";
 
 export default function ProductContainer({ category, quantity }) {
     // category - категория товаров, которую нужно отобразить
@@ -17,21 +18,7 @@ export default function ProductContainer({ category, quantity }) {
             .then(data => setProducts(data));
     }, []);
 
-    // функция возвращает N случайных и неповторяющихся элементов массива    
-    // можно вынести логику в отдельный файл, тогда не забыть импортировать
-    const getRandomArray = (array, n) => {
-        const result = [];
-        const usedIndices = [];
 
-        while (result.length < n && result.length < array.length) {
-            const randomIndex = Math.floor(Math.random() * array.length);
-            if (!usedIndices.includes(randomIndex)) {
-                usedIndices.push(randomIndex);
-                result.push(array[randomIndex]);
-            }
-        }
-        return result;
-    };
 
 
     // фильтрация массива в зависимости от категории 

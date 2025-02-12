@@ -5,17 +5,19 @@ import Footer from './components/footer/Footer'
 
 import Home from './pages/Home'
 import Header from "./components/header/Header";
+import CardsPage from "./pages/CardsPage";
 
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-    
+      <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<CardsPage />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

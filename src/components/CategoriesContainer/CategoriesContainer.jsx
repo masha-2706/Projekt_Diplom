@@ -18,7 +18,7 @@ export default function CategoriesContainer({ quantity }) {
     }
 
     return (
-        <div className={s.contentBlock_categoriesContainer}>
+        <div className={s.CardsContainer_categoriesContainer}>
             {array
                 .slice(0, quantity)
                 .map(el => <CategoryCard
