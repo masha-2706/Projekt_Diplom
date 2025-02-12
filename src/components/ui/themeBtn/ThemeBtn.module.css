@@ -1,0 +1,21 @@
+.btn {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 32px;
+    justify-content: space-between;
+    background: #8b8b8b;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    padding: 6px;
+  }
+ 
+  /* Для планшетов и устройств с шириной экрана до 768px */
+  @media (max-width: 768px) {
+    .btn{
+    width: 52px ;
+    height:28px ;
+   
+    }
+  }
