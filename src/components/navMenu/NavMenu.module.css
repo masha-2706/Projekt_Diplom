@@ -1,11 +1,14 @@
-.link {
-  font-family: Montserrat;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26px;
-  display: block;
-  text-decoration: none;
-  color: #424436;
+.link{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    display: block;
+    text-decoration: none;
+    color: #424436; 
+}
+.link:hover {
+  color: #92A134; 
 }
 
 /* Для планшетов и устройств с шириной экрана до 768px */

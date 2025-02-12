@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.css";
 import { Routes, Route } from "react-router";
 import Footer from './components/footer/Footer'
 
@@ -9,12 +9,13 @@ import Header from "./components/header/Header";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Header/>
     
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
+
       <Footer/>
     </div>
   );

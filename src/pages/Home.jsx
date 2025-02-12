@@ -6,7 +6,7 @@ import Banner from '../components/banner/Banner';
 
 function Home() {
   return (
-    <div style={{ width: '1440px', backgroundColor: '#fffff1' }}> {/*мешает адаптиву style*/}
+    <div>
       <Banner />
       <ContentBlock title="Categories" quantity={4} type={'сategories'} navigationButtonLabel={'All categories'} />
       <DiscountForm />
