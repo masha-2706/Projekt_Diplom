@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import s from "./ProductContainer.module.css";
+import { getAllProducts } from "../../services/baseBackEnd.js";
 
 export default function ProductContainer({ category, quantity }) {
     // category - категория товаров, которую нужно отобразить
@@ -12,9 +13,7 @@ export default function ProductContainer({ category, quantity }) {
 
     //Получение данных о всех продуктах с сервера
     useEffect(() => {
-        fetch(`http://localhost:3333/products/all`)
-            .then(response => response.json())
-            .then(data => setProducts(data));
+        getAllProducts().then(data => setProducts(data));
     }, []);
 
     // функция возвращает N случайных и неповторяющихся элементов массива    
