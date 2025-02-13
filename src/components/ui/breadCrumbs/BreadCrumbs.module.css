@@ -1,0 +1,38 @@
+/* Контейнер, в котором лежат ссылки (ul) */
+.breadcrumbList {
+    display: flex;          /* размещаем в строку */
+           /* расстояние между «пилюлями» */
+    list-style: none;       /* убираем стандартные маркеры списка */
+    padding: 0;
+    margin: 40px;
+  }
+
+  /* Каждый li-элемент списка */
+  .breadcrumbItem {
+    display: inline-block;  /* ширина подстраивается под текст */
+    padding: 6px 12px; 
+    color:  rgba(139, 139, 139, 1);
+    border: 1px solid rgba(221, 221, 221, 1);     /* внутренние отступы: формируют «пилюлю» */
+    border-radius: 4px;     /* закруглённые углы, меняйте при необходимости */
+  }
+  .breadcrumbItemLineBlock{
+    display: flex;
+    align-items: center;
+  }
+  .breadcrumbItemLine{
+    width: 16px;
+    height: 1px;
+    background-color: rgba(221, 221, 221, 1);
+  }
+  
+  /* ссылки внутри «пилюли» */
+  .breadcrumbItem a {
+    color: inherit;         /* унаследует цвет (#fff) */
+    text-decoration: none;  /* убираем стандартное подчеркивание */
+  }
+  
+  
+  .activeCrumb {
+    color: rgba(66, 68, 54, 1);
+  }
+  
