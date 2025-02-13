@@ -1,6 +1,6 @@
 .CardsContainer {
     margin: 5rem 2.5rem;
-    max-width: 1360px;
+    width: 100%;
 }
 
 .CardsContainer_header {
@@ -21,7 +21,11 @@
     background: #DDDDDD;
 }
 
-*>h3 {
-    font-size: 1.25rem;
-    font-weight: 500;
+
+
+.CardsContainer_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
 }

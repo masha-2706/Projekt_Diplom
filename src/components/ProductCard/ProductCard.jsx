@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../services/baseBackEnd';
 import ProductIcons from '../ProductIcons/ProductIcons'
 import s from './ProductCard.module.css'
 
@@ -14,7 +15,7 @@ export default function ProductCard({ title, image, price, discont_price }) {
     return (
         <div className={s.productCard}>
             <div className={s.productCard_image}>
-                <img src={`http://localhost:3333${image}`} alt={`Product ${title}`} />
+                <img src={`${BASE_URL}${image}`} alt={`Product ${title}`} />
             </div>
             <div className={s.productCard_icons}>
                 <ProductIcons type={'like'} />
