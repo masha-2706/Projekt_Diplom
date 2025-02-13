@@ -29,7 +29,15 @@ function App() {
         />
 
         {/* Страница "Товары определенной категории" */}
-
+        <Route
+          path="/categories/:category"
+          element={
+            <CardsPage
+              title="Products"
+              filter={true}
+              type='productsFromCategory'
+              breadCrumbs={true}
+            />} />
 
         {/* Страница "Все скидки" */}
         <Route
@@ -38,7 +46,9 @@ function App() {
             <CardsPage
               title="All sales"
               filter={true}
-              type='randomSales' />} />
+              type='randomSales'
+              breadCrumbs={true}
+            />} />
 
         {/* Страница "Все продукты" */}
         <Route
@@ -47,7 +57,9 @@ function App() {
             <CardsPage
               title="All products"
               filter={true}
-              type='productsAll' />} />
+              type='productsAll'
+              breadCrumbs={true}
+            />} />
 
         {/*  */}
 

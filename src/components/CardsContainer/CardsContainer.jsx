@@ -11,6 +11,7 @@ export default function CardsContainer({
     type, // тип отображаемых данных
     navButton = false, // отображение кнопки навигации(true/false)
     filter = false, // отображение интерфейса фильтрации и сортировки(true/false)
+    breadCrumbs = false, // отображение хлебных крошек(true/false)
     id = 0
 }) {
     // type - тип отображаемых данных. на текщий момент это могут быть:
@@ -55,7 +56,7 @@ export default function CardsContainer({
 
         else if (type === 'productsFromCategory') {
             getProductsByCategoryId(id)
-                .then(data => setArray(data))
+                .then(response => setArray(response.data))
         }
 
 
@@ -96,7 +97,17 @@ export default function CardsContainer({
                         />)
                 }
 
-                {(type === 'randomSales' || type === 'productsAll' || type === 'productsFromCategory') &&
+                {(type === 'randomSales' || type === 'productsAll') &&
+                    array.map(item =>
+                        <ProductCard
+                            key={item.id}
+                            title={item.title}
+                            image={item.image}
+                            price={item.price}
+                            discont_price={item.discont_price}
+                        />)
+                }
+                {(type === 'productsFromCategory') &&
                     array.map(item =>
                         <ProductCard
                             key={item.id}

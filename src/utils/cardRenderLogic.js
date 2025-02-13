@@ -1,5 +1,4 @@
-// функция возвращает N случайных и неповторяющихся элементов массива    
-// можно вынести логику в отдельный файл, тогда не забыть импортировать
+// функция возвращает N случайных и неповторяющихся элементов массива
 export const getRandomArray = (array, n) => {
     const result = [];
     const usedIndices = [];
@@ -13,3 +12,8 @@ export const getRandomArray = (array, n) => {
     }
     return result;
 };
+
+// функция возвращает скидку в процентах
+export const getDiscount = (price, discountPrice) => {
+    return Math.round((1 - discountPrice / price) * 100);
+}

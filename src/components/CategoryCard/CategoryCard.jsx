@@ -8,7 +8,7 @@ export default function CategoryCard({ title, image, id }) {
     // на страницу с карточками товаров этой категории
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/category/${id}`)
+        navigate(`/categories/${id}`)
     }
 
 

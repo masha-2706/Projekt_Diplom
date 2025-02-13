@@ -9,7 +9,7 @@ export function getAllCategories() {
 
 // Получить продукты по id категории
 export function getProductsByCategoryId(id) {
-    return fetch(`${BASE_URL}/products/category/${id}`)
+    return fetch(`${BASE_URL}/categories/${id}`)
         .then(response => response.json())
         .then(data => data);
 }
