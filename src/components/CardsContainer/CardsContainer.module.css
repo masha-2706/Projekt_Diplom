@@ -1,0 +1,31 @@
+.CardsContainer {
+    margin: 5rem 2.5rem;
+    width: 100%;
+}
+
+.CardsContainer_header {
+    display: flex;
+    align-items: center;
+    color: #424436;
+}
+
+.CardsContainer_header>h2 {
+    margin: 0 2rem 0 0;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.CardsContainer_header_line {
+    flex-grow: 1;
+    height: 1px;
+    background: #DDDDDD;
+}
+
+
+
+.CardsContainer_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
