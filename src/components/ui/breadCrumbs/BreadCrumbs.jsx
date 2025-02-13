@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./BreadCrumbs.module.css";
 
 // Объект для "человеческих" названий страниц.
-// Если в URL встречается, например, /products, то в хлебных крошках будет "All products".
+// Если в URL встречается, например, "/products", то в хлебных крошках будет отображаться "All products".
 const breadcrumbNameMap = {
   categories: "Categories",
   products: "All products",
@@ -11,68 +11,79 @@ const breadcrumbNameMap = {
 };
 
 const Breadcrumbs = () => {
-  // Хук React Router, возвращает информацию о текущем маршруте.
-  // Отсюда получаем location.pathname.
+  // Хук useLocation позволяет получить текущий URL
   const location = useLocation();
 
-  // Разбиваем строку пути на массив (например, "/categories/products" -> ["categories", "products"]).
-  // filter(Boolean) убирает пустые значения ("/").
+  // Разбиваем строку пути на массив, например:
+  // "/categories/products" -> ["categories", "products"]
+  // filter(Boolean) убирает пустые элементы (если путь начинается с "/").
   const pathnames = location.pathname.split("/").filter(Boolean);
 
-  // Если пользователь на главной странице ("/"), хлебные крошки не показываем.
+  // Если пользователь находится на главной странице ("/"), хлебные крошки не отображаем
   if (location.pathname === "/") {
     return null;
   }
 
+  // Формируем массив хлебных крошек, включая главную страницу "Main Page"
+  const crumbs = [
+    {
+      label: "Main Page", // Отображаемый текст
+      to: "/", // Ссылка на главную страницу
+    },
+    ...pathnames.map((value, index) => {
+      // Формируем URL для каждой крошки
+      // Например, если текущий путь: "/categories/products", то создаются:
+      // - "/categories"
+      // - "/categories/products"
+      const to = `/${pathnames.slice(0, index + 1).join("/")}`;
+
+      // Если в объекте breadcrumbNameMap есть человекочитаемое название - используем его,
+      // иначе просто декодируем URL-значение
+      const breadcrumbLabel =
+        breadcrumbNameMap[value] || decodeURIComponent(value);
+
+      return {
+        label: breadcrumbLabel, // Отображаемый текст
+        to, // Ссылка
+      };
+    }),
+  ];
+
   return (
-    // Тег <nav> с атрибутом aria-label="breadcrumb" нужен, чтобы "доступные" технологии (читалки) 
-    // понимали, что это навигационное меню для хлебных крошек.
+    // <nav> с aria-label="breadcrumb" помогает доступным технологиям (скринридерам) понимать, что это навигация
     <nav aria-label="breadcrumb" className={styles.breadcrumbNav}>
       {/* Список хлебных крошек */}
       <ul className={styles.breadcrumbList}>
-        {/* Первая "крошка" всегда ведет на главную страницу */}
-        <li className={styles.breadcrumbItem}>
-          <Link to="/">Main Page</Link>
-        </li>
-
-        {/* Далее идёт блок для горизонтальной линии или разделителя между первой "крошкой" и остальными */}
-        <div className={styles.breadcrumbItemLineBlock}>
-          <div className={styles.breadcrumbItemLine}></div>
-        </div>
-
-        {/* Перебираем все части пути и формируем для каждой часть хлебных крошек */}
-        {pathnames.map((value, index) => {
-          // Собираем путь, по которому будет переход, например:
-          // при index=0 -> /categories
-          // при index=1 -> /categories/products
-          const to = `/${pathnames.slice(0, index + 1).join("/")}`;
-
-          // Проверяем, является ли текущий элемент последним:
-          // если да, то "крошка" не будет ссылкой, а лишь визуальным обозначением текущей страницы
-          const isLast = index === pathnames.length - 1;
-
-          // Смотрим, есть ли в объекте breadcrumbNameMap "человеческое" название для этого пути;
-          // если нет - берём значение из URL, декодируя спецсимволы.
-          const breadcrumbLabel =
-            breadcrumbNameMap[value] || decodeURIComponent(value);
+        {crumbs.map((crumb, index) => {
+          // Проверяем, является ли текущая крошка последней (активной страницей)
+          const isLast = index === crumbs.length - 1;
 
           return (
-            <li
-              key={to}
-              // Если элемент последний, добавляем класс .activeCrumb
-              className={
-                isLast
-                  ? `${styles.breadcrumbItem} ${styles.activeCrumb}`
-                  : styles.breadcrumbItem
-              }
-            >
-              {/* Если последний элемент - рендерим просто текст, иначе ссылку */}
-              {isLast ? (
-                <span>{breadcrumbLabel}</span>
-              ) : (
-                <Link to={to}>{breadcrumbLabel}</Link>
+            // React.Fragment позволяет вернуть несколько элементов без создания лишнего тега-обёртки
+            <React.Fragment key={crumb.to}>
+              {/* Отдельный элемент хлебных крошек */}
+              <li
+                className={
+                  isLast
+                    ? `${styles.breadcrumbItem} ${styles.activeCrumb}`
+                    : styles.breadcrumbItem
+                }
+              >
+                {/* Если это последняя крошка, просто отображаем текст (без ссылки), иначе - ссылка */}
+                {isLast ? (
+                  <span>{crumb.label}</span>
+                ) : (
+                  <Link to={crumb.to}>{crumb.label}</Link>
+                )}
+              </li>
+
+              {/* Разделительная линия, рендерится после каждой крошки, кроме последней */}
+              {!isLast && (
+                <div className={styles.breadcrumbItemLineBlock}>
+                  <div className={styles.breadcrumbItemLine}></div>
+                </div>
               )}
-            </li>
+            </React.Fragment>
           );
         })}
       </ul>
@@ -81,4 +92,3 @@ const Breadcrumbs = () => {
 };
 
 export default Breadcrumbs;
-
