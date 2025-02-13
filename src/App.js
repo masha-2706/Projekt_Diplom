@@ -14,8 +14,43 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/categories" element={<CardsPage />} />
+        <Route
+          path="/"
+          element={
+            <Home />
+          } />
+        {/* Страница "Все категории" */}
+        <Route
+          path="/categories"
+          element={
+            <CardsPage
+              title="Categories"
+              type='categories' />}
+        />
+
+        {/* Страница "Товары определенной категории" */}
+
+
+        {/* Страница "Все скидки" */}
+        <Route
+          path="/sales"
+          element={
+            <CardsPage
+              title="All sales"
+              filter={true}
+              type='randomSales' />} />
+
+        {/* Страница "Все продукты" */}
+        <Route
+          path="/products"
+          element={
+            <CardsPage
+              title="All products"
+              filter={true}
+              type='productsAll' />} />
+
+        {/*  */}
+
       </Routes>
       <Footer />
     </div>

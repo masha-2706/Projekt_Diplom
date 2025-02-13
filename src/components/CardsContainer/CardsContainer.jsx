@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import s from './CardsContainer.module.css'
-import { getAllCategories, getAllProducts } from '../../services/baseBackEnd'
+import { getAllCategories, getAllProducts, getProductsByCategoryId } from '../../services/baseBackEnd'
 import CategoryCard from '../CategoryCard/CategoryCard'
 import ProductCard from '../ProductCard/ProductCard'
 import { getRandomArray } from '../../utils/GetRandomArray'
@@ -15,7 +15,7 @@ export default function CardsContainer({
 }) {
     // type - тип отображаемых данных. на текщий момент это могут быть:
     //      сategories - список категорий
-    //      productsFrom - товары определенной категории
+    //      productsFromCategory - товары определенной категории
     //      productsAll - все товары 
     //      sales - товары со скидками
     //      randomSales - случайные товары со скидками
@@ -23,7 +23,7 @@ export default function CardsContainer({
 
     const [array, setArray] = useState([]) // массив данных для отображения
 
-    // получение с сервера соответствующего массива данных в зависимости от типа
+    // Этап 1. получение с сервера соответствующего массива данных в зависимости от типа
     useEffect(() => {
         if (type === 'categories') {
             getAllCategories()
@@ -48,13 +48,27 @@ export default function CardsContainer({
                 })
         }
 
+        else if (type === 'productsAll') {
+            getAllProducts()
+                .then(data => setArray(data))
+        }
+
+        else if (type === 'productsFromCategory') {
+            getProductsByCategoryId(id)
+                .then(data => setArray(data))
+        }
+
 
         // добавить сюда логику получения других запросов
 
-
+        //////////////////////////////////////////////////
+        // Этап 2. Фильтрация и сортировка полученного массива данных
 
     }, [type, id, quantity])
 
+
+    /////////////////////////////////////////////////
+    // Этап 3. Отрисовка 
     return (
         <section className={s.CardsContainer}>
             {/* отрисовка заголовка и кнопки навигации */}
@@ -63,8 +77,13 @@ export default function CardsContainer({
 
                 {/* если  navButton = true - отрисуется линия от заголовка и сам navButton */}
                 {navButton && <div className={s.CardsContainer_header_line}></div>}
+                {navButton && <div style={{ backgroundColor: 'red' }}>navButton</div>}
 
             </div>
+
+            {/* Отрисовка интерфейса фильтрации */}
+            {filter === true && <div style={{ backgroundColor: 'red' }}>Фильтрация</div>}
+
             {/* отрисовка карточек */}
             <div className={s.CardsContainer_container}>
                 {type === 'categories' &&
@@ -73,10 +92,11 @@ export default function CardsContainer({
                             key={item.id}
                             title={item.title}
                             image={item.image}
+                            id={item.id}
                         />)
                 }
 
-                {type === 'randomSales' &&
+                {(type === 'randomSales' || type === 'productsAll' || type === 'productsFromCategory') &&
                     array.map(item =>
                         <ProductCard
                             key={item.id}

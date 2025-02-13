@@ -7,10 +7,17 @@ export default function CardsPage({ title = 'no title', quantity = 0, type, brea
 
 
     return (
-        <div>
+        <main>
             {/* хлебные крошки */}
-            <CardsContainer title='' type={'сategories'} />
+            <CardsContainer
+                title={title}
+                quantity={quantity}
+                type={type}
+                breadCrumbs={breadCrumbs}
+                navButton={navButton}
+                filter={filter}
+            />
 
-        </div>
+        </main>
     )
 }
