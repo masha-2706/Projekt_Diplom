@@ -18,9 +18,7 @@ function NavMenu() {
         <NavLink className={s.link} to='/categories'>Categories</NavLink>
         <NavLink className={s.link} to='/products'>All products</NavLink>
         <NavLink className={s.link} to='/sales'>All sales</NavLink>
-           {/* Например, Breadcrumbs в самом верху */}
-
-      </div>
+     </div>
     </div>
   )
 }

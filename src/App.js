@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import Breadcrumbs from "./components/ui/breadCrumbs/BreadCrumbs";
+import Categories from "./pages/Categories";
 
 
 
@@ -18,6 +19,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/" element={<Categories />} />
         </Routes>
 
         <Footer />

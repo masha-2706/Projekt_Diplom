@@ -1,7 +1,7 @@
 /* Контейнер, в котором лежат ссылки (ul) */
 .breadcrumbList {
     display: flex;          /* размещаем в строку */
-    gap: 8px;               /* расстояние между «пилюлями» */
+           /* расстояние между «пилюлями» */
     list-style: none;       /* убираем стандартные маркеры списка */
     padding: 0;
     margin: 40px;
@@ -15,8 +15,17 @@
     border: 1px solid rgba(221, 221, 221, 1);     /* внутренние отступы: формируют «пилюлю» */
     border-radius: 4px;     /* закруглённые углы, меняйте при необходимости */
   }
+  .breadcrumbItemLineBlock{
+    display: flex;
+    align-items: center;
+  }
+  .breadcrumbItemLine{
+    width: 16px;
+    height: 1px;
+    background-color: rgba(221, 221, 221, 1);
+  }
   
-  /* Ссылки внутри «пилюли» */
+  /* ссылки внутри «пилюли» */
   .breadcrumbItem a {
     color: inherit;         /* унаследует цвет (#fff) */
     text-decoration: none;  /* убираем стандартное подчеркивание */
