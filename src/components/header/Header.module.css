@@ -1,52 +1,46 @@
 .header {
-    
-    height: 128px;
-   
-    display: flex;
-    justify-content: space-between;
-   
-    padding: 0 40px;
-    align-items: center;
+  height: 128px;
+  border-bottom: 2px solid #dddddd;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 40px;
+  align-items: center;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 1000px) {
+  .header {
+    padding: 0 20px;
   }
-  .logoContainer{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-  }
-
-  @media (max-width: 1000px) {
-    .header{
-      padding: 0 20px;
-   
-    }
-    @media (max-width: 768px) {
-      .header{
-        padding: 0 16px;
-      }
-
-      }
-
-    .logoContainer{
-    gap: 18px;
-    }
-  }
-  /* Для планшетов и устройств с шириной экрана до 768px */
   @media (max-width: 768px) {
-    .logoContainer{
-  gap:16px;
+    .header {
+      padding: 0 16px;
     }
   }
-  /* Для мобильных устройств с шириной экрана до 480px */
-  @media (max-width: 480px) {
-    .logoContainer{
-      gap: 8px;
-      
-        }
 
-       
-    .header{
-     height: 68px;   
+  .logoContainer {
+    gap: 18px;
+  }
+}
+/* Для планшетов и устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+  .logoContainer {
+    gap: 16px;
+  }
+}
+/* Для мобильных устройств с шириной экрана до 480px */
+@media (max-width: 480px) {
+  .logoContainer {
+    gap: 8px;
+  }
+
+  .header {
+    height: 68px;
   }
 }
 
@@ -55,31 +49,28 @@ img.logo {
   width: 100%; /* Логотип будет растягиваться на 100% ширины родительского элемента */
   max-width: 70px; /* Логотип не будет больше 200px */
   height: auto; /* Сохраняет пропорции изображения */
-  }
-  /* Для экранов шириной до 1000px */
-  @media (max-width: 1000px) {
+}
+/* Для экранов шириной до 1000px */
+@media (max-width: 1000px) {
   img.logo {
-  max-width: 68px; /* Уменьшаем размер */
+    max-width: 68px; /* Уменьшаем размер */
   }
-  }
-  /* Для экранов шириной до 768px */
-  @media (max-width: 768px) {
+}
+/* Для экранов шириной до 768px */
+@media (max-width: 768px) {
   img.logo {
-  max-width: 60px; /* Еще меньше */
+    max-width: 60px; /* Еще меньше */
   }
-  }
-  /* Для экранов шириной до 480px */
-  @media (max-width: 480px) {
+}
+/* Для экранов шириной до 480px */
+@media (max-width: 480px) {
   img.logo {
-  max-width: 44px; /* Минимальный размер на мобильных устройствах */
-  }
-  }
-
-  @media (max-width: 360px) {
-    img.logo {
     max-width: 44px; /* Минимальный размер на мобильных устройствах */
-    }
-    }
-  
+  }
+}
 
- 
+@media (max-width: 360px) {
+  img.logo {
+    max-width: 44px; /* Минимальный размер на мобильных устройствах */
+  }
+}

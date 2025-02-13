@@ -4,6 +4,8 @@ import s from "./NavMenu.module.css";
 import GreenButton from "../ui/GreenButton";
 
 function NavMenu() {
+  // стилизация link активной страницы
+  const isActiveClass = ({ isActive }) => (isActive ? s.active : s.link);
   return (
     <div className={s.navMenuContainer}>
       <GreenButton
@@ -16,16 +18,16 @@ function NavMenu() {
         className={s.btn}
       />
       <div className={s.nav}>
-        <NavLink className={s.link} to="/">
+        <NavLink className={isActiveClass} to="/">
           Main Page
         </NavLink>
-        <NavLink className={s.link} to="/categories">
+        <NavLink className={isActiveClass} to="/categories">
           Categories
         </NavLink>
-        <NavLink className={s.link} to="/products">
+        <NavLink className={isActiveClass} to="/products">
           All products
         </NavLink>
-        <NavLink className={s.link} to="/sales">
+        <NavLink className={isActiveClass} to="/sales">
           All sales
         </NavLink>
       </div>

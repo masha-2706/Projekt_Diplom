@@ -1,26 +1,77 @@
-.link{
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 26px;
-    display: block;
-    text-decoration: none;
-    color: #424436; 
+.link {
+  display: block;
+  font-family: Montserrat;
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  display: block;
+  text-decoration: none;
+  color: #424436;
+  padding: 5px;
   
 }
+.active {
+  display: block;
+  font-family: Montserrat;
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  display: block;
+  text-decoration: none;
+  color: #424436;
+  padding: 5px;
+ 
+}
+.link::after {
+  content: ""; /* Псевдоэлемент без содержимого */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; /* Изначальная ширина полосы */
+  height: 2px; /* Толщина линии */
+  background-color: #4025d8; /* Цвет полосы */
+  transition: width 0.3s ease; /* Плавное изменение ширины */
+}
+.link:hover::after {
+  width: 100%; /* При ховере ширина полосы становится 100% */
+}
+.link::after {
+  content: ""; /* Псевдоэлемент без содержимого */
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Начинаем с центра */
+  width: 0; /* Изначальная ширина полосы */
+  height: 2px; /* Толщина полосы */
+  background-color: #000; /* Цвет полосы */
+  transition: width 0.3s ease, left 0.3s ease; /* Плавное изменение ширины и смещения */
+}
+.link:hover::after {
+  width: 100%; /* При ховере ширина полосы становится 100% */
+  left: 0; /* Смещаем полоску к левому краю */
+}
+.active::after {
+  content: ""; /* Псевдоэлемент без содержимого */
+  position: absolute;
+  bottom: 0;
+  right: 15%; /* Начинаем с центра */
+  width: 70%; /* Изначальная ширина полосы */
+  height: 2px; /* Толщина полосы */
+  background-color: #000;
+}
+
+
 /* Для планшетов и устройств с шириной экрана до 768px */
 @media (max-width: 768px) {
   .link {
-  
     font-size: 14px;
   }
 }
 
-.nav{
-    display: flex;
-    gap: 32px;/*Это для 1440*/
-  
-
+.nav {
+  display: flex;
+  gap: 32px; /*Это для 1440*/
 }
 @media (max-width: 1000px) {
   .nav {
@@ -34,27 +85,24 @@
   }
 }
 
-.btn{
-    display: block;
-    padding: 6px 16px;
-    border-radius: 6px;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20.16px;
-     text-align: center;
-     background: #92A134;
-     color: #FFFFFF;
-     border: 0;
-     margin:  auto;
-     margin-bottom: 12px;
-
+.btn {
+  display: block;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20.16px;
+  text-align: center;
+  background: #92a134;
+  color: #ffffff;
+  border: 0;
+  margin: auto;
+  margin-bottom: 12px;
 }
 
-
-  @media (max-width: 480px) {
-    .navMenuContainer{
-   
+@media (max-width: 480px) {
+  .navMenuContainer {
     display: none;
-    }
   }
+}
