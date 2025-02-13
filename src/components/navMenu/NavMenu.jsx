@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './NavMenu.module.css'
-import GreenButton from '../ui/GreenButton'
+import GreenButton from '../ui/Button.jsx'
 
 
 function NavMenu() {
