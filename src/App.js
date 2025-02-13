@@ -63,8 +63,6 @@ function App() {
               breadCrumbs={true}
             />} />
 
-        {/*  */}
-
       </Routes>
       <Footer />
     </div>

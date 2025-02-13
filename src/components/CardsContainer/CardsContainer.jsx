@@ -3,7 +3,7 @@ import s from './CardsContainer.module.css'
 import { getAllCategories, getAllProducts, getProductsByCategoryId } from '../../services/baseBackEnd'
 import CategoryCard from '../CategoryCard/CategoryCard'
 import ProductCard from '../ProductCard/ProductCard'
-import { getRandomArray } from '../../utils/GetRandomArray'
+import { getRandomArray } from '../../utils/cardRenderLogic'
 
 export default function CardsContainer({
     title = 'no title', // заголовок
@@ -64,6 +64,7 @@ export default function CardsContainer({
 
         //////////////////////////////////////////////////
         // Этап 2. Фильтрация и сортировка полученного массива данных
+        // добавить сюда логику фильтрации и сортировки массива данных
 
     }, [type, id, quantity])
 

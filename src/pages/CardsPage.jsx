@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import CardsContainer from "../components/CardsContainer/CardsContainer";
+import Breadcrumbs from "../components/ui/breadCrumbs/BreadCrumbs";
 
 export default function CardsPage({
     title = 'no title',
@@ -18,7 +19,7 @@ export default function CardsPage({
     return (
         <main>
             {/* хлебные крошки */}
-            {breadCrumbs && <div style={{ backgroundColor: 'red' }}>breadcrumbs</div>}
+            {breadCrumbs && <Breadcrumbs />}
 
             {/* контейнер с карточками */}
 
