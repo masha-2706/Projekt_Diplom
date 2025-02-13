@@ -1,7 +1,7 @@
-export default function GreenButton ({ text, className }) {
+export default function GreenButton ({ text, className, onClick }) {
     
     return (
-    <button className={className || ""}>
+    <button onClick={onClick} className={className || ""}>
      {text}   
     </button>
     );
