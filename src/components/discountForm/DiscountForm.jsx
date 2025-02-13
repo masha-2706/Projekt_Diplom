@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./DiscountForm.module.css";
-import Button from "../ui/buttonBanner/BtnBanner";
+import Button from "../ui/buttonBanner/Button";
 
 function DiscountForm() {
   // локальноое состояние для хранения данных формы (имя, телефон, email)
