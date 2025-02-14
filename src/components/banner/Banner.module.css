@@ -12,8 +12,7 @@
 }
 
 .title {
-  color: white;
-
+  color: var(--white);
   font-size: 90px;
   font-weight: 700;
   line-height: 105.6px;
@@ -31,7 +30,7 @@
   line-height: 26px;
   text-align: center;
   background: #92a134;
-  color: #ffffff;
+  color: var(--white);
   border: 0;
   margin: 40px;
 }
@@ -39,7 +38,6 @@
 @media (max-width: 1000px) {
   .container {
     max-width: 1000px;
-  
   }
   .section {
     background-image: url('../../media/banner/hero1000.jpg');
@@ -56,7 +54,6 @@
 @media (max-width: 768px) {
   .container {
     max-width: 768px;
-   
   }
   .section {
     background-image: url('../../media/banner/hero768.jpg');
@@ -74,7 +71,6 @@
 @media (max-width: 480px) {
   .container {
     max-width: 480px;
-   
   }
   .section {
     background-image: url('../../media/banner/hero480.jpg');
@@ -96,7 +92,6 @@
 @media (max-width: 360px) {
   .container {
     max-width: 360px;
-   
   }
   .section {
     background-image: url('../../media/banner/hero360.jpg');

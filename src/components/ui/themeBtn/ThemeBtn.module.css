@@ -1,21 +1,75 @@
-.btn {
+
+  /* Стили для кнопки-переключателя */
+  .btn {
+    width: 56px;
+    height: 26px;
+    background-color: var(--light_grey);
+    border-radius: 30px;
     display: flex;
     align-items: center;
-    width: 60px;
-    height: 32px;
     justify-content: space-between;
-    background: #8b8b8b;
-    border-radius: 30px;
-    outline: none;
-    border: none;
-    padding: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 2px solid var(--light_grey);
   }
- 
+
+  /* Стили для контейнера переключателя */
+.themeToggle {
+  position: relative;
+  display: flex;
+}
+/* Скрываем стандартный чекбокс */
+.themeSwitch {
+  display: none;
+}
+
+/* Стили для кружка, который будет двигаться */
+.btn::before {
+  position: absolute;
+  content: "";
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background-color: var(--snow_white);
+  transition: transform 0.3s ease;
+}
+/* Стили для кружка, который будет двигаться */
+.btn::before {
+  position: absolute;
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--snow_white);
+  transition: transform 0.3s ease;
+}
+/* Когда чекбокс включен, меняем цвет фона кнопки и положение кружка */
+.themeSwitch:checked + .btn {
+  background-color: var(--snow_white); /* белый фон кнопки, для темной темы */
+  border: 4px solid var(--snow_white);
+}
+.themeSwitch:checked + .btn::before {
+  background-color: var(--light_grey); /* серый фон кружка, для темной темы */
+}
+.themeSwitch:checked + .btn::before {
+  transform: translateX(33px); /* перемещаем кружок вправо */
+}
+/* Стили для иконок солнце/луна на кнопке */
+.iconMoon {
+  position: absolute;
+  top: 8%;
+  left: 60%;
+}
+.iconSun {
+  position: absolute;
+  top: 8%;
+  right: 60%;
+}
+
   /* Для планшетов и устройств с шириной экрана до 768px */
   @media (max-width: 768px) {
     .btn{
     width: 52px ;
     height:28px ;
-   
     }
   }
