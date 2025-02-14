@@ -1,27 +1,37 @@
 .link{
-    font-family: Montserrat;
     font-size: 20px;
     font-weight: 500;
     line-height: 26px;
     display: block;
     text-decoration: none;
-    color: #424436; 
+    color: var(--grey); 
 }
 .link:hover {
   color: #92A134; 
 }
-
-/* Для планшетов и устройств с шириной экрана до 768px */
-@media (max-width: 768px) {
-  .link {
-    font-size: 14px;
-  }
-}
-
 .nav {
   display: flex;
   gap: 32px; /*Это для 1440*/
 }
+.btn {
+  display: block;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20.16px;
+  text-align: center;
+  background: var(--green);
+  color: var(--snow_white);
+  border: 0;
+  margin: auto;
+  margin-bottom: 12px;
+}
+.btn:hover {
+  background: var(--grey);
+  color: var(--snow_white);
+}
+
 @media (max-width: 1000px) {
   .nav {
     gap: 24px;
@@ -32,24 +42,10 @@
   .nav {
     gap: 18px;
   }
+  .link {
+    font-size: 14px;
+  }
 }
-
-.btn {
-  display: block;
-  padding: 6px 16px;
-  border-radius: 6px;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20.16px;
-  text-align: center;
-  background: #92a134;
-  color: #ffffff;
-  border: 0;
-  margin: auto;
-  margin-bottom: 12px;
-}
-
 @media (max-width: 480px) {
   .navMenuContainer {
     display: none;

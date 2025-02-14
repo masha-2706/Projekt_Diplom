@@ -6,7 +6,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", serif;
-
 }
 
 body {
@@ -14,8 +13,8 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  background-color: #fffff1;
-  color: #424436;
+  background-color: var(--white);
+  color: var(--grey);
 }
 
 @media screen and (max-width:1440px) {

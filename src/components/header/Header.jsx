@@ -1,7 +1,7 @@
 import React from 'react';
 import NavMenu from '../navMenu/NavMenu';
-import ThemeBtn from './components/themeBtn/ThemeBtn';
-import BlockIcons from './components/blockIcons/BlockIcons';
+import ThemeBtn from '../ui/themeBtn/ThemeBtn';
+import BlockIcons from '../ui/blockIcons/BlockIcons';
 import s from './Header.module.css';
 
 // Это наш Header в котором мы распологаем :

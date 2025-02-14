@@ -45,13 +45,13 @@ function DiscountForm() {
 
     if (validateInput()) {
       setMessage("The discount has been successfully sent by email"); // сообщение об успешной отправке
-      setIsSuccess(true);
+      setIsSuccess(true); // Сообщение об ошибке
       setShowMessage(true);
 
       // Очищаем форму после успешной отправки
       setFormData({ name: "", phone: "", email: "" });
     } else {
-      setMessage("Wrong input. Try again"); // сообщение об ошибке
+      setMessage("Wrong input. Try again");   // сообщение об ошибке
       setIsSuccess(false);
       setShowMessage(true);
     }
@@ -113,7 +113,8 @@ function DiscountForm() {
                 ) : (
                   <div className={styles.errorContent}>
                     <img src={error} alt="Error" className={styles.errorIcon} />
-                    <span className={styles.errorText}>{message}</span> // Сообщение об ошибке
+                    <span className={styles.errorText}>{message}</span> 
+                    {/* // Сообщение об ошибке */}
                   </div>
                 )}
               </div>
