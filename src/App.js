@@ -13,7 +13,8 @@ function App() {
     <div className="App">
       <Header />
 
-      <IconButton type='cart' variant='navbar' count={5} />
+      <IconButton type='like' />
+      <IconButton type='cart' />
       {/* Добавляем хлебные крошки, но скрываем их на главной */}
       <Breadcrumbs />
 
