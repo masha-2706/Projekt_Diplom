@@ -14,8 +14,10 @@ function App() {
     <div className="App">
       <Header />
 
-      <IconButton type='like' />
-      <IconButton type='cart' />
+      <IconButton type='like' variant={'navbar'} />
+      <IconButton type='cart' variant={'navbar'} />
+      <IconButton type='like' variant={'product'} />
+      <IconButton type='cart' variant={'product'} />
       {/* Добавляем хлебные крошки, но скрываем их на главной */}
       <Breadcrumbs />
 
