@@ -6,7 +6,7 @@
 .contentBlock_header {
     display: flex;
     align-items: center;
-    color: #424436;
+    color: var(--grey);
 }
 
 .contentBlock_header>h2 {
@@ -18,7 +18,7 @@
 .contentBlock_header_line {
     flex-grow: 1;
     height: 1px;
-    background: #DDDDDD;
+    background: var(--divider_grey);
 }
 
 *>h3 {

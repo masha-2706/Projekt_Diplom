@@ -1,4 +1,5 @@
 import "./App.css";
+import './styles/global.css' // импорт файла с цветовой палитрой и глобальными стилями
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
