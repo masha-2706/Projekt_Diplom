@@ -1,8 +1,15 @@
-const BASE_URL = 'http://localhost:3333';
+export const BASE_URL = 'http://localhost:3333';
 
-// Получить все категории
+// Получить все категории 
 export function getAllCategories() {
-    return fetch(`${BASE_URL}/categories/all`)
+    return (fetch(`${BASE_URL}/categories/all`)
+        .then(response => response.json())
+        .then(data => data))
+}
+
+// Получить продукты по id категории
+export function getProductsByCategoryId(id) {
+    return fetch(`${BASE_URL}/categories/${id}`)
         .then(response => response.json())
         .then(data => data);
 }
@@ -10,13 +17,6 @@ export function getAllCategories() {
 // Получить все продукты
 export function getAllProducts() {
     return fetch(`${BASE_URL}/products/all`)
-        .then(response => response.json())
-        .then(data => data);
-}
-
-// Получить продукты по id категории
-export function getProductsByCategoryId(id) {
-    return fetch(`${BASE_URL}/products/category/${id}`)
         .then(response => response.json())
         .then(data => data);
 }

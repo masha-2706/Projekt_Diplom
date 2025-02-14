@@ -73,3 +73,10 @@
     color: var(--light_grey);
     margin-bottom: 0.25rem;
 }
+
+.productCard_text>h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 500
+}
