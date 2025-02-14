@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../../../ui/Icon'
+import Icon from '../Icon'
 import s from './ThemeBtn.module.css'
 
 export default function ThemeBtn() {
@@ -8,6 +8,7 @@ export default function ThemeBtn() {
       <div className={s.themeToggle}>
         <Icon className={s.iconSun} id="icon-brightness" w={20} h={20} />
         <Icon className={s.iconMoon} id="icon-sleep" w={20} h={20} />
+        {/* Для создания эфекта переключения используем  input "checkbox" (т.е его свойство чекед выбран ) */}
         <input
           type="checkbox"
           id="theme-switch"

@@ -1,11 +1,12 @@
 .footer_wrapper {
   max-width: 1440px;
   padding: 0 2.5rem 5rem;
+  margin: 0 auto;
 }
 .footer_title {
   font-weight: 700;
   font-size: 4rem;
-  color: #424436;
+  color: var(--grey);
   padding-bottom: 2.5rem;
 }
 .footer_container {
@@ -18,9 +19,9 @@
 .footer_contact_socials,
 .footer_contact_address,
 .footer_contact_workingHours {
-  background-color: #f2f6d3;
+  background-color: var(--light_green);
   padding: 2rem;
-  border-radius: 0, 75rem;
+  border-radius: 0.75rem;
 }
 .footer_contact_phone,
 .footer_contact_address {
@@ -34,23 +35,26 @@
   width: 100%;
   height: 21.87rem;
   border-radius: 0.75rem;
+  border: none;
 }
-.footer_contact_socials > img {
+.footer_contact_socials > a {
   padding-right: 1rem;
 }
 .footer_contact_title {
-  color: #8b8b8b;
+  color: var(--light_grey);
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.625rem;
   padding-bottom: 1rem;
+  
 }
 
 .footer_contact_description {
-  color: #424436;
+  color: var(--grey);
   font-weight: 600;
   font-size: 2.5rem;
   line-height: 2.75rem;
+  text-decoration: none;
 }
 
 /* адаптивность страницы*/

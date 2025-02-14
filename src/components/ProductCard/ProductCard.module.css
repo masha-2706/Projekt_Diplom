@@ -1,23 +1,22 @@
 .productCard {
-    background-color: #FFFFFF;
+    background-color: var(--snow_white);
     width: 100%;
     position: relative;
     overflow: hidden;
-    border: 1px solid #DDDDDD;
+    border: 1px solid var(--divider_grey);
     border-radius: 1rem;
 }
 
 .productCard_image>img {
     width: 100%;
     object-fit: cover;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid var(--divider_grey);
 
     /* мин.высота картинок, 
     чтобы избежать разных по высоте карточек 
     при маленьком размере исходного изображения */
     min-height: 22rem;
 }
-
 
 .productCard_icons {
     display: flex;
@@ -32,12 +31,12 @@
     top: 1rem;
     left: 1rem;
     padding: 0.25rem 0.5rem;
-    background-color: #F26D22;
+    background-color: var(--orange);
     border-radius: 0.25rem;
 
     font-size: 1.25rem;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--snow_white);
 }
 
 .productCard_text {
@@ -63,7 +62,7 @@
 .productCard_text_actualPrice {
     font-size: 2.5rem;
     font-weight: 600;
-    color: #424436;
+    color: var(--grey);
 }
 
 .productCard_text_regularPrice {
@@ -71,6 +70,13 @@
     font-weight: 500;
     text-align: left;
     text-decoration-line: line-through;
-    color: #8B8B8B;
+    color: var(--light_grey);
     margin-bottom: 0.25rem;
+}
+
+.productCard_text>h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 500
 }

@@ -9,4 +9,6 @@
 .categoryCard>h3 {
     text-align: center;
     margin-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
 }
