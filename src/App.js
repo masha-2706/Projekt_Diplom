@@ -5,6 +5,7 @@ import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import Breadcrumbs from "./components/ui/breadCrumbs/BreadCrumbs";
+import IconButton from "./components/ui/IconButton/IconButton";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <Header />
 
+      <IconButton type='cart' variant='navbar' count={5} />
       {/* Добавляем хлебные крошки, но скрываем их на главной */}
       <Breadcrumbs />
 
