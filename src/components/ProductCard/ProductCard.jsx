@@ -1,6 +1,6 @@
 import { BASE_URL } from '../../services/baseBackEnd';
 import { getDiscount } from '../../utils/cardRenderLogic';
-import ProductIcons from '../ProductIcons/ProductIcons'
+import IconButton from '../ui/IconButton/IconButton';
 import s from './ProductCard.module.css'
 
 export default function ProductCard({ title, image, price, discont_price }) {
@@ -19,8 +19,8 @@ export default function ProductCard({ title, image, price, discont_price }) {
                 <img src={`${BASE_URL}${image}`} alt={`Product ${title}`} />
             </div>
             <div className={s.productCard_icons}>
-                <ProductIcons type={'like'} />
-                <ProductIcons type={'cart'} />
+                <IconButton type='like' variant={'product'} />
+                <IconButton type='cart' variant={'product'} />
             </div>
 
             {/* если есть скидка - отображаем блок скидки */}

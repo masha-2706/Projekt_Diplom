@@ -1,13 +1,13 @@
 import React from "react";
-import { NavLink , Link} from "react-router";
+import { NavLink, Link } from "react-router";
 import s from "./NavMenu.module.css";
-import GreenButton from "../ui/GreenButton";
+// import GreenButton from "../ui/GreenButton"; 
 
 function NavMenu() {
   return (
     <div className={s.navMenuContainer}>
       <Link className={s.link} to="/sales">
-        <GreenButton text={"1 day discount!"} className={s.btn} />
+        {/* <GreenButton text={"1 day discount!"} className={s.btn} /> */}
       </Link>
 
       <div className={s.nav}>

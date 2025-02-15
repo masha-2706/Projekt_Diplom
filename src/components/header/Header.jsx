@@ -1,8 +1,8 @@
-import React from "react";
-import NavMenu from "../navMenu/NavMenu";
-import ThemeBtn from "../button/Button";
-import BlockIcons from './components/blockIcons/BlockIcons';
-import s from "./Header.module.css";
+import React from 'react';
+import NavMenu from '../navMenu/NavMenu';
+import ThemeBtn from '../ui/themeBtn/ThemeBtn';
+import s from './Header.module.css';
+import IconButton from '../ui/IconButton/IconButton';
 import { NavLink } from "react-router";
 
 // Это наш Header в котором мы распологаем :
@@ -19,9 +19,15 @@ export default function Header() {
         <ThemeBtn />
         {/* кнопка для изменения темы (день /ночь) небходимы функции для переключения для этого необходимо ( в компонент icon кот находит в ui) необходимо передать  classname , id ) id -передано интерполяцией  */}
       </div>
+
       <NavMenu />
       {/* навигация по сайту  */}
-      <BlockIcons />
+
+      <div className={s.iconsContainer}>
+        <IconButton type="like" variant={'header'} count={3} /> {/* передаем количество товаров в корзине через count */}
+        <IconButton type="cart" variant={'header'} count={0} />
+        {/* иконки корзины и лайка */}
+      </div>
       {/* блок иконок (лайк и корзина ) */}
     </header>
   );

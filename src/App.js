@@ -6,6 +6,7 @@ import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import Breadcrumbs from "./components/ui/breadCrumbs/BreadCrumbs";
+import IconButton from "./components/ui/IconButton/IconButton";
 
 
 function App() {
@@ -61,6 +62,26 @@ function App() {
               title="All products"
               filter={true}
               type='productsAll'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Избранное" */}
+        <Route
+          path="/favorites"
+          element={
+            <CardsPage
+              title="Favorites"
+              type='favorites'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Корзина" */}
+        <Route
+          path="/cart"
+          element={
+            <CardsPage
+              title="Cart"
+              type='cart'
               breadCrumbs={true}
             />} />
 
