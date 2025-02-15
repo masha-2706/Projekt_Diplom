@@ -6,8 +6,8 @@ export default function ThemeBtn() {
   return (
   
       <div className={s.themeToggle}>
-        <Icon className={s.iconSun} id="icon-brightness" w={20} h={20} />
-        <Icon className={s.iconMoon} id="icon-sleep" w={20} h={20} />
+        <Icon className={s.iconSun} id="icon-brightness" />
+        <Icon className={s.iconMoon} id="icon-sleep"/>
         {/* Для создания эфекта переключения используем  input "checkbox" (т.е его свойство чекед выбран ) */}
         <input
           type="checkbox"

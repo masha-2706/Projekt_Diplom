@@ -55,15 +55,18 @@
   transform: translateX(33px); /* перемещаем кружок вправо */
 }
 /* Стили для иконок солнце/луна на кнопке */
-.iconMoon {
+
+.iconMoon, .iconSun {
   position: absolute;
   top: 8%;
+  width: 20px;
+  height: 20px;
+}
+.iconMoon {
   left: 60%;
 }
 .iconSun {
-  position: absolute;
-  top: 8%;
-  right: 60%;
+   right: 60%;
 }
 
   /* Для планшетов и устройств с шириной экрана до 768px */

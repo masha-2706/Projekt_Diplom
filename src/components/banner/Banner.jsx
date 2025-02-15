@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './Banner.module.css'
-import Button from '../ui/Button'
+import Button from '../ui/ButtonDiscount.jsx'
 
 export default function Banner() {
   return (

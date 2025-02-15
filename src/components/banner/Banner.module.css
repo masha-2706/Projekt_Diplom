@@ -4,7 +4,7 @@
 }
 
 .section {
-  background-image: url('../../media/banner/hero1440.jpg'); /* изображение по умолчанию для десктопа */
+  background-image: url('../../../public/media/banner/hero1440.jpg'); /* изображение по умолчанию для десктопа */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -40,7 +40,7 @@
     max-width: 1000px;
   }
   .section {
-    background-image: url('../../media/banner/hero1000.jpg');
+    background-image: url('../../../public/media/banner/hero1000.jpg');
     padding-bottom: 120px;
   }
   .title {
@@ -56,7 +56,7 @@
     max-width: 768px;
   }
   .section {
-    background-image: url('../../media/banner/hero768.jpg');
+    background-image: url('../../../public/media/banner/hero768.jpg');
     padding-bottom: 326px;
   }
   .title {
@@ -73,7 +73,7 @@
     max-width: 480px;
   }
   .section {
-    background-image: url('../../media/banner/hero480.jpg');
+    background-image: url('../../../public/media/banner/hero480.jpg');
     padding-bottom: 215px;
   }
   .title {
@@ -94,7 +94,7 @@
     max-width: 360px;
   }
   .section {
-    background-image: url('../../media/banner/hero360.jpg');
+    background-image: url('../../../public/media/banner/hero360.jpg');
     padding-bottom: 251px;
   }
   .title {

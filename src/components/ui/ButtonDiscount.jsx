@@ -1,4 +1,4 @@
-export default function Button ({ text, className, onClick, disabled = false }) {
+export default function ButtonDiscount ({ text, className, onClick, disabled = false }) {
     
     return (
     <button onClick={onClick} className={className || ""}>
