@@ -1,0 +1,64 @@
+.icon {
+    position: relative;
+}
+
+.header {
+    /* стили для header */
+    position: relative;
+    stroke-width: 2.2;
+    stroke: var(--grey);
+}
+
+.header>.cartContour {
+    /* стили для контура корзины */
+    fill: var(--grey);
+}
+
+.product {
+    /* стили для product */
+    fill: var(--snow_white);
+}
+
+.active {
+    /* стили для активного состояния (зелёная заливка) */
+    fill: var(--green);
+    stroke: var(--green);
+}
+
+.default {
+    /* стили для неактивного состояния */
+    stroke-width: 2.2;
+    stroke: var(--grey);
+}
+
+.default>.cartContour {
+    /* стили для контура корзины */
+    fill: var(--grey);
+}
+
+.hovered {
+    /* стили для hover-состояния */
+    fill: var(--grey);
+}
+
+.counter {
+    /* стили для счётчика */
+    position: absolute;
+    top: 7px;
+
+    background-color: var(--green);
+    color: var(--white);
+    border-radius: 50%;
+
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 600;
+    font-size: 12px;
+    cursor: default;
+    /* отключение курсора при наведении */
+}

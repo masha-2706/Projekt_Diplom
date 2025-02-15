@@ -1,4 +1,6 @@
-import ProductIcons from '../ProductIcons/ProductIcons'
+import { BASE_URL } from '../../services/baseBackEnd';
+import { getDiscount } from '../../utils/cardRenderLogic';
+import IconButton from '../ui/IconButton/IconButton';
 import s from './ProductCard.module.css'
 
 export default function ProductCard({ title, image, price, discont_price }) {
@@ -14,16 +16,15 @@ export default function ProductCard({ title, image, price, discont_price }) {
     return (
         <div className={s.productCard}>
             <div className={s.productCard_image}>
-                <img src={`http://localhost:3333${image}`} alt={`Product ${title}`} />
+                <img src={`${BASE_URL}${image}`} alt={`Product ${title}`} />
             </div>
             <div className={s.productCard_icons}>
-                <ProductIcons type={'like'} />
-                <ProductIcons type={'cart'} />
+                <IconButton type='like' variant={'product'} />
+                <IconButton type='cart' variant={'product'} />
             </div>
-            <div className={s.productCard_discount}>
-                {/* логика простая, нет смысла выносить отдельно */}
-                {discont_price ? <p>-{Math.round((1 - discont_price / price) * 100)}%</p> : null}
-            </div>
+
+            {/* если есть скидка - отображаем блок скидки */}
+            {discont_price && <div className={s.productCard_discount}><p>{`-${getDiscount(price, discont_price)}%`}</p></div>}
 
             {/* Блок заголовка и цены */}
             <div className={s.productCard_text}>

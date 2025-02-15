@@ -1,28 +1,94 @@
 import "./App.css";
-import { Routes, Route } from "react-router";
-import Footer from './components/footer/Footer'
-
-
-import Home from './pages/Home'
+import './styles/global.css' // импорт файла с цветовой палитрой и глобальными стилями
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
+import CardsPage from "./pages/CardsPage";
+import Footer from "./components/footer/Footer";
+import Home from "./pages/Home";
+import Breadcrumbs from "./components/ui/breadCrumbs/BreadCrumbs";
+import IconButton from "./components/ui/IconButton/IconButton";
 
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-    
+      <Header />
+
+      {/* Добавляем хлебные крошки, но скрываем их на главной */}
+      <Breadcrumbs />
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home />
+          } />
+        {/* Страница "Все категории" */}
+        <Route
+          path="/categories"
+          element={
+            <CardsPage
+              title="Categories"
+              type='categories' />}
+        />
+
+        {/* Страница "Товары определенной категории" */}
+        <Route
+          path="/categories/:category"
+          element={
+            <CardsPage
+              title="Products"
+              filter={true}
+              type='productsFromCategory'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Все скидки" */}
+        <Route
+          path="/sales"
+          element={
+            <CardsPage
+              title="All sales"
+              filter={true}
+              type='randomSales'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Все продукты" */}
+        <Route
+          path="/products"
+          element={
+            <CardsPage
+              title="All products"
+              filter={true}
+              type='productsAll'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Избранное" */}
+        <Route
+          path="/favorites"
+          element={
+            <CardsPage
+              title="Favorites"
+              type='favorites'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Корзина" */}
+        <Route
+          path="/cart"
+          element={
+            <CardsPage
+              title="Cart"
+              type='cart'
+              breadCrumbs={true}
+            />} />
+
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
 
 export default App;
-
-// Это линк в Header
-{/* <Link to='/categories'>Categories</Link> 
-<Link to='/products'>All products</Link> 
-<Link to='/sales'>All sales</Link>  */}

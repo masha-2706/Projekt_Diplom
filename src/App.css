@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* импортировали шрифт Montserrat для всего проекта */
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); 
 
 * {
   margin: 0;
@@ -7,40 +8,42 @@
   font-family: "Montserrat", serif;
 }
 
-
-body {
-  background-color: #fffff1;
-  color: #424436;
-}
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
+  background-color: var(--white);
+  color: var(--grey);
 }
 
 @media screen and (max-width:1440px) {
   body {
+    max-width: 1440px;
     font-size: 14px;
   }
 }
 @media screen and (max-width:1000px) {
   body {
+    max-width: 1000px;
     font-size: 12px;
   }
 }
 @media screen and (max-width:768px) {
   body {
+    max-width: 768px;
     font-size: 10px;
   }
 }
 @media screen and (max-width:480px) {
   body {
+    max-width: 480px;
     font-size: 8px;
   }
 }
 @media screen and (max-width:360px) {
   body {
+    max-width: 360px;
     font-size: 6px;
   }
 }
