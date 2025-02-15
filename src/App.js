@@ -14,10 +14,6 @@ function App() {
     <div className="App">
       <Header />
 
-      <IconButton type='like' variant={'navbar'} />
-      <IconButton type='cart' variant={'navbar'} />
-      <IconButton type='like' variant={'product'} />
-      <IconButton type='cart' variant={'product'} />
       {/* Добавляем хлебные крошки, но скрываем их на главной */}
       <Breadcrumbs />
 
@@ -66,6 +62,26 @@ function App() {
               title="All products"
               filter={true}
               type='productsAll'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Избранное" */}
+        <Route
+          path="/favorites"
+          element={
+            <CardsPage
+              title="Favorites"
+              type='favorites'
+              breadCrumbs={true}
+            />} />
+
+        {/* Страница "Корзина" */}
+        <Route
+          path="/cart"
+          element={
+            <CardsPage
+              title="Cart"
+              type='cart'
               breadCrumbs={true}
             />} />
 
