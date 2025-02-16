@@ -1,31 +1,160 @@
 .CardsContainer {
-    margin: 5rem 2.5rem;
-    width: 100%;
+  margin: 5rem 2.5rem;
+  width: 100%;
+  max-width: 1360px;
 }
 
 .CardsContainer_header {
-    display: flex;
-    align-items: center;
-    color: #424436;
+  display: flex;
+  align-items: center;
+  color: var(--grey);
 }
 
-.CardsContainer_header>h2 {
-    margin: 0 2rem 0 0;
-    font-size: 4rem;
-    font-weight: 700;
+.CardsContainer_header > h2 {
+  margin: 0 2rem 0 0;
+  font-size: 4rem;
+  font-weight: 700;
 }
 
 .CardsContainer_header_line {
-    flex-grow: 1;
-    height: 1px;
-    background: #DDDDDD;
+  flex-grow: 1;
+  height: 1px;
+  background: var(--divider_grey);
 }
-
-
 
 .CardsContainer_container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
 }
+
+/* Стили для Блока сортировки товаров по цене "от" и "до"  */
+/* ******************************************************* */
+.filterContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  margin: 40px 0;
+}
+.filterContainer > * {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.filterContainer p {
+  color: var(--grey);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.62rem;
+}
+.filterContainer input {
+  padding: 8px 16px;
+  background-color: var(--snow_white);
+  border-radius: 6px;
+  border: 1px solid var(--divider_grey);
+  max-width: 112px;
+}
+.filterPrice input::placeholder {
+  font-size: 1rem;
+  color: var(--light_grey);
+  font-weight: 500;
+}
+
+/* Стили для Блока сортировки "checkbox": товары со скидкой  */
+/* ********************************************************* */
+.filterDiscountCheckbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.filterDiscountCheckbox input {
+  display: none; /* Скрыто стандартное отображение checkbox */
+}
+
+/* стили для не отмеченого checkbox */
+.filterDiscountCheckbox span {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--divider_grey);
+  background-color: var(--snow_white);
+  position: relative;
+}
+
+/* стили для отмеченого checkbox */
+.filterDiscountCheckbox input:checked + span {
+  background-color: var(--green);
+  border: none;
+}
+
+.filterDiscountCheckbox input:checked + span::before {
+  content: "";
+  background-image: url("../../../public//media/sortFilter/check.svg"); /* изображение галочки */
+  background-size: cover;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Блок сортировки "выпадаюший список"  */
+/* ************************************ */
+.filterSorted_wrapper{
+    position: relative;
+}
+
+.filterSorted select {
+  padding: 8px;
+  border: 1px solid var(--divider_grey);
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  color: var(--grey);
+  background-color: var(--snow_white);
+  cursor: pointer;
+  appearance: none; /* Убираем стандартную стрелку */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 60px;
+
+}
+
+/* Стили при фокусе */
+.filterSorted select:focus {
+  outline: none;
+}
+
+/* Стили для вариантов в списке */
+.filterSorted select option {
+  background-color: var(--white);
+  color: var(--light_grey);
+}
+
+/* Стилизация выделенного пункта */
+.filterSorted select option:checked {
+  color: var(--grey);
+}
+
+/* Стрелка */
+.filterSorted_arrow {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 25px;
+    height: 25px;
+    background-image: url("../../../public/media/sortFilter/arrowDown.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.4s ease;
+    pointer-events: none; 
+  }
+  
+  /* Поворот стрелки про фокусе */
+  .filterSorted select:focus + .filterSorted_arrow {
+    transform: rotate(180deg);
+  }
