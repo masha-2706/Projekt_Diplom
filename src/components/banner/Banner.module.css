@@ -34,7 +34,10 @@
   border: 0;
   margin: 40px;
 }
-
+.btn:hover {
+  background: var(--grey);
+  color: var(--snow_white);
+}
 @media (max-width: 1000px) {
   .container {
     max-width: 1000px;
