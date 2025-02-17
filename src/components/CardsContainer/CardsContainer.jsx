@@ -89,7 +89,7 @@ export default function CardsContainer({
             />
           ))}
 
-        {(type === "randomSales" || type === "productsAll") &&
+        {(type === "randomSales" || type === "productsAll" || type === "productsFromCategory") &&
           array.map((item) => (
             <ProductCard
               key={item.id}
@@ -97,16 +97,7 @@ export default function CardsContainer({
               image={item.image}
               price={item.price}
               discont_price={item.discont_price}
-            />
-          ))}
-        {type === "productsFromCategory" &&
-          array.map((item) => (
-            <ProductCard
-              key={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              discont_price={item.discont_price}
+              id={item.id}
             />
           ))}
       </div>
