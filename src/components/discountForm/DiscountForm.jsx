@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./DiscountForm.module.css";
-import Button from "../ui/buttonBanner/Button";
+import Button from "../ui/button/Button";
 
 function DiscountForm() {
   // локальноое состояние для хранения данных формы (имя, телефон, email)
@@ -121,9 +121,7 @@ function DiscountForm() {
             )}
 
             {/* Кнопка отправки формы */}
-            <Button type="submit" className={styles.button}>
-              Get a discount
-            </Button>
+            <Button text="Get a discount" type="submit" submittedText = "Request Submitted" variant="submittedButton"  />
           </form>
         </div>
       </div>

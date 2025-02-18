@@ -8,6 +8,7 @@ import {
 import CategoryCard from "../CategoryCard/CategoryCard";
 import ProductCard from "../ProductCard/ProductCard";
 import { getRandomArray } from "../../utils/cardRenderLogic";
+import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
 export default function CardsContainer({
   title = "no title", // заголовок
@@ -69,7 +70,17 @@ export default function CardsContainer({
 
         {/* если  navButton = true - отрисуется линия от заголовка и сам navButton */}
         {navButton && <div className={s.CardsContainer_header_line}></div>}
-        {navButton && <div style={{ backgroundColor: "red" }}>navButton</div>}
+        {navButton && (
+          <div className={s.CardsContainer_header_buttons}>
+            {title === "Categories" && (
+              <NavigationButton text="All сategories" link="/categories" />
+            )}
+            {title === "Sales" && (
+              <NavigationButton text="All sales" link="/sales" />
+            )}
+          </div>
+        )}
+
       </div>
 
       {/* Отрисовка интерфейса фильтрации */}
