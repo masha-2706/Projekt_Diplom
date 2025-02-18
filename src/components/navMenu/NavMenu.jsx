@@ -29,12 +29,9 @@ function NavMenu() {
             All sales{" "}
           </NavLink>
         </div>
+        
       </div>
-      <div className={s.burger_icon}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+
     </div>
   );
 }

@@ -17,6 +17,7 @@ body {
   color: var(--grey);
 }
 
+/*  ** **  adaptive  ** ** */
 @media screen and (max-width:1440px) {
   body {
     max-width: 1440px;
