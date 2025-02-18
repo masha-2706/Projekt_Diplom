@@ -35,7 +35,7 @@ const logoImage = '/media/logo/logo.png';
         {/* иконки корзины и лайка */}
       </div>
 
-
+    
 
       {/* блок иконок (лайк и корзина ) */}
     </header>

@@ -5,10 +5,10 @@ import Banner from '../components/banner/Banner';
 function Home() {
   return (
     <main> 
-      <Banner />
-      <CardsContainer title="Categories" quantity={4} type={'categories'} navButton={true} />
+      {/* <Banner /> */}
+      {/* <CardsContainer title="Categories" quantity={4} type={'categories'} navButton={true} />
       <DiscountForm />
-      <CardsContainer title="Sales" quantity={4} type={'randomSales'} navButton={true} />
+      <CardsContainer title="Sales" quantity={4} type={'randomSales'} navButton={true} /> */}
     </main>
   );
 }
