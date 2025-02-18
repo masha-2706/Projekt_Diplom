@@ -1,15 +1,15 @@
 import React from "react";
-import { NavLink, Link } from "react-router";
+import { NavLink } from "react-router";
 import s from "./NavMenu.module.css";
-import ButtonDiscount from "../ui/buttonBanner/Button"; 
+import Button from "../ui/button/Button";
+
 
 function NavMenu() {
   return (
     <div className={s.navMenuContainer}>
-
-      <Link className={s.link} to="/sales">
-        <ButtonDiscount children={"1 day discount!"} className={s.btn} />
-      </Link>
+      <div className={s.buttonContainer}>
+        <Button link='#' text='1 day discount!' variant="oneDayDiscount" />
+      </div>
 
 
       <div className={s.nav}>

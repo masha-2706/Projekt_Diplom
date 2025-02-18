@@ -5,6 +5,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import Filter from "../ui/filter/Filter";
 import { useSelector } from "react-redux";
 import { fetchData } from "../../utils/fetchData";
+import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
 export default function CardsContainer(
   {
@@ -50,7 +51,17 @@ export default function CardsContainer(
 
         {/* если  navButton = true - отрисуется линия от заголовка и сам navButton */}
         {navButton && <div className={s.CardsContainer_header_line}></div>}
-        {navButton && <div style={{ backgroundColor: "red" }}>navButton</div>}
+        {navButton && (
+          <div className={s.CardsContainer_header_buttons}>
+            {title === "Categories" && (
+              <NavigationButton text="All сategories" link="/categories" />
+            )}
+            {title === "Sales" && (
+              <NavigationButton text="All sales" link="/sales" />
+            )}
+          </div>
+        )}
+
       </div>
 
       {/* Отрисовка интерфейса фильтрации */}
