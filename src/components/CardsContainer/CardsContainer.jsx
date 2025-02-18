@@ -1,64 +1,44 @@
 import { useEffect, useState } from "react";
 import s from "./CardsContainer.module.css";
-import {
-  getAllCategories,
-  getAllProducts,
-  getProductsByCategoryId
-} from "../../services/baseBackEnd";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import ProductCard from "../ProductCard/ProductCard";
-import { getRandomArray } from "../../utils/cardRenderLogic";
-import Filter from "../filter/Filter";
+import Filter from "../ui/filter/Filter";
+import { useSelector } from "react-redux";
+import { fetchData } from "../../utils/fetchData";
 
-export default function CardsContainer({
-  title = "no title", // заголовок
-  quantity = 0, // кол-во карточек для отображения. "0" чтобы отобразить всё
-  type, // тип отображаемых данных
-  navButton = false, // отображение кнопки навигации(true/false)
-  filter = false, // отображение интерфейса фильтрации и сортировки(true/false)
-  breadCrumbs = false, // отображение хлебных крошек(true/false)
-  id = 0
-}) {
-  // type - тип отображаемых данных. на текщий момент это могут быть:
-  //      сategories - список категорий
-  //      productsFromCategory - товары определенной категории
-  //      productsAll - все товары
-  //      sales - товары со скидками
-  //      randomSales - случайные товары со скидками
-
+export default function CardsContainer(
+  {
+    title = "no title", // заголовок
+    quantity = 0, // кол-во карточек для отображения. "0" чтобы отобразить всё
+    navButton = false, // отображение кнопки навигации(true/false)
+    filter = false, // отображение интерфейса фильтрации и сортировки(true/false)
+    id = 0,
+    type
+  })
+// type - тип отображаемых данных. на текщий момент это могут быть:
+//      сategories - список категорий
+//      productsFromCategory - товары определенной категории
+//      productsAll - все товары
+//      sales - товары со скидками
+//      randomSales - случайные товары со скидками
+{
   const [array, setArray] = useState([]); // массив данных для отображения
+  const filterOptions = useSelector((state) => state.filter); // состояние фильтров из Redux
 
   // Этап 1. получение с сервера соответствующего массива данных в зависимости от типа
   useEffect(() => {
-    if (type === "categories") {
-      getAllCategories().then((data) => {
-        if (quantity !== 0) {
-          setArray(data.slice(0, quantity));
-        } else {
-          setArray(data);
-        }
+    async function loadData() {
+      const data = await fetchData({
+        type,
+        quantity,
+        applyFilter: filter, // включение фильтрации
+        filterOptions,
+        id
       });
-    } else if (type === "randomSales") {
-      getAllProducts().then((data) => {
-        const sales = data.filter((item) => item.discont_price !== null);
-        if (quantity !== 0) {
-          setArray(getRandomArray(sales, quantity));
-        } else {
-          setArray(sales);
-        }
-      });
-    } else if (type === "productsAll") {
-      getAllProducts().then((data) => setArray(data));
-    } else if (type === "productsFromCategory") {
-      getProductsByCategoryId(id).then((response) => setArray(response.data));
+      setArray(data); // сохраняем полученные данные в локальном состоянии
     }
-
-    // добавить сюда логику получения других запросов
-
-    //////////////////////////////////////////////////
-    // Этап 2. Фильтрация и сортировка полученного массива данных
-    // добавить сюда логику фильтрации и сортировки массива данных
-  }, [type, id, quantity]);
+    loadData();
+  }, [type, quantity, filter, filterOptions, id]);
 
   /////////////////////////////////////////////////
   // Этап 3. Отрисовка
@@ -74,7 +54,7 @@ export default function CardsContainer({
       </div>
 
       {/* Отрисовка интерфейса фильтрации */}
-      {filter === true && ( <Filter/>
+      {filter === true && (<Filter />
       )}
 
       {/* отрисовка карточек */}
@@ -89,7 +69,7 @@ export default function CardsContainer({
             />
           ))}
 
-        {(type === "randomSales" || type === "productsAll") &&
+        {(type !== "categories") &&
           array.map((item) => (
             <ProductCard
               key={item.id}
@@ -98,17 +78,8 @@ export default function CardsContainer({
               price={item.price}
               discont_price={item.discont_price}
             />
-          ))}
-        {type === "productsFromCategory" &&
-          array.map((item) => (
-            <ProductCard
-              key={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              discont_price={item.discont_price}
-            />
-          ))}
+          )
+          )}
       </div>
     </section>
   );
