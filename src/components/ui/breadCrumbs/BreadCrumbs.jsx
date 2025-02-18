@@ -8,6 +8,12 @@ const breadcrumbNameMap = {
   categories: "Categories",
   products: "All products",
   sales: "All sales",
+  favorites: "Favorites",
+  cart: "Cart",
+  1: "Annuals",
+  2:"Nursery",
+  3:"Garden Art",
+  4:"Plant Care"
 };
 
 const Breadcrumbs = () => {
