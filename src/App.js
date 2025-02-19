@@ -6,8 +6,9 @@ import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import IconButton from "./components/ui/IconButton/IconButton";
-import Modal from "./components/modal/Modal";
+
 import NotFound from "./pages/NotFound";
+import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 
 function App() {
   return (
@@ -81,7 +82,7 @@ function App() {
       </Routes>
 
       <Footer />
-      <Modal />
+      <ModalBurgerMenu />
     </div>
   );
 }

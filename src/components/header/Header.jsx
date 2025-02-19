@@ -5,7 +5,7 @@ import s from "./Header.module.css";
 import IconButton from "../ui/IconButton/IconButton";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
-import BurgerMenu from "../burgerMenu/BurgerMenu";
+
 import { useModal } from "../../context/ModalContext";
 
 // Это наш Header в котором мы распологаем :
@@ -38,10 +38,11 @@ export default function Header() {
         {/* передаем количество товаров в корзине через count */}
         <IconButton type="cart" variant={"header"} count={0} />
         {/* иконки корзины и лайка */}
-       { isMobile && <div onClick={handleModal}>
-          <Icon id="icon-menu" className={s.iconBurger} />
-        
-        </div>}
+        {isMobile && (
+          <div onClick={handleModal}>
+            <Icon id="icon-menu" className={s.iconBurger} />
+          </div>
+        )}
       </div>
 
       {/* блок иконок (лайк и корзина ) */}

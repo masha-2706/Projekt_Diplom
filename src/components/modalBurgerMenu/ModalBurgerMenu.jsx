@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from "react";
-import s from "./Modal.module.css";
+import s from "./ModalBurgerMenu.module.css";
 import { useModal } from "../../context/ModalContext";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
 import Button from "../ui/button/Button";
 
-const Modal = () => {
+const ModalBurgerMenu = () => {
+//  для получения переменных из контекста используем хук useModal 
   const { isModalOpen, setIsModalOpen } = useModal();
   const modalRef = useRef(false);
-  // Используем useEffect для добавления анимации
+  // Используем useEffect для добавления класса сss modalOpen и modalClose
   useEffect(() => {
     if (modalRef.current) {
       if (isModalOpen) {
@@ -25,6 +26,7 @@ const Modal = () => {
     <div ref={modalRef} className={s.modal}>
       {/* Применяем класс для модального окна */}
       <div className={s.modalContent}>
+        {/* При клике по иконке закрытия  isModalOpen = false */}
         <button className={s.iconBtn} onClick={() => setIsModalOpen(false)}>
           <Icon id="icon-close" className={s.iconClose} />
         </button>
@@ -55,4 +57,4 @@ const Modal = () => {
     </div>
   );
 };
-export default Modal;
+export default ModalBurgerMenu;
