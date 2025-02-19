@@ -38,6 +38,7 @@ img.logo {
   gap: 24px;
 }
 
+/*  ** **  adaptive  ** ** */
 /* Для экранов шириной до 1000px */
 @media (max-width: 1000px) {
   .header {
@@ -57,11 +58,9 @@ img.logo {
     max-width: 768px;
     padding: 30px 16px;
   }
-
   .logoContainer {
     gap: 16px;
   }
-
   img.logo {
     max-width: 60px;
     /* Еще меньше */
@@ -74,8 +73,6 @@ img.logo {
     max-width: 480px;
     padding: 12px 20px;
   }
- 
-
   img.logo {
     max-width: 44px;
     /* Минимальный размер на мобильных устройствах */
@@ -92,3 +89,8 @@ img.logo {
     padding: 12px 20px;
   }
 }
+
+
+
+
+

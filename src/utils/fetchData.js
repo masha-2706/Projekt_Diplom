@@ -11,7 +11,7 @@ export async function fetchData({ type, quantity, applyFilter, filterOptions, id
     } else if (type === "productsFromCategory") {
         data = await getProductsByCategoryId(id)
             .then(response => response.data);
-        //массиы пришлось "развернуть",
+        //массив пришлось "развернуть",
         // т.к. возвращается объект с полем data, содержащим нужный массив.
     } else if (type === "productsAll") {
         data = await getAllProducts();

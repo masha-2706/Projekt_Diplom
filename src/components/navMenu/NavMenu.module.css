@@ -10,9 +10,11 @@
     text-decoration: none;
     color: var(--grey); 
 }
+
 .link:hover {
   color: #92A134; 
 }
+
 .nav {
   display: flex;
   gap: 32px; /*Это для 1440*/
@@ -23,6 +25,13 @@
     gap: 24px;
   }
 }
+
+@media (max-width: 830px) {
+  .link {
+    font-size: 18px;
+  }
+}
+
 /* Для планшетов и устройств с шириной экрана до 768px */
 @media (max-width: 768px) {
   .nav {
@@ -32,9 +41,10 @@
     font-size: 14px;
   }
 }
-@media (max-width: 480px) {
+
+@media (max-width: 650px) {
   .navMenuContainer {
-    display: none;
+    display: none;  
   }
   .burgerNav{
     display: block;

@@ -28,8 +28,8 @@ export default function ProductCard({
     };
 
     return (
-        <div className={s.productCard} onClick={handleClick}>
-            <div className={s.productCard_image}>
+        <div className={s.productCard}>
+            <div className={s.productCard_image} onClick={handleClick}>
                 <img src={`${BASE_URL}${image}`} alt={`Product ${title}`} />
             </div>
             <div className={s.productCard_icons}>
@@ -45,7 +45,7 @@ export default function ProductCard({
             )}
 
             {/* Блок заголовка и цены */}
-            <div className={s.productCard_text}>
+            <div className={s.productCard_text} onClick={handleClick}>
                 <h3>{title}</h3>
                 <div className={s.productCard_text_priceBlock}>
                     <p className={s.productCard_text_actualPrice}>{"$" + actualPrice}</p>
