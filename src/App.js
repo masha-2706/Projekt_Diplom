@@ -5,7 +5,6 @@ import Header from "./components/header/Header";
 import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
-import Breadcrumbs from "./components/ui/breadCrumbs/BreadCrumbs";
 import IconButton from "./components/ui/IconButton/IconButton";
 import Modal from "./components/modal/Modal";
 import NotFound from "./pages/NotFound";
@@ -15,15 +14,16 @@ function App() {
     <div className="App">
       <Header />
 
-      {/* Добавляем хлебные крошки, но скрываем их на главной */}
-      <Breadcrumbs />
-
       <Routes>
         <Route path="/" element={<Home />} />
         {/* Страница "Все категории" */}
         <Route
           path="/categories"
-          element={<CardsPage title="Categories" type="categories" />}
+          element={
+            <CardsPage
+              title="Categories"
+              type='categories'
+              breadCrumbs = {true} />}
         />
 
         {/* Страница "Товары определенной категории" */}

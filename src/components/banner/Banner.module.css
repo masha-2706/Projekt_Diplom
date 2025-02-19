@@ -17,27 +17,20 @@
   font-weight: 700;
   line-height: 105.6px;
   padding-top: 80px;
-  padding-left: 20px;
+  padding-left: 40px;
 }
 
-.btn {
+/* .btnPlace {
   display: block;
   padding: 16px 56px;
-  border-radius: 6px;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-weight: 600;
   line-height: 26px;
   text-align: center;
   background: #92a134;
   color: var(--white);
   border: 0;
   margin: 40px;
-}
-.btn:hover {
-  background: var(--grey);
-  color: var(--snow_white);
-}
+} */
+
 @media (max-width: 1000px) {
   .container {
     max-width: 1000px;

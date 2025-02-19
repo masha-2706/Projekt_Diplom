@@ -1,0 +1,43 @@
+.baseButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .baseButton:hover{
+    background: var(--grey);
+    color: var(--snow_white);
+  }
+  
+  .linkButton {
+    padding: 16px 56px;
+    line-height: 26px;
+    background: var(--green);
+    color: var(--white);
+    margin: 40px;
+    text-decoration: none;
+  }
+
+  .oneDayDiscount{
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--green);
+    color: var(--snow_white);
+    margin-bottom: 12px;
+    text-decoration: none;
+  }
+  .suсcessButton{
+    background-color:var(--light_green);
+    color: var(--green);
+  }
+
+  
