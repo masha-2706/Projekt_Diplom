@@ -61,9 +61,6 @@ export default function IconButton({ type, variant, count = 0, isActive = false 
             return (
                 <svg
                     className={combinedClass}
-                    width="48"
-                    height="48"
-                    viewBox="0 0 48 48"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
@@ -77,9 +74,6 @@ export default function IconButton({ type, variant, count = 0, isActive = false 
             return (
                 <svg
                     className={combinedClass}
-                    width="48"
-                    height="48"
-                    viewBox="0 0 48 48"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
