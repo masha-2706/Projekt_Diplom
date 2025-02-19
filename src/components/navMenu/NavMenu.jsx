@@ -19,20 +19,20 @@ function NavMenu() {
 
       <div className={s.nav}>
         <NavLink className={s.link} to="/">
-          {" "}
-          Main Page{" "}
+         
+          Main Page
         </NavLink>
         <NavLink className={s.link} to="/categories">
-          {" "}
-          Categories{" "}
+         
+          Categories
         </NavLink>
         <NavLink className={s.link} to="/products">
-          {" "}
-          All products{" "}
+          
+          All products
         </NavLink>
         <NavLink className={s.link} to="/sales">
-          {" "}
-          All sales{" "}
+          
+          All sales
         </NavLink>
       </div>
     </div>

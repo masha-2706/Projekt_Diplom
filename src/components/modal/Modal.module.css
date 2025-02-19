@@ -17,7 +17,7 @@
   position: relative;
   background-color: #fffff1;
   border-radius: 5px;
-  text-align: center;
+  
   width: 50%;
   height: 100%;
 }
@@ -73,4 +73,8 @@
   border: 0;
   margin: auto;
   margin-bottom: 12px;
+}
+.buttonContainer {
+  display: flex;
+ padding: 32px;
 }

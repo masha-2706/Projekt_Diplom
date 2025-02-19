@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import s from "./Modal.module.css";
 import { useModal } from "../../context/ModalContext";
-import { NavLink, Link } from "react-router";
+import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
-import ButtonDiscount from "../ui/buttonBanner/Button";
+import Button from "../ui/button/Button";
 
 const Modal = () => {
   const { isModalOpen, setIsModalOpen } = useModal();
@@ -43,9 +43,14 @@ const Modal = () => {
             All sales
           </NavLink>
         </div>
-        <Link className={s.link} to="/sales">
-          <ButtonDiscount children={"1 day discount!"} className={s.btn} />
-        </Link>
+        <div className={s.buttonContainer}>
+          <Button
+            link="#"
+            text="1 day discount!"
+            variant="oneDayDiscount"
+            className={s.btn}
+          />
+        </div>
       </div>
     </div>
   );
