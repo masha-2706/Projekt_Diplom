@@ -1,5 +1,5 @@
 import "./App.css";
-import './styles/global.css' // импорт файла с цветовой палитрой и глобальными стилями
+import "./styles/global.css"; // импорт файла с цветовой палитрой и глобальными стилями
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import CardsPage from "./pages/CardsPage";
@@ -7,7 +7,8 @@ import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import Breadcrumbs from "./components/ui/breadCrumbs/BreadCrumbs";
 import IconButton from "./components/ui/IconButton/IconButton";
-
+import Modal from "./components/modal/Modal";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -18,18 +19,11 @@ function App() {
       <Breadcrumbs />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home />
-          } />
+        <Route path="/" element={<Home />} />
         {/* Страница "Все категории" */}
         <Route
           path="/categories"
-          element={
-            <CardsPage
-              title="Categories"
-              type='categories' />}
+          element={<CardsPage title="Categories" type="categories" />}
         />
 
         {/* Страница "Товары определенной категории" */}
@@ -39,9 +33,11 @@ function App() {
             <CardsPage
               title="Products"
               filter={true}
-              type='productsFromCategory'
+              type="productsFromCategory"
               breadCrumbs={true}
-            />} />
+            />
+          }
+        />
 
         {/* Страница "Все скидки" */}
         <Route
@@ -50,9 +46,11 @@ function App() {
             <CardsPage
               title="All sales"
               filter={true}
-              type='randomSales'
+              type="randomSales"
               breadCrumbs={true}
-            />} />
+            />
+          }
+        />
 
         {/* Страница "Все продукты" */}
         <Route
@@ -61,32 +59,29 @@ function App() {
             <CardsPage
               title="All products"
               filter={true}
-              type='productsAll'
+              type="productsAll"
               breadCrumbs={true}
-            />} />
+            />
+          }
+        />
 
         {/* Страница "Избранное" */}
         <Route
           path="/favorites"
           element={
-            <CardsPage
-              title="Favorites"
-              type='favorites'
-              breadCrumbs={true}
-            />} />
+            <CardsPage title="Favorites" type="favorites" breadCrumbs={true} />
+          }
+        />
 
         {/* Страница "Корзина" */}
         <Route
           path="/cart"
-          element={
-            <CardsPage
-              title="Cart"
-              type='cart'
-              breadCrumbs={true}
-            />} />
-
+          element={<CardsPage title="Cart" type="cart" breadCrumbs={true} />}
+        />
       </Routes>
+
       <Footer />
+      <Modal />
     </div>
   );
 }
