@@ -11,6 +11,7 @@
     width: 100%;
     object-fit: cover;
     border-bottom: 1px solid var(--divider_grey);
+    cursor: pointer;
 
     /* мин.высота картинок, 
     чтобы избежать разных по высоте карточек 
@@ -49,6 +50,12 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    font-weight: 500
+}
+
+.productCard_text>h3:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .productCard_text_priceBlock {
@@ -63,6 +70,7 @@
     font-size: 2.5rem;
     font-weight: 600;
     color: var(--grey);
+    cursor: pointer;
 }
 
 .productCard_text_regularPrice {
@@ -72,11 +80,4 @@
     text-decoration-line: line-through;
     color: var(--light_grey);
     margin-bottom: 0.25rem;
-}
-
-.productCard_text>h3 {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-weight: 500
 }
