@@ -17,12 +17,10 @@ export async function fetchData({ type, quantity, applyFilter, filterOptions, id
         data = await getAllProducts();
     } else if (type === "sales") {
         data = await getAllProducts();
-        // сразу фильтруем товары со скидкой
         data = data.filter(item => item.discont_price !== null);
     } else if (type === "randomSales") {
         data = await getAllProducts();
-        // если тип randomSales и задано ограничение по количеству, 
-        // получаем случайные товары и обрезаем массив
+        // сразу фильтруем товары со скидкой
         data = data.filter(item => item.discont_price !== null);
 
         if (quantity !== 0) {
@@ -30,7 +28,6 @@ export async function fetchData({ type, quantity, applyFilter, filterOptions, id
         }
     }
 
-    // Если тип не "randomSales" и задано ограничение по количеству, обрезаем массив
     if (type !== "randomSales" && quantity !== 0) {
         data = data.slice(0, quantity);
     }
@@ -44,9 +41,9 @@ export async function fetchData({ type, quantity, applyFilter, filterOptions, id
     return data;
 }
 
-// Этап 2. Применяем фильтрацию и сортировку
-function applyFilterLogic(data, filterOptions) {
-    // Создаем буферный массив с новым полем effectivePrice
+// Применяем фильтрацию и сортировку
+export function applyFilterLogic(data, filterOptions) {
+    // Создаем буферный массив, добавляя каждому элементу поле effectivePrice
     // effectivePrice - это цена со скидкой, если она есть, иначе обычная цена
     // Это нужно для фильтрации по диапазону цен
     const bufferedData = data.map(item => ({

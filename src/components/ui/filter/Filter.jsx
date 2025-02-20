@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import s from './Filter.module.css';
-import { setFilter } from '../../../redux/slices/filterSlice';
+import { setFilter, resetFilters } from '../../../redux/slices/filterSlice';
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -15,6 +16,13 @@ export default function Filter() {
     }
     dispatch(setFilter({ [inputName]: inputValue }));
   };
+
+  // Сброс фильтров при размонтировании компонента
+  useEffect(() => {
+    return () => {
+      dispatch(resetFilters());
+    };
+  }, [dispatch]);
 
   return (
     <div className={s.filterContainer}>
@@ -36,7 +44,6 @@ export default function Filter() {
           onChange={handleInputChange}
         />
       </div>
-
       {/* Фильтрация по наличию скидки */}
       <div>
         <p>Discounted items</p>
@@ -50,16 +57,11 @@ export default function Filter() {
           <span></span>
         </label>
       </div>
-
       {/* Сортировка товаров */}
       <div className={s.filterSorted_wrapper}>
         <p>Sorted</p>
         <div className={s.filterSorted}>
-          <select
-            name="sort"
-            value={filterOptions.sort}
-            onChange={handleInputChange}
-          >
+          <select name="sort" value={filterOptions.sort} onChange={handleInputChange}>
             <option value="default">by default</option>
             <option value="price:high-low">price: high-low</option>
             <option value="price:low-high">price: low-high</option>

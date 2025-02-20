@@ -4,18 +4,17 @@ import CategoryCard from "../CategoryCard/CategoryCard";
 import ProductCard from "../ProductCard/ProductCard";
 import Filter from "../ui/filter/Filter";
 import { useSelector } from "react-redux";
-import { fetchData } from "../../utils/fetchData";
+import { fetchData, applyFilterLogic } from "../../utils/fetchData";
 import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
-export default function CardsContainer(
-  {
-    title = "no title", // заголовок
-    quantity = 0, // кол-во карточек для отображения. "0" чтобы отобразить всё
-    navButton = false, // отображение кнопки навигации(true/false)
-    filter = false, // отображение интерфейса фильтрации и сортировки(true/false)
-    id = 0,
-    type
-  })
+export default function CardsContainer({
+  title = "no title",    // заголовок
+  quantity = 0,          // количество карточек (0 – отобразить всё)
+  navButton = false,     // отображение кнопки навигации
+  filter = false,        // отображение интерфейса фильтрации
+  id = 0,
+  type                   // тип данных: categories, productsFromCategory, productsAll, sales, randomSales
+})
 // type - тип отображаемых данных. на текщий момент это могут быть:
 //      сategories - список категорий
 //      productsFromCategory - товары определенной категории
@@ -23,32 +22,37 @@ export default function CardsContainer(
 //      sales - товары со скидками
 //      randomSales - случайные товары со скидками
 {
-  const [array, setArray] = useState([]); // массив данных для отображения
-  const filterOptions = useSelector((state) => state.filter); // состояние фильтров из Redux
+  const [originalData, setOriginalData] = useState([]); // исходный массив с сервера
+  const [array, setArray] = useState([]);               // массив для отрисовки (может быть отфильтрован)
+  const filterOptions = useSelector((state) => state.filter);
 
-  // Этап 1. получение с сервера соответствующего массива данных в зависимости от типа
+  // Загружаем данные с сервера только при изменении type, quantity или id
   useEffect(() => {
     async function loadData() {
+      // Здесь отключаем фильтрацию при запросе, чтобы получить исходный массив
       const data = await fetchData({
         type,
         quantity,
-        applyFilter: filter, // включение фильтрации
-        filterOptions,
+        applyFilter: false,
         id
       });
-      setArray(data); // сохраняем полученные данные в локальном состоянии
+      setOriginalData(data);
+      setArray(data);
     }
     loadData();
-  }, [type, quantity, filter, filterOptions, id]);
+  }, [type, quantity, id]);
 
-  /////////////////////////////////////////////////
-  // Этап 3. Отрисовка
+  useEffect(() => {
+    if (filter) {
+      const filtered = originalData.length ? applyFilterLogic(originalData, filterOptions) : [];
+      setArray(filtered);
+    }
+  }, [filterOptions, originalData, filter]);
+
   return (
     <section className={s.CardsContainer}>
-      {/* отрисовка заголовка и кнопки навигации */}
       <div className={s.CardsContainer_header}>
         <h2>{title}</h2>
-
         {/* если  navButton = true - отрисуется линия от заголовка и сам navButton */}
         {navButton && <div className={s.CardsContainer_header_line}></div>}
         {navButton && (
@@ -61,14 +65,11 @@ export default function CardsContainer(
             )}
           </div>
         )}
-
       </div>
 
       {/* Отрисовка интерфейса фильтрации */}
-      {filter === true && (<Filter />
-      )}
+      {filter && <Filter />}
 
-      {/* отрисовка карточек */}
       <div className={s.CardsContainer_container}>
         {type === "categories" &&
           array.map((item) => (
@@ -79,8 +80,9 @@ export default function CardsContainer(
               id={item.id}
             />
           ))}
-
-        {(type === "randomSales" || type === "productsAll" || type === "productsFromCategory") &&
+        {(type === "randomSales" ||
+          type === "productsAll" ||
+          type === "productsFromCategory") &&
           array.map((item) => (
             <ProductCard
               key={item.id}
