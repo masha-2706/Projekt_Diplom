@@ -8,6 +8,13 @@
   border-bottom: 2px solid #dddddd;
 }
 
+.iconBurger {
+  width: 44px;
+  height: 44px;
+  stroke: #424436;
+ 
+ 
+}
 .logoContainer {
   display: flex;
   align-items: center;
@@ -27,6 +34,7 @@ img.logo {
 .iconsContainer {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 24px;
 }
 
@@ -75,6 +83,10 @@ img.logo {
   img.logo {
     max-width: 44px;
     /* Минимальный размер на мобильных устройствах */
+  }
+  .header {
+    max-width: 360px;
+    padding: 12px 20px;
   }
 }
 

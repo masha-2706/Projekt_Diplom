@@ -46,4 +46,7 @@
   .navMenuContainer {
     display: none;  
   }
+  .burgerNav{
+    display: block;
+  }
 }
