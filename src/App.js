@@ -9,10 +9,12 @@ import IconButton from "./components/ui/IconButton/IconButton";
 
 import NotFound from "./pages/NotFound";
 import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
+import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop/>
       <Header />
 
       <Routes>
