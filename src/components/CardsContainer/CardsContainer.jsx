@@ -59,6 +59,9 @@ export default function CardsContainer(
             {title === "Sales" && (
               <NavigationButton text="All sales" link="/sales" />
             )}
+            {title === "Shopping cart" && (
+              <NavigationButton text="Back to the store" link="/products" />
+            )}
           </div>
         )}
 

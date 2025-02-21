@@ -1,0 +1,25 @@
+.shoppingCart_container{
+    max-width: 1360px;
+    margin: 0 auto;
+    /* margin-top: 3.75vh; */
+    margin-bottom: 4vh;
+}
+
+.shoppingCart_wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.shoppingCart_products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.orderedProduct {
+    background-color: orange;
+    border: 1px solid orange;
+    min-width: 57%;
+    max-width: 780px;
+}
+.shoppingCart_orderForm {
+    width: 40%;
+}

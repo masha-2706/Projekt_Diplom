@@ -6,7 +6,7 @@ import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import IconButton from "./components/ui/IconButton/IconButton";
-
+import ShoppingCart from './components/shoppingCart/ShoppingCart'
 
 function App() {
   return (
@@ -73,16 +73,18 @@ function App() {
             />} />
 
         {/* Страница "Корзина" */}
-        <Route
+
+         <Route
           path="/cart"
           element={
-            <CardsPage
+            <ShoppingCart
               title="Cart"
               type='cart'
               breadCrumbs={true}
-            />} />
+            />} /> 
 
       </Routes>
+
       <Footer />
     </div>
   );
