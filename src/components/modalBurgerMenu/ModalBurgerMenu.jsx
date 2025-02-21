@@ -4,9 +4,8 @@ import { useModal } from "../../context/ModalContext";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
 import Button from "../ui/button/Button";
-
 const ModalBurgerMenu = () => {
-//  для получения переменных из контекста используем хук useModal 
+  //  для получения переменных из контекста используем хук useModal
   const { isModalOpen, setIsModalOpen } = useModal();
   const modalRef = useRef(false);
   // Используем useEffect для добавления класса сss modalOpen и modalClose
@@ -21,6 +20,7 @@ const ModalBurgerMenu = () => {
       }
     }
   }, [isModalOpen]);
+  const handleCloseModal = () => setIsModalOpen(false);
   if (!isModalOpen) return null;
   return (
     <div ref={modalRef} className={s.modal}>
@@ -32,16 +32,20 @@ const ModalBurgerMenu = () => {
         </button>
         {/* Применяем класс для содержимого окна */}
         <div className={s.nav}>
-          <NavLink className={s.link} to="/">
+          <NavLink className={s.link} to="/" onClick={handleCloseModal}>
             Main Page
           </NavLink>
-          <NavLink className={s.link} to="/categories">
+          <NavLink
+            className={s.link}
+            to="/categories"
+            onClick={handleCloseModal}
+          >
             Categories
           </NavLink>
-          <NavLink className={s.link} to="/products">
+          <NavLink className={s.link} to="/products" onClick={handleCloseModal}>
             All products
           </NavLink>
-          <NavLink className={s.link} to="/sales">
+          <NavLink className={s.link} to="/sales" onClick={handleCloseModal}>
             All sales
           </NavLink>
         </div>
@@ -51,6 +55,7 @@ const ModalBurgerMenu = () => {
             text="1 day discount!"
             variant="oneDayDiscount"
             className={s.btn}
+            onClick={handleCloseModal}
           />
         </div>
       </div>

@@ -1,38 +1,3 @@
-.modal {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(236, 229, 229, 0.733);
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
-  transition: all 2.5s ease-in-out;
-}
-.modalContent {
-  position: relative;
-  background-color: #fffff1;
-  border-radius: 5px;
-  
-  width: 50%;
-  height: 100%;
-}
-/* Класс для появления модального окна */
-.modalOpen {
-  transform: translateX(100%);
-  transition: all 0.5s ease-in-out;
-  opacity: 1;
-}
-/* Класс для скрытия модального окна */
-.modalClose {
-  transform: translateX(0%);
-  transition: all 0.5s ease-in-out;
-  opacity: 0;
-}
 .link {
   font-size: 20px;
   font-weight: 500;
@@ -69,12 +34,46 @@
   line-height: 20.16px;
   text-align: center;
   background: var(--green);
-  color: var(--snow_white);
+  color: #fffff1;
   border: 0;
   margin: auto;
   margin-bottom: 12px;
 }
 .buttonContainer {
   display: flex;
- padding: 32px;
+  padding: 32px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 999;
+  animation: slideIn 0.5s ease forwards;
+}
+.modalСlose {
+  animation: slideIn 0.5s ease forwards;
+}
+/* Анимация для появления окна */
+@keyframes slideIn {
+  0% {
+    right: -100%; /* Начало за пределами экрана */
+    opacity: 0;
+  }
+  100% {
+    right: 0; /* Модальное окно становится видимым */
+    opacity: 1;
+  }
+}
+.modalContent {
+  background-color: #fffff1;
+  width: 282px;
+  height: 100vh;
+  border-radius: 5px;
+  padding: 20px;
 }
