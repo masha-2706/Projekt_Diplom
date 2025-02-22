@@ -1,0 +1,17 @@
+.CardsContainer_header {
+    display: flex;
+    align-items: center;
+    color: var(--grey);
+}
+
+.CardsContainer_header>h2 {
+    margin: 0 2rem 0 0;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.CardsContainer_header_line {
+    flex-grow: 1;
+    height: 1px;
+    background: var(--divider_grey);
+}
