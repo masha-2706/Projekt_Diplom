@@ -11,15 +11,14 @@ const breadcrumbNameMap = {
   favorites: "Favorites",
   cart: "Cart",
   1: "Annuals",
-  2:"Nursery",
-  3:"Garden Art",
-  4:"Plant Care"
+  2: "Nursery",
+  3: "Garden Art",
+  4: "Plant Care"
 };
 
 const Breadcrumbs = () => {
   // Хук useLocation позволяет получить текущий URL из браузерв
   const location = useLocation();
-  console.log(location)
 
   // создаем массив из pathname`сов
   // split("/") делает из "/categories/products" -> ['',"categories", "products"]
