@@ -77,6 +77,7 @@ export default function CardsContainer({
               price={item.price}
               discont_price={item.discont_price}
               id={item.id}
+              categoryId={item.categoryId}
             />
           ))}
       </div>
