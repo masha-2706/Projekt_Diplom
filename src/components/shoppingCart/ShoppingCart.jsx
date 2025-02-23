@@ -1,14 +1,65 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
 import s from "./ShoppingCart.module.css";
 import CardsContainer from "../CardsContainer/CardsContainer";
-import NavigationButton from "../ui/NavigationButton/NavigationButton";
 import Button from "../ui/button/Button";
+import { BASE_URL } from "../../services/baseBackEnd";
 
-export default function ShoppingCart() {
+export default function ShoppingCart({
+  title,
+  image,
+  price,
+  discont_price,
+  id
+}) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
+
+  // это нужно объединить
+  const [quantityProducts, setquantityProducts] = useState(''); // Количество товаров одного типа в Корзине
+  const [totalSum, setTotalSum] = useState(''); // Общяя сумма товаров, добавленных в корзину
+  const [productCount, setProductCount] = useState(1);
+
+  const [products, setProducts] = useState([]); // Массив объектов, с товарами в Корзине
+
+
+  //При монтировании компонента стягиваю БД из бэка и ложу в массив products
+  useEffect(() => {
+    fetch(`${BASE_URL}/products/all`)
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data); 
+      })
+      .catch((error) => console.error("Ошибка при получении данных:", error));
+  }, []);
+
+
+
+    useEffect(() => {
+  // при изменении в products и происходит пересчет totalSum
+    const sum = products.reduce((acc, el) => {
+      return acc + (el.discont_price ? el.discont_price : el.price);
+    }, 0);
+    //округлениe суммы до двух знаков после запятой
+    const roundedSum = parseFloat(sum.toFixed(2));
+
+    setTotalSum(roundedSum);
+  // ****************************************************************
+    // Подсчет количества товаров одного типа в Корзине
+    setquantityProducts(products.length);
+  }, [products]);
+
+
+
+  console.log("Полученные данные:", products); // Вывод массива в консоль
+
   return (
     <section className={s.shoppingCart_container}>
-
-      {/* мне не нужен type='categories'. убрать не могу. и оставить - не корректно */}
+      {/* отрисовка заголовка и хлебной крошки */}
       <CardsContainer
         title="Shopping cart"
         quantity={null}
@@ -16,44 +67,102 @@ export default function ShoppingCart() {
         navButton={true}
       />
 
-
-
-
-
-      
+      {/* отрисовка внутреннего содержания Корзины */}
       <div className={s.shoppingCart_wrapper}>
+        {/* отрисовка положенных в Корзину товаров */}
         <div className={s.shoppingCart_products}>
-          <div className={s.orderedProduct}>fsdfsdfs</div>
-          <div className={s.orderedProduct}>jhdgsfhsdjgf</div>
-          <div className={s.orderedProduct}>sdghfshdgf</div>
+          {products.map((el) => {
+            return (
+              <div key={el.id} className={s.productItem}>
+                <img
+                  className={s.productItem_image}
+                  src={`${BASE_URL}${el.image}`}
+                  alt={el.title}
+                />
+                <div className={s.productItem_description}>
+                  <div className={s.productItem_title}>
+                    <p>{el.title}</p>
+                    <button className={s.productItem_closeBtn}>✖</button>
+                  </div>
+
+                  <div className={s.productItem_container}>
+                    <div className={s.productItem_count}>
+                      <button>-</button>
+                      <p>{productCount}</p>
+                      <button>+</button>
+                    </div>
+
+                    <div className={s.productItem_price}>
+                      {el.discont_price ? (
+                        <>
+                          <p className={s.actual_price}>${el.discont_price}</p>
+                          <p className={s.old_price}>${el.price}</p>
+                        </>
+                      ) : (
+                        <p className={s.actual_price}>${el.price}</p>
+                      )}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* форма детали заказа */}
+        {/* форма "Детали заказа" */}
         <div className={s.shoppingCart_orderForm}>
-          <form className={s.form} noValidate>
+          <h2>Order details</h2>
+          <p>{quantityProducts} items</p>
+          <div className={s.orderForm_sum}>
+            <p>Total</p>
+            <p className={s.orderForm_totalSum}>${totalSum}</p>
+          </div>
 
+          <form onSubmit={handleSubmit}>
+            {/* ввод имени. Проверка, что имя содержит только буквы и пробелы */}
             <input
               type="text"
-              name="name"
               placeholder="Name"
+              {...register("name", {
+                required: { value: true, message: "Fill the name" },
+                pattern: {
+                  value: /^[a-zA-Z\s]+$/,
+                  message: "Incorrect Name"
+                }
+              })}
             />
 
+            {/* ввод номера телефона. Проверка номера телефона (от 10 до 15 цифр) */}
             <input
               type="tel"
-              name="phone"
               placeholder="Phone number"
+              {...register("phone", {
+                required: { value: true, message: "Fill the phone number" },
+                pattern: {
+                  value: /^[0-9]{10,15}$/,
+                  message: "Incorrect phone format!"
+                }
+              })}
             />
 
+            {/* ввод адреса почты. проверка. */}
             <input
-              type="text"
-              name="email"
+              type="email"
               placeholder="Email"
+              {...register("email", {
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Incorrect email format!"
+                }
+              })}
             />
+
             <Button
               text="Order"
               type="submit"
               submittedText="Request Submitted"
-              variant="submittedButton"
+              variant="shoppingCartOrder"
             />
           </form>
         </div>
