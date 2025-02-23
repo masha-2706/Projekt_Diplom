@@ -11,24 +11,12 @@ import NotFound from "./pages/NotFound";
 import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import ProductPage from "./pages/ProductPage";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getAllCategories } from "./services/baseBackEnd";
-import { setCategoriesList } from "./redux/slices/categoriesList";
 import ProductsInCategory from "./pages/ProductsInCategory";
+import { useInitializeData } from "./hooks/initializeData";
 
 function App() {
   //при первой загрузке приложения составляется справочник категорий с названиями
-  const dispatch = useDispatch()
-  useEffect(() => {
-    async function loadCategories() {
-      const data = await getAllCategories() //получаю данные с бека
-      const categoriesList = data.map(category => ({ id: category.id, title: category.title })) //преобразовываю полученные данные в аккуратный массив
-      dispatch(setCategoriesList(categoriesList)) // записываю результат в состояние
-    }
-    loadCategories() //вызываю функцию
-  }, [dispatch])
-
+  useInitializeData() //кастомный хук для этого
   return (
     <div className="App">
       <ScrollToTop />
