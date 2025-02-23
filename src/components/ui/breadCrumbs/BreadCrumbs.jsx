@@ -24,6 +24,7 @@ const Breadcrumbs = () => {
   // split("/") делает из "/categories/products" -> ['',"categories", "products"]
   // filter(Boolean) убирает пустые элементы
   const pathnames = location.pathname.split("/").filter(Boolean);
+  console.log(pathnames);
 
   // Если пользователь находится на главной странице ("/"), хлебные крошки не отображаем
   // if (location.pathname === "/") {
