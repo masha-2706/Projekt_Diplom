@@ -10,6 +10,7 @@ export default function ProductCard({
     price,
     discont_price,
     id,
+    categoryId
 }) {
     // Карточка товара
     // title - название товара
@@ -24,7 +25,7 @@ export default function ProductCard({
     // на страницу с карточками товаров этой категории
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/products/${id}`);
+        navigate(`/categories/${categoryId}/${id}`);
     };
 
     return (

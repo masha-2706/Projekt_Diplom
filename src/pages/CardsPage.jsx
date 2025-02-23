@@ -22,16 +22,13 @@ export default function CardsPage({
             {breadCrumbs && <Breadcrumbs />}
 
             {/* контейнер с карточками */}
-
             <CardsContainer
                 title={title}
                 quantity={quantity}
                 type={type}
-                breadCrumbs={breadCrumbs}
                 navButton={navButton}
                 filter={filter}
                 id={category}
-
             />
 
         </main>

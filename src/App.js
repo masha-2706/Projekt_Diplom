@@ -10,8 +10,25 @@ import ShoppingCartPage from './pages/ShoppingCartPage'
 import NotFound from "./pages/NotFound";
 import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
+import ProductPage from "./pages/ProductPage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllCategories } from "./services/baseBackEnd";
+import { setCategoriesList } from "./redux/slices/categoriesList";
+import ProductsInCategory from "./pages/ProductsInCategory";
 
 function App() {
+  //при первой загрузке приложения составляется справочник категорий с названиями
+  const dispatch = useDispatch()
+  useEffect(() => {
+    async function loadCategories() {
+      const data = await getAllCategories() //получаю данные с бека
+      const categoriesList = data.map(category => ({ id: category.id, title: category.title })) //преобразовываю полученные данные в аккуратный массив
+      dispatch(setCategoriesList(categoriesList)) // записываю результат в состояние
+    }
+    loadCategories() //вызываю функцию
+  }, [dispatch])
+
   return (
     <div className="App">
       <ScrollToTop />
@@ -33,10 +50,8 @@ function App() {
         <Route
           path="/categories/:category"
           element={
-            <CardsPage
+            <ProductsInCategory
               title="Products"
-              filter={true}
-              type="productsFromCategory"
               breadCrumbs={true}
             />
           }
@@ -67,6 +82,13 @@ function App() {
             />
           }
         />
+
+        {/* Страница "Товар по ID" */}
+        <Route
+          path="/categories/:categoryId/:productId"
+          element={<ProductPage />}
+        />
+
 
         {/* Страница "Избранное" */}
         <Route
