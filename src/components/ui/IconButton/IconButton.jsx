@@ -60,6 +60,7 @@ export default function IconButton({ type, variant, count = 0, isActive = false 
         if (type === "like") {
             return (
                 <svg
+                    viewBox="0 0 48 48"
                     className={combinedClass}
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +74,7 @@ export default function IconButton({ type, variant, count = 0, isActive = false 
         } else if (type === "cart") {
             return (
                 <svg
+                    viewBox="0 0 48 48"
                     className={combinedClass}
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
