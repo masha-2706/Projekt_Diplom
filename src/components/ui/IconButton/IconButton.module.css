@@ -21,8 +21,6 @@
 .product {
     /* стили для product */
     fill: var(--snow_white);
-    width: 100%;
-    height: 100%;
 }
 
 .active {
