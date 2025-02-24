@@ -11,7 +11,7 @@ export default function ProductInfo({ title, price, discont_price, description, 
     }
 
     return (
-        <div className={s.productInfoContainer}>
+        <section className={s.productInfoContainer}>
 
             <div className={`${s.imageContainer} ${s.box}`}>
                 <img
@@ -59,6 +59,6 @@ export default function ProductInfo({ title, price, discont_price, description, 
                 title={title}
                 openCloseModal={openCloseModal} />}
 
-        </div>
+        </section>
     )
 }

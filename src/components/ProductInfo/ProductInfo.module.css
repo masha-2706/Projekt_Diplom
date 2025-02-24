@@ -11,7 +11,7 @@
         "image cart"
         "image descr";
     gap: 2rem;
-    width: 100%;
+    max-width: 1360px;
 }
 
 .imageContainer {
