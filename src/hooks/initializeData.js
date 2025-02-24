@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { setCategoriesList, setProductsList } from "../redux/slices/categoriesAndProductsList";
+import { setCategoriesList } from "../redux/slices/categoriesSlice";
 import { getAllCategories, getAllProducts } from "../services/baseBackEnd";
+import { setProductsList } from "../redux/slices/productsSlice";
 
 export const useInitializeData = () => {
     const dispatch = useDispatch();
