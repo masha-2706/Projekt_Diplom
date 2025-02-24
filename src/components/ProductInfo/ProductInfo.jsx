@@ -9,6 +9,10 @@ export default function ProductInfo({ title, price, discont_price, description, 
     const openCloseModal = () => {
         setShowModal(!showModal)
     }
+    const [isTextHidden, setIsTextHidden] = useState(true)
+    const readMoreClickHandler = () => {
+        setIsTextHidden(!isTextHidden)
+    }
 
     return (
         <section className={s.productInfoContainer}>
@@ -19,9 +23,6 @@ export default function ProductInfo({ title, price, discont_price, description, 
                     alt={`Product ${title}`}
                     onClick={openCloseModal}
                 />
-                <div className={`${s.discountAmountOnImage} ${s.discountAmount}`}>
-                    <p>{`-${getDiscount(price, discont_price)}%`}</p>
-                </div>
             </div>
 
             <div className={`${s.title} ${s.box}`}>
@@ -51,7 +52,9 @@ export default function ProductInfo({ title, price, discont_price, description, 
             </div>
 
             <div className={`${s.description} ${s.box}`}>
-                <p>{description}</p>
+                <h3>Description</h3>
+                <p className={`${s.text} ${isTextHidden ? s.hidden : ''}`}>{description}</p>
+                <p className={s.readMore} onClick={readMoreClickHandler}>{isTextHidden ? 'Read more' : 'Hide text'}</p>
             </div>
 
             {showModal && <ProductInfoModal
