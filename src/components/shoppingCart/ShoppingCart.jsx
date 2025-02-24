@@ -4,58 +4,48 @@ import { useState, useEffect } from "react";
 import s from "./ShoppingCart.module.css";
 import CardsContainer from "../CardsContainer/CardsContainer";
 import Button from "../ui/button/Button";
-import { BASE_URL } from "../../services/baseBackEnd";
+import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
+import ProductCount from '../ui/productCount/ProductCount'
 
-export default function ShoppingCart({
-  title,
-  image,
-  price,
-  discont_price,
-  id
-}) {
+
+
+
+export default function ShoppingCart() {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm();
 
-  // это нужно объединить
-  const [quantityProducts, setquantityProducts] = useState(''); // Количество товаров одного типа в Корзине
-  const [totalSum, setTotalSum] = useState(''); // Общяя сумма товаров, добавленных в корзину
-  const [productCount, setProductCount] = useState(1);
+  // это нужно объединить 
+  const [quantityProducts, setquantityProducts] = useState(""); // Количество товаров одного типа в Корзине
+  const [totalSum, setTotalSum] = useState(""); // Общяя сумма товаров, добавленных в корзину
+  
 
   const [products, setProducts] = useState([]); // Массив объектов, с товарами в Корзине
 
-
   //При монтировании компонента стягиваю БД из бэка и ложу в массив products
+  //заменить на useSelector
   useEffect(() => {
-    fetch(`${BASE_URL}/products/all`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data); 
-      })
-      .catch((error) => console.error("Ошибка при получении данных:", error));
+    async function loadData() {
+      const data = await getAllProducts();
+      setProducts(data);
+    }
+    loadData();
   }, []);
 
-
-
-    useEffect(() => {
-  // при изменении в products и происходит пересчет totalSum
+  useEffect(() => {
+    // при изменении в products и происходит пересчет totalSum
     const sum = products.reduce((acc, el) => {
       return acc + (el.discont_price ? el.discont_price : el.price);
     }, 0);
     //округлениe суммы до двух знаков после запятой
     const roundedSum = parseFloat(sum.toFixed(2));
-
     setTotalSum(roundedSum);
-  // ****************************************************************
+
     // Подсчет количества товаров одного типа в Корзине
     setquantityProducts(products.length);
   }, [products]);
-
-
-
-  console.log("Полученные данные:", products); // Вывод массива в консоль
 
   return (
     <section className={s.shoppingCart_container}>
@@ -86,12 +76,8 @@ export default function ShoppingCart({
                   </div>
 
                   <div className={s.productItem_container}>
-                    <div className={s.productItem_count}>
-                      <button>-</button>
-                      <p>{productCount}</p>
-                      <button>+</button>
-                    </div>
-
+                    {/* отрисовка количества товаров в Корзине */}
+                    <ProductCount/>
                     <div className={s.productItem_price}>
                       {el.discont_price ? (
                         <>
@@ -101,7 +87,6 @@ export default function ShoppingCart({
                       ) : (
                         <p className={s.actual_price}>${el.price}</p>
                       )}
-
                     </div>
                   </div>
                 </div>

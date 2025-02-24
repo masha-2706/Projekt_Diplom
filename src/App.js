@@ -6,7 +6,7 @@ import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import IconButton from "./components/ui/IconButton/IconButton";
-import ShoppingCart from './components/shoppingCart/ShoppingCart'
+import ShoppingCartPage from './pages/ShoppingCartPage'
 
 function App() {
   return (
@@ -77,7 +77,7 @@ function App() {
          <Route
           path="/cart"
           element={
-            <ShoppingCart
+            <ShoppingCartPage
               title="Cart"
               type='cart'
               breadCrumbs={true}

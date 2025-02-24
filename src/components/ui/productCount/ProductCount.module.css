@@ -1,0 +1,31 @@
+.productItem_count {
+    display: flex;
+  }
+  .productItem_count > button {
+    padding: 13px;
+    border-radius: 6px;
+    border: 1px solid var(--divider_grey);
+    background-color: var(--snow_white);
+    width: 58px;
+    color: var(--light_grey);
+    font-weight: 500;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  
+  .productItem_count > button:hover {
+    background-color: var(--light_green);
+    color: var(--grey);
+  }
+  
+  .productItem_count > p {
+    padding: 16px 44px;
+    border-top: 1px solid var(--divider_grey);
+    border-bottom: 1px solid var(--divider_grey);
+    margin: 0 -5px;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    font-weight: 500;
+    color: var(--grey);
+  }
+  
