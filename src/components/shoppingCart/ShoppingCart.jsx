@@ -1,14 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
+
 import s from "./ShoppingCart.module.css";
-import CardsContainer from "../CardsContainer/CardsContainer";
 import Button from "../ui/button/Button";
 import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
-import ProductCount from '../ui/productCount/ProductCount'
-
-
-
+import ProductCount from "../ui/productCount/ProductCount";
+import Breadcrumbs from "../ui/breadCrumbs/BreadCrumbs";
+import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
 export default function ShoppingCart() {
   const {
@@ -17,12 +16,15 @@ export default function ShoppingCart() {
     formState: { errors }
   } = useForm();
 
-  // это нужно объединить 
+  // это нужно объединить
   const [quantityProducts, setquantityProducts] = useState(""); // Количество товаров одного типа в Корзине
   const [totalSum, setTotalSum] = useState(""); // Общяя сумма товаров, добавленных в корзину
-  
 
   const [products, setProducts] = useState([]); // Массив объектов, с товарами в Корзине
+
+  const clickHandler_deleteCart = (e) => {
+    console.log("Нужно удалить карточку товара из Корзины");
+  };
 
   //При монтировании компонента стягиваю БД из бэка и ложу в массив products
   //заменить на useSelector
@@ -50,12 +52,13 @@ export default function ShoppingCart() {
   return (
     <section className={s.shoppingCart_container}>
       {/* отрисовка заголовка и хлебной крошки */}
-      <CardsContainer
+      {/* <CardsContainer
         title="Shopping cart"
         quantity={null}
         type={"categories"}
         navButton={true}
-      />
+      /> */}
+      <h1 className={s.shoppingCart_title}>Shopping cart</h1>
 
       {/* отрисовка внутреннего содержания Корзины */}
       <div className={s.shoppingCart_wrapper}>
@@ -72,12 +75,17 @@ export default function ShoppingCart() {
                 <div className={s.productItem_description}>
                   <div className={s.productItem_title}>
                     <p>{el.title}</p>
-                    <button className={s.productItem_closeBtn}>✖</button>
+                    <button
+                      onClick={clickHandler_deleteCart}
+                      className={s.productItem_closeBtn}
+                    >
+                      ✖
+                    </button>
                   </div>
 
                   <div className={s.productItem_container}>
                     {/* отрисовка количества товаров в Корзине */}
-                    <ProductCount/>
+                    <ProductCount />
                     <div className={s.productItem_price}>
                       {el.discont_price ? (
                         <>

@@ -4,6 +4,14 @@
   margin-bottom: 4vh;
 }
 
+.shoppingCart_title {
+font-size: 64px;
+font-weight: 700;
+line-height: 70.4px;
+color: var(--grey);
+margin: 40px 0;
+}
+
 .shoppingCart_wrapper {
   display: flex;
   justify-content: space-between;
