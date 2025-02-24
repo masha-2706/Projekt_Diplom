@@ -35,8 +35,16 @@
   margin-bottom: 12px;
   text-decoration: none;
 }
+
 .suсcessButton {
   background-color: var(--light_green);
   color: var(--green);
 }
 
+.shoppingCartOrder {
+  margin-top: 32px;
+  padding: 16px 56px;
+  background: var(--green);
+  color: var(--white);
+  width: 100%;
+}

@@ -6,7 +6,7 @@ import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import IconButton from "./components/ui/IconButton/IconButton";
-
+import ShoppingCartPage from './pages/ShoppingCartPage'
 import NotFound from "./pages/NotFound";
 import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
@@ -14,7 +14,7 @@ import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 function App() {
   return (
     <div className="App">
-      <ScrollToTop/>
+      <ScrollToTop />
       <Header />
 
       <Routes>
@@ -26,7 +26,7 @@ function App() {
             <CardsPage
               title="Categories"
               type='categories'
-              breadCrumbs = {true} />}
+              breadCrumbs={true} />}
         />
 
         {/* Страница "Товары определенной категории" */}
@@ -77,10 +77,16 @@ function App() {
         />
 
         {/* Страница "Корзина" */}
+
         <Route
           path="/cart"
-          element={<CardsPage title="Cart" type="cart" breadCrumbs={true} />}
-        />
+          element={
+            <ShoppingCartPage
+              title="Cart"
+              type='cart'
+              breadCrumbs={true}
+            />} />
+
       </Routes>
 
       <Footer />
