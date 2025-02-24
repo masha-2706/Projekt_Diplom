@@ -39,6 +39,7 @@
 
 .cart .priceBlock {
     display: flex;
+    margin-bottom: 2rem;
 }
 
 .cart .price {
@@ -73,6 +74,22 @@
     top: 1rem;
     right: 1rem;
     display: none;
+}
+
+.addToCartBlock {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.addToCartBlock .Button {
+    width: 100%;
+}
+
+.addToCartBlock .ProductCount {
+    background-color: var(--snow_white);
+    border-radius: 1rem;
 }
 
 .description {
@@ -115,6 +132,10 @@
             "image cart"
             "descr descr";
     }
+
+    .addToCartBlock {
+        flex-wrap: wrap;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -145,5 +166,13 @@
             "image"
             "cart"
             "descr";
+    }
+
+    .cart .priceBlock {
+        justify-content: center;
+    }
+
+    .cart .addToCartBlock {
+        justify-content: center;
     }
 }

@@ -3,6 +3,8 @@ import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
 import s from './ProductInfo.module.css'
 import IconButton from "../ui/IconButton/IconButton"
 import { getDiscount } from "../../utils/cardRenderLogic"
+import ProductCount from "../ui/productCount/ProductCount"
+import Button from "../ui/button/Button"
 
 export default function ProductInfo({ title, price, discont_price, description, image }) {
     const [showModal, setShowModal] = useState(false)
@@ -59,6 +61,12 @@ export default function ProductInfo({ title, price, discont_price, description, 
                         )}
                 </div>
                 <div className={s.addToCartBlock}>
+                    <div className={s.ProductCount}>
+                        <ProductCount />
+                    </div>
+                    <div className={s.Button}>
+                        <Button text='Add to cart' variant="shoppingCartOrder" />
+                    </div>
 
                 </div>
             </div>
