@@ -1,10 +1,11 @@
-import React from "react";
 import DiscountForm from "../components/discountForm/DiscountForm";
 import CardsContainer from "../components/CardsContainer/CardsContainer";
 import Banner from "../components/banner/Banner";
 function Home() {
+
+
   return (
-    <main> 
+    <main>
       <Banner />
       <CardsContainer
         title="Categories"

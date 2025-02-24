@@ -1,17 +1,24 @@
+.box {
+    background-color: bisque;
+}
+
 .productInfoContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto minmax(0, 1fr);
     grid-template-areas:
         "image title"
         "image cart"
         "image descr";
     gap: 2rem;
+    width: 100%;
 }
 
 .imageContainer {
     grid-area: image;
 }
+
+.imageContainer .discountAmountOnImage {}
 
 .imageContainer img {
     width: 100%;
@@ -21,10 +28,48 @@
 
 .title {
     grid-area: title;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title h2 {
+    font-weight: 700;
+    font-size: 2.5rem;
 }
 
 .cart {
     grid-area: cart;
+}
+
+.cart .priceBlock {
+    display: flex;
+}
+
+.cart .price {
+    font-weight: 700;
+    font-size: 4rem;
+    margin-right: 2rem;
+}
+
+.cart .oldPrice {
+    align-self: flex-end;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: var(--light_grey);
+    margin-right: 1rem;
+}
+
+.cart .discountAmount {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--orange);
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--snow_white);
+    align-self: flex-start;
 }
 
 .description {
@@ -38,6 +83,20 @@
             "image cart"
             "descr descr";
     }
+}
+
+@media screen and (max-width: 480px) {
+    .imageContainer img {
+        position: relative;
+    }
+
+    .cart .discountAmountOnImage {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
 }
 
 @media screen and (max-width: 360px) {
