@@ -23,7 +23,7 @@ export default function ProductPage() {
     const discont = getDiscount(productInfo.price, productInfo.discont_price)
     return (
         <main>
-            {/* <Breadcrumbs /> */}
+            <Breadcrumbs />
             <ProductInfo
                 title={productInfo.title}
                 price={productInfo.price}
