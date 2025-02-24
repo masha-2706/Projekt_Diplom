@@ -17,14 +17,14 @@ body {
   color: var(--grey);
 }
 
+/* каждая страница возвращает <main> */
 main {
   max-width: 1440px;
-  border: 1px solid red;
+
 }
 
-section {
-  border: 1px solid blue;
-}
+/* каждый блок с содержимым внутри страницы возвращает <section> */
+section {}
 
 /*  ** **  adaptive  ** ** */
 @media screen and (max-width:1440px) {

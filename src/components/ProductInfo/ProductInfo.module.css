@@ -10,7 +10,7 @@
         "image title"
         "image cart"
         "image descr";
-    gap: 2rem;
+    gap: 1rem;
     max-width: 1360px;
 }
 
@@ -76,10 +76,39 @@
     grid-area: descr;
 }
 
+.description h3 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.description .text {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.description .hidden {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description .readMore {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .productInfoContainer {
         grid-template-areas:
-            "image title"
+            "title title"
             "image cart"
             "descr descr";
     }
@@ -88,13 +117,6 @@
 @media screen and (max-width: 480px) {
     .imageContainer img {
         position: relative;
-    }
-
-    .cart .discountAmountOnImage {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
     }
 
 }
