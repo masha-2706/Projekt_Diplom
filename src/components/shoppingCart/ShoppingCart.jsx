@@ -6,8 +6,6 @@ import s from "./ShoppingCart.module.css";
 import Button from "../ui/button/Button";
 import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
 import ProductCount from "../ui/productCount/ProductCount";
-import Breadcrumbs from "../ui/breadCrumbs/BreadCrumbs";
-import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
 export default function ShoppingCart() {
   const {
@@ -51,13 +49,16 @@ export default function ShoppingCart() {
 
   return (
     <section className={s.shoppingCart_container}>
-      {/* отрисовка заголовка и хлебной крошки */}
-      {/* <CardsContainer
-        title="Shopping cart"
-        quantity={null}
-        type={"categories"}
-        navButton={true}
-      /> */}
+
+
+
+
+      {/* тут должна быть реклама ;) и отрисовка заголовка и хлебной крошки */}
+
+      
+
+
+      
       <h1 className={s.shoppingCart_title}>Shopping cart</h1>
 
       {/* отрисовка внутреннего содержания Корзины */}

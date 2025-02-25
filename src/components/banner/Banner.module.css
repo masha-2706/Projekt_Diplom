@@ -8,7 +8,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 70vh;
+  height: 60vh;
+  max-height: 600px;
   padding-left: 40px;
 }
 
@@ -18,6 +19,7 @@
   font-weight: 700;
   line-height: 6.6rem;
   padding-top: 8vh;
+  margin-bottom: 40px;
 }
 
 
@@ -27,10 +29,11 @@
 @media (max-width: 1000px) {
   .section {
     background-image: url('../../../public/media/banner/hero1000.jpg');
+    max-height: 476px;
   }
   .title {
-    font-size: 4.7rem;
-    line-height: 6.2rem;
+    font-size: 4.4rem;
+    line-height: 5.8rem;
   }
 }
 
@@ -38,6 +41,7 @@
 @media (max-width: 768px) {
   .section {
     background-image: url('../../../public/media/banner/hero768.jpg');
+    max-height: 634px;
   }
   .title {
     font-size: 3.75rem;
@@ -50,10 +54,13 @@
 @media (max-width: 480px) {
   .section {
     background-image: url('../../../public/media/banner/hero480.jpg');
+    max-height: 600px;
   }
   .title {
     font-size: 3.4rem;
     padding-top: 4vh;
+    margin-bottom: 24px;
+    line-height: 3.6rem;
   }
   .btn {
     padding: 12px 52px;
@@ -67,8 +74,8 @@
     background-image: url('../../../public/media/banner/hero360.jpg');
   }
   .title {
-    font-size: 3.25rem;
-    line-height: 3.76rem;
+    font-size: 2.9rem;
+    line-height: 3.3rem;
   }
 }
 
