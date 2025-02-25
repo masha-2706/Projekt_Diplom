@@ -1,0 +1,107 @@
+.container404 {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 180px 300px 180px;
+  height: 350px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 86px;
+}
+.imagek {
+  width: 100%;
+}
+.image {
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .container404 {
+    max-width: 650px;
+    grid-template-columns: 159px 260px 159px;
+  }
+  .itemImg {
+    max-width: 260px;
+  }
+}
+@media (max-width: 768px) {
+  .container404 {
+    padding-top: 60px;
+    max-width: 480px;
+    height: 250px;
+    grid-template-columns: 108px 180px 108px;
+  }
+  .itemImg {
+   max-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container404 {
+    justify-content: center;
+    height: 216px;
+    width: 320px;
+    grid-template-columns: 78px 130px 78px;
+  }
+  .itemImg {
+    max-width: 130px;
+  }
+}
+
+
+
+.container {
+  padding-top: 32px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.title {
+ 
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 70.4px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .title {
+    font-size: 56px;
+    line-height: 61.6px;
+  }
+  .container {
+    padding-top: 32px;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 460px) {
+  .title {
+    font-size: 48px;
+    line-height: 52.8px;
+  }
+  .container {
+    padding-top: 32px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 320px) {
+  .title {
+    font-size: 40px;
+    line-height: 44px;
+  }
+  .text {
+    font-size: 18px;
+    line-height: 23.4px;
+  }
+}

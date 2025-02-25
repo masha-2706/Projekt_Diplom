@@ -7,12 +7,12 @@ export const ModalProvider = ({ children }) => {
   // Состояние модального окна открыто/закрытого определяется переменной isModalOpen, изменение состояния происходит через функцию setIsModalOpen 
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Состояние ширины экрана (десктоп/мобиль) определяется переменной isMobile
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
   // Следим за изменением ширины экрана. UseState функция которая меняет состояние . 
   useEffect(() => {
     // useEffect вызывается при первом рендере и определяется ширина экрана если она меньше 480 значит приложение в сосотоянии  мобильной версии  поэтому navMenu скрывается в header а BurgerMenu показывает.
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 480);
+      setIsMobile(window.innerWidth <= 650);
 
     };
     window.addEventListener('resize', handleResize);

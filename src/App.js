@@ -81,6 +81,8 @@ function App() {
           path="/cart"
           element={<CardsPage title="Cart" type="cart" breadCrumbs={true} />}
         />
+        {/* Страница Not Found */}
+            <Route path="*" element={<NotFound />} /> 
       </Routes>
 
       <Footer />
