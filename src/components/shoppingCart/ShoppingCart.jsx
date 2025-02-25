@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import s from "./ShoppingCart.module.css";
 import Button from "../ui/button/Button";
+import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
+import ProductCount from "../ui/productCount/ProductCount";
 import { useSelector } from "react-redux";
 import { selectCartItems, selectCartTotalQuantity, selectCartTotalSum } from "../../redux/selectors/cartSliceSelectors";
 import ProductCartItem from "../ProductCartItem/ProductCartItem";
@@ -25,13 +27,16 @@ export default function ShoppingCart() {
 
   return (
     <section className={s.shoppingCart_container}>
-      {/* отрисовка заголовка и хлебной крошки */}
-      {/* <CardsContainer
-        title="Shopping cart"
-        quantity={null}
-        type={"categories"}
-        navButton={true}
-      /> */}
+
+
+
+
+      {/* тут должна быть реклама ;) и отрисовка заголовка и хлебной крошки */}
+
+
+
+
+
       <h1 className={s.shoppingCart_title}>Shopping cart</h1>
 
       {/* отрисовка внутреннего содержания Корзины */}

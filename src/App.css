@@ -1,5 +1,5 @@
 /* импортировали шрифт Montserrat для всего проекта */
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   margin: 0;
@@ -17,45 +17,45 @@ body {
   color: var(--grey);
 }
 
-/* каждая страница возвращает <main> */
 main {
-  max-width: 1440px;
-
+  margin: 0 40px;
 }
 
-/* каждый блок с содержимым внутри страницы возвращает <section> */
-section {}
 
 /*  ** **  adaptive  ** ** */
-@media screen and (max-width:1440px) {
+@media screen and (max-width: 1440px) {
   body {
     max-width: 1440px;
     font-size: 14px;
   }
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
   body {
     max-width: 1000px;
     font-size: 12px;
   }
+
+  main {
+    margin: 0 20px;
+  }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   body {
     max-width: 768px;
     font-size: 10px;
   }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   body {
     max-width: 480px;
     font-size: 8px;
   }
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width: 360px) {
   body {
     max-width: 360px;
     font-size: 6px;
