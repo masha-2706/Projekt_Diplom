@@ -13,7 +13,8 @@ export default function CardsContainer({
   navButton = false,     // отображение кнопки навигации
   filter = false,        // отображение интерфейса фильтрации
   id = 0,
-  type                   // тип данных: categories, productsFromCategory, productsAll, sales, randomSales
+  type,                   // тип данных: categories, productsFromCategory, productsAll, sales, randomSales, favorites
+
 })
 // type - тип отображаемых данных. на текщий момент это могут быть:
 //      сategories - список категорий
@@ -29,7 +30,6 @@ export default function CardsContainer({
   // Загружаем данные с сервера только при изменении type, quantity или id
   useEffect(() => {
     async function loadData() {
-      // Здесь отключаем фильтрацию при запросе, чтобы получить исходный массив
       const data = await fetchData({
         type,
         quantity,
@@ -39,12 +39,17 @@ export default function CardsContainer({
       setOriginalData(data);
       setArray(data);
     }
+
+    // Здесь отключаем фильтрацию при запросе, чтобы получить исходный массив
+
     loadData();
   }, [type, quantity, id]);
 
   useEffect(() => {
     if (filter) {
-      const filtered = originalData.length ? applyFilterLogic(originalData, filterOptions) : [];
+      // Фильтруем исходный массив (для favorites это favoriteItems)
+      const dataToFilter = originalData && originalData.length ? originalData : [];
+      const filtered = applyFilterLogic(dataToFilter, filterOptions);
       setArray(filtered);
     }
   }, [filterOptions, originalData, filter]);
@@ -77,6 +82,7 @@ export default function CardsContainer({
               price={item.price}
               discont_price={item.discont_price}
               id={item.id}
+              categoryId={item.categoryId}
             />
           ))}
       </div>

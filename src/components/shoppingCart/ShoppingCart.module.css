@@ -5,11 +5,11 @@
 }
 
 .shoppingCart_title {
-font-size: 64px;
-font-weight: 700;
-line-height: 70.4px;
-color: var(--grey);
-margin: 40px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 70.4px;
+  color: var(--grey);
+  margin: 40px 0;
 }
 
 .shoppingCart_wrapper {
@@ -24,76 +24,6 @@ margin: 40px 0;
   width: 57%;
 }
 
-.productItem {
-  border: 1px solid var(--divider_grey);
-  border-radius: 12px;
-  background-color: var(--snow_white);
-  display: flex;
-  justify-content: start;
-}
-
-.productItem_image {
-  max-width: 200px;
-  width: 25%;
-  border: 1px solid var(--divider_grey);
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-}
-
-.productItem_description {
-  width: 75%;
-  padding: 32px;
-}
-
-.productItem_title {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.productItem_title > p {
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.625rem;
-  color: var(--grey);
-}
-.productItem_closeBtn {
-  border: none;
-  background: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--grey);
-}
-
-.productItem_container {
-  display: flex;
-  gap: 32px;
-  margin-top: 32px;
-  align-items: center;
-}
-
-.productItem_price {
-  display: flex;
-  align-items: flex-end;
-  gap: 16px;
-}
-
-.actual_price {
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 2.75rem;
-    color: var(--grey);
-}
-
-.old_price {
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.625rem;
-    color: var(--light_grey);
-    text-decoration: line-through;
-}
-
-
 .shoppingCart_orderForm {
   width: 40%;
   background-color: var(--light_green);
@@ -101,19 +31,22 @@ margin: 40px 0;
   border-radius: 0.75rem;
   max-height: 582px;
 }
-.shoppingCart_orderForm > h2 {
+
+.shoppingCart_orderForm>h2 {
   font-size: 2.5rem;
   line-height: 2.7rem;
   font-weight: 700;
   color: var(--grey);
   margin-bottom: 22px;
 }
+
 .shoppingCart_orderForm {
   font-size: 2.5rem;
   line-height: 3.25rem;
   font-weight: 500;
   color: var(--light_grey);
 }
+
 .orderForm_sum {
   display: flex;
   justify-content: space-between;
@@ -127,6 +60,7 @@ margin: 40px 0;
   font-weight: 700;
   color: var(--grey);
 }
+
 form {
   display: flex;
   justify-content: flex-start;
@@ -134,7 +68,8 @@ form {
   gap: 12px;
   margin-top: 32px;
 }
-form > input {
+
+form>input {
   min-height: 58px;
   border-radius: 5px;
   border: 1px solid var(--divider_grey);

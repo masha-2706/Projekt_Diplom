@@ -3,6 +3,8 @@ import { BASE_URL } from "../../services/baseBackEnd";
 import { getDiscount } from "../../utils/cardRenderLogic";
 import IconButton from "../ui/IconButton/IconButton";
 import s from "./ProductCard.module.css";
+import { useSelector } from "react-redux";
+import { selectCartTotalQuantity, selectIsProductInCart } from "../../redux/selectors/cartSliceSelectors";
 
 export default function ProductCard({
     title,
@@ -10,6 +12,7 @@ export default function ProductCard({
     price,
     discont_price,
     id,
+    categoryId
 }) {
     // Карточка товара
     // title - название товара
@@ -24,8 +27,11 @@ export default function ProductCard({
     // на страницу с карточками товаров этой категории
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/products/${id}`);
+        navigate(`/categories/${categoryId}/${id}`);
     };
+
+    // проверка, есть ли товар в корзине
+    const isInCart = useSelector(state => selectIsProductInCart(state, id));
 
     return (
         <div className={s.productCard}>
@@ -33,8 +39,19 @@ export default function ProductCard({
                 <img src={`${BASE_URL}${image}`} alt={`Product ${title}`} />
             </div>
             <div className={s.productCard_icons}>
-                <IconButton type="like" variant={"product"} />
-                <IconButton type="cart" variant={"product"} />
+                <IconButton
+                    type="like"
+                    variant="product"
+                    isActive={false}
+                    id={id}
+                    product={{ id, title, image: image, price, discont_price }}
+                />
+                <IconButton
+                    type="cart"
+                    variant={"product"}
+                    isActive={isInCart}
+                    id={id}
+                    product={{ id, title, image: `${BASE_URL}${image}`, price, discont_price }} />
             </div>
 
             {/* если есть скидка - отображаем блок скидки */}

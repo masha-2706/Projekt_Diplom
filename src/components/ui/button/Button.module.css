@@ -42,7 +42,6 @@
 }
 
 .shoppingCartOrder {
-  margin-top: 32px;
   padding: 16px 56px;
   background: var(--green);
   color: var(--white);

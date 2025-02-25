@@ -10,8 +10,13 @@ import ShoppingCartPage from './pages/ShoppingCartPage'
 import NotFound from "./pages/NotFound";
 import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
+import ProductPage from "./pages/ProductPage";
+import ProductsInCategory from "./pages/ProductsInCategory";
+import { useInitializeData } from "./hooks/initializeData";
 
 function App() {
+  //при первой загрузке приложения составляется справочник категорий с названиями
+  useInitializeData() //кастомный хук для этого
   return (
     <div className="App">
       <ScrollToTop />
@@ -33,10 +38,8 @@ function App() {
         <Route
           path="/categories/:category"
           element={
-            <CardsPage
+            <ProductsInCategory
               title="Products"
-              filter={true}
-              type="productsFromCategory"
               breadCrumbs={true}
             />
           }
@@ -68,12 +71,10 @@ function App() {
           }
         />
 
-        {/* Страница "Избранное" */}
+        {/* Страница "Товар по ID" */}
         <Route
-          path="/favorites"
-          element={
-            <CardsPage title="Favorites" type="favorites" breadCrumbs={true} />
-          }
+          path="/categories/:categoryId/:productId"
+          element={<ProductPage />}
         />
 
         {/* Страница "Корзина" */}

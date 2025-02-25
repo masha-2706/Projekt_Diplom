@@ -1,13 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import s from "./ShoppingCart.module.css";
 import Button from "../ui/button/Button";
-import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
-import ProductCount from "../ui/productCount/ProductCount";
-import Breadcrumbs from "../ui/breadCrumbs/BreadCrumbs";
-import NavigationButton from "../ui/NavigationButton/NavigationButton";
+import { useSelector } from "react-redux";
+import { selectCartItems, selectCartTotalQuantity, selectCartTotalSum } from "../../redux/selectors/cartSliceSelectors";
+import ProductCartItem from "../ProductCartItem/ProductCartItem";
+import { useRemoveAll } from "../../hooks/useRemoveAll";
 
 export default function ShoppingCart() {
   const {
@@ -16,38 +16,12 @@ export default function ShoppingCart() {
     formState: { errors }
   } = useForm();
 
-  // это нужно объединить
-  const [quantityProducts, setquantityProducts] = useState(""); // Количество товаров одного типа в Корзине
-  const [totalSum, setTotalSum] = useState(""); // Общяя сумма товаров, добавленных в корзину
+  const products = useSelector(selectCartItems);
+  const quantityProducts = useSelector(selectCartTotalQuantity);
+  const totalSum = useSelector(selectCartTotalSum);
 
-  const [products, setProducts] = useState([]); // Массив объектов, с товарами в Корзине
+  const removeAll = useRemoveAll()
 
-  const clickHandler_deleteCart = (e) => {
-    console.log("Нужно удалить карточку товара из Корзины");
-  };
-
-  //При монтировании компонента стягиваю БД из бэка и ложу в массив products
-  //заменить на useSelector
-  useEffect(() => {
-    async function loadData() {
-      const data = await getAllProducts();
-      setProducts(data);
-    }
-    loadData();
-  }, []);
-
-  useEffect(() => {
-    // при изменении в products и происходит пересчет totalSum
-    const sum = products.reduce((acc, el) => {
-      return acc + (el.discont_price ? el.discont_price : el.price);
-    }, 0);
-    //округлениe суммы до двух знаков после запятой
-    const roundedSum = parseFloat(sum.toFixed(2));
-    setTotalSum(roundedSum);
-
-    // Подсчет количества товаров одного типа в Корзине
-    setquantityProducts(products.length);
-  }, [products]);
 
   return (
     <section className={s.shoppingCart_container}>
@@ -62,45 +36,18 @@ export default function ShoppingCart() {
 
       {/* отрисовка внутреннего содержания Корзины */}
       <div className={s.shoppingCart_wrapper}>
+
         {/* отрисовка положенных в Корзину товаров */}
         <div className={s.shoppingCart_products}>
-          {products.map((el) => {
-            return (
-              <div key={el.id} className={s.productItem}>
-                <img
-                  className={s.productItem_image}
-                  src={`${BASE_URL}${el.image}`}
-                  alt={el.title}
-                />
-                <div className={s.productItem_description}>
-                  <div className={s.productItem_title}>
-                    <p>{el.title}</p>
-                    <button
-                      onClick={clickHandler_deleteCart}
-                      className={s.productItem_closeBtn}
-                    >
-                      ✖
-                    </button>
-                  </div>
-
-                  <div className={s.productItem_container}>
-                    {/* отрисовка количества товаров в Корзине */}
-                    <ProductCount />
-                    <div className={s.productItem_price}>
-                      {el.discont_price ? (
-                        <>
-                          <p className={s.actual_price}>${el.discont_price}</p>
-                          <p className={s.old_price}>${el.price}</p>
-                        </>
-                      ) : (
-                        <p className={s.actual_price}>${el.price}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {products.map(product => (
+            <ProductCartItem
+              key={product.id}
+              id={product.id}
+              product={product}
+              quantity={product.quantity}
+              onDelete={removeAll}
+            />
+          ))}
         </div>
 
         {/* форма "Детали заказа" */}
