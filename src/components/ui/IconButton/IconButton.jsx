@@ -3,8 +3,6 @@ import s from "./IconButton.module.css";
 import { useNavigate } from "react-router";
 import { useAddToCart } from "../../../hooks/useAddToCart";
 import { useRemoveAll } from "../../../hooks/useRemoveAll";
-import { useAddToFavorites } from "../../../hooks/useAddToFavorites";
-import { useRemoveFavorite } from "../../../hooks/useRemoveFavorite";
 
 export default function IconButton({ id, type, variant, count = 0, isActive, product }) {
     // type - тип иконки (cart, like)
@@ -52,21 +50,9 @@ export default function IconButton({ id, type, variant, count = 0, isActive, pro
     const addOne = useAddToCart();
     const removeAll = useRemoveAll();
 
-    // Инициализация хуков для работы с избранным
-    const addToFavorites = useAddToFavorites();
-    const removeFavorite = useRemoveFavorite();
-
     const svgClickHandler = () => {
         if (variant === "product") {
             if (type === "like") {
-                // Если товар не в избранном, добавляем в favorites, иначе удаляем его
-                if (!isActive) {
-                    addToFavorites(product);
-                    setDefaultState(s.active);
-                } else {
-                    removeFavorite(id);
-                    setDefaultState(s.default);
-                }
 
             } else if (type === "cart") {
                 // При клике на продукт добавляем 1 единицу товара в корзину

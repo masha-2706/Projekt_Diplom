@@ -5,7 +5,6 @@ import IconButton from "../ui/IconButton/IconButton";
 import s from "./ProductCard.module.css";
 import { useSelector } from "react-redux";
 import { selectCartTotalQuantity, selectIsProductInCart } from "../../redux/selectors/cartSliceSelectors";
-import { selectIsFavorite } from "../../redux/selectors/favoritesSliceSelectors";
 
 export default function ProductCard({
     title,
@@ -33,7 +32,6 @@ export default function ProductCard({
 
     // проверка, есть ли товар в корзине
     const isInCart = useSelector(state => selectIsProductInCart(state, id));
-    const isFavorite = useSelector(state => selectIsFavorite(state, id));
 
     return (
         <div className={s.productCard}>
@@ -44,7 +42,7 @@ export default function ProductCard({
                 <IconButton
                     type="like"
                     variant="product"
-                    isActive={isFavorite}
+                    isActive={false}
                     id={id}
                     product={{ id, title, image: image, price, discont_price }}
                 />
