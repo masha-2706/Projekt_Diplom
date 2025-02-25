@@ -1,13 +1,24 @@
 .navigationButton {
-    padding: 8px 16px;
-    color: var(--light_grey);
-    border: 1px solid var(--divider_grey);
-    border-radius: 0.25rem;
-    background-color: transparent;
-    font-size: 1rem;
-    font-weight: 500;    
-    text-decoration: none;
+  padding: 8px 16px;
+  color: var(--light_grey);
+  border: 1px solid var(--divider_grey);
+  border-radius: 0.25rem;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
 }
 .navigationButton:hover {
-    background-color: rgba(242, 246, 211, 1);
+  background-color: rgba(242, 246, 211, 1);
+}
+
+/*  ** **  adaptive  ** ** */
+
+/* для экранов менее 480px */
+@media screen and (max-width: 480px) {
+  .navigationButton {
+    max-width: 129px;
+    max-height: 34px;
+    font-size: 0.875rem;
+  }
 }

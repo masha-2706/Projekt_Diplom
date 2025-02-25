@@ -1,83 +1,120 @@
 .productCard {
-    background-color: var(--snow_white);
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--divider_grey);
-    border-radius: 1rem;
+  background-color: var(--snow_white);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--divider_grey);
+  border-radius: 1rem;
 }
 
-.productCard_image>img {
-    width: 100%;
-    object-fit: cover;
-    border-bottom: 1px solid var(--divider_grey);
-    cursor: pointer;
+.productCard_image > img {
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid var(--divider_grey);
+  cursor: pointer;
 
-    /* мин.высота картинок, 
+  /* мин.высота картинок, 
     чтобы избежать разных по высоте карточек 
     при маленьком размере исходного изображения */
-    min-height: 22rem;
+  min-height: 17.75rem;
 }
 
 .productCard_icons {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .productCard_discount {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    padding: 0.25rem 0.5rem;
-    background-color: var(--orange);
-    border-radius: 0.25rem;
-
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--snow_white);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--orange);
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--snow_white);
 }
 
 .productCard_text {
-    padding: 1.25rem 2rem 2rem 2rem;
-
+  padding: 1.25rem 2rem 2rem 2rem;
 }
 
 /* если заголовок слишком длинный - скрываем многоточием */
-.productCard_text>h3 {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-weight: 500
+.productCard_text > h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 500;
 }
 
-.productCard_text>h3:hover {
-    text-decoration: underline;
-    cursor: pointer;
+.productCard_text > h3:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .productCard_text_priceBlock {
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    margin-top: 1rem;
-    gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  margin-top: 1rem;
+  gap: 1rem;
 }
 
 .productCard_text_actualPrice {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--grey);
-    cursor: pointer;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--grey);
+  cursor: pointer;
 }
 
 .productCard_text_regularPrice {
-    font-size: 1.25rem;
-    font-weight: 500;
-    text-align: left;
-    text-decoration-line: line-through;
-    color: var(--light_grey);
-    margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  font-weight: 500;
+  text-align: left;
+  text-decoration-line: line-through;
+  color: var(--light_grey);
+  margin-bottom: 0.25rem;
 }
+
+/*  ** **  adaptive  ** ** */
+
+/* для экранов менее 1200px */
+@media screen and (max-width: 1200px) {
+  .productCard_text {
+    padding: 1.25rem 2rem 2rem 1.5rem;
+  }
+  .productCard_text_actualPrice {
+    font-size: 2rem;
+  }
+  .productCard_text_regularPrice {
+    font-size: 1.25rem;
+  }
+}
+
+/* для экранов менее 1000px */
+@media screen and (max-width: 1000px) {
+  .productCard_image > img {
+    min-height: 250px;
+  }
+  .productCard_text {
+    padding: 1.2rem 1.67rem 1.67rem 1.67rem;
+  }
+}
+
+/* для экранов менее 480px */
+@media screen and (max-width: 480px) {
+  .productCard_text > h3, .productCard_text_regularPrice  {
+    font-size: 1.125rem;
+    line-height: 1.46rem;
+  }
+  .productCard_text_actualPrice {
+    font-size: 2.25rem;
+    line-height: 2.47rem;
+  }
+}
+

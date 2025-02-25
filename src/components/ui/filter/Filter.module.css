@@ -5,6 +5,7 @@
   justify-content: flex-start;
   gap: 40px;
   margin: 40px 0;
+  flex-wrap: wrap;
 }
 
 .filterContainer>* {
@@ -135,4 +136,16 @@
 /* Поворот стрелки про фокусе */
 .filterSorted select:focus+.filterSorted_arrow {
   transform: rotate(180deg);
+}
+
+
+
+/*  ** **  adaptive  ** ** */
+
+
+/* для экранов менее 360px */
+@media screen and (max-width: 360px) {
+  .filterContainer>* {
+    gap: 12px;
+  }
 }

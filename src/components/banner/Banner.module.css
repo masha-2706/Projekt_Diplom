@@ -11,6 +11,7 @@
   height: 60vh;
   max-height: 600px;
   padding-left: 40px;
+  margin: 0 -40px;
 }
 
 .title {
@@ -30,6 +31,7 @@
   .section {
     background-image: url('../../../public/media/banner/hero1000.jpg');
     max-height: 476px;
+    margin: 0 -20px;
   }
   .title {
     font-size: 4.4rem;
