@@ -87,6 +87,8 @@ function App() {
               breadCrumbs={true}
             />} />
 
+        {/* Страница Not Found */}
+            <Route path="*" element={<NotFound />} /> 
       </Routes>
 
       <Footer />
