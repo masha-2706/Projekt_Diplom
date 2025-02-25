@@ -16,7 +16,6 @@ export const useInitializeData = () => {
             const dataProducts = await getAllProducts();
             const productsList = dataProducts.map(product => ({ id: product.id, title: product.title }));
             dispatch(setProductsList(productsList));
-            console.log(productsList);
         }
         loadData();
     }, [dispatch]);

@@ -13,6 +13,7 @@ import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import ProductPage from "./pages/ProductPage";
 import ProductsInCategory from "./pages/ProductsInCategory";
 import { useInitializeData } from "./hooks/initializeData";
+import FavoritesPage from "./pages/FavoritesPage";
 
 function App() {
   //при первой загрузке приложения составляется справочник категорий с названиями
@@ -81,9 +82,7 @@ function App() {
         {/* Страница "Избранное" */}
         <Route
           path="/favorites"
-          element={
-            <CardsPage title="Favorites" type="favorites" breadCrumbs={true} />
-          }
+          element={<FavoritesPage />}
         />
 
         {/* Страница "Корзина" */}

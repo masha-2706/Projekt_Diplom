@@ -16,3 +16,15 @@
   gap: 2rem;
   margin-top: 2.5rem;
 }
+
+@media screen and (max-width: 768px) {
+  .CardsContainer_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .CardsContainer_container {
+    grid-template-columns: 1fr;
+  }
+}

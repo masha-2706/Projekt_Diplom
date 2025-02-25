@@ -25,6 +25,7 @@ export default function ProductPage() {
         <main>
             <Breadcrumbs />
             <ProductInfo
+                id={productInfo.id}
                 title={productInfo.title}
                 price={productInfo.price}
                 discont_price={productInfo.discont_price}

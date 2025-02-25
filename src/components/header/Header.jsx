@@ -6,6 +6,8 @@ import IconButton from "../ui/IconButton/IconButton";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
 import { useModal } from "../../context/ModalContext";
+import { useSelector } from "react-redux";
+import { selectCartTotalQuantity } from "../../redux/selectors/cartSliceSelectors";
 // Это наш Header в котором мы распологаем :
 export default function Header() {
   const { setIsModalOpen } = useModal();
@@ -14,6 +16,9 @@ export default function Header() {
   const handleModal = () => {
     setIsModalOpen((prevState) => !prevState);
   };
+
+  const amountInCart = useSelector(selectCartTotalQuantity)
+
   return (
     <header className={s.header}>
       {/* логотип */}
@@ -28,9 +33,9 @@ export default function Header() {
       <NavMenu /> {/* навигация по сайту  */}
       {/* блок иконок (лайк и корзина ) */}
       <div className={s.iconsContainer}>
-        <IconButton type="like" variant={"header"} count={3} />
+        <IconButton type="like" variant={"header"} count={0} />
         {/* передаем количество товаров в корзине через count */}
-        <IconButton type="cart" variant={"header"} count={0} />
+        <IconButton type="cart" variant={"header"} count={amountInCart} />
         {isMobile && (
           <div onClick={handleModal}>
             <Icon id="icon-menu" className={s.iconBurger} />

@@ -5,19 +5,40 @@ import IconButton from "../ui/IconButton/IconButton"
 import { getDiscount } from "../../utils/cardRenderLogic"
 import ProductCount from "../ui/productCount/ProductCount"
 import Button from "../ui/button/Button"
+import { useDispatch } from "react-redux"
+import { addProduct } from "../../redux/slices/cartSlice"
 
-export default function ProductInfo({ title, price, discont_price, description, image }) {
+export default function ProductInfo({ id, title, price, discont_price, description, image }) {
     const [showModal, setShowModal] = useState(false)
     const openCloseModal = () => {
         setShowModal(!showModal)
     }
 
+
     // состояние и функция скрытия части текста описания
     const [isTextHidden, setIsTextHidden] = useState(true)
     const readMoreClickHandler = () => setIsTextHidden(!isTextHidden)
 
-
     const discontAmount = getDiscount(price, discont_price)
+
+    const [quantityToAdd, setQuantityToAdd] = useState(1)
+    const quantityIncrement = () => setQuantityToAdd(quantityToAdd + 1)
+    const quantityDecrement = () => { if (quantityToAdd > 1) { setQuantityToAdd(quantityToAdd - 1) } }
+
+    // отправляем товары в корзину
+    const dispatch = useDispatch()
+    const handleAddToCart = () => {
+        dispatch(addProduct({
+            id,
+            title,
+            price,
+            discont_price,
+            image,
+            quantity: quantityToAdd,
+        }));
+    };
+
+    // ожидается, что action.payload содержит: id, title, price, discont_price, image, и опционально quantity
 
 
     return (
@@ -62,10 +83,10 @@ export default function ProductInfo({ title, price, discont_price, description, 
                 </div>
                 <div className={s.addToCartBlock}>
                     <div className={s.ProductCount}>
-                        <ProductCount />
+                        <ProductCount quantity={quantityToAdd} increment={quantityIncrement} decrement={quantityDecrement} />
                     </div>
                     <div className={s.Button}>
-                        <Button text='Add to cart' variant="shoppingCartOrder" />
+                        <Button text='Add to cart' variant="shoppingCartOrder" onClick={handleAddToCart} />
                     </div>
 
                 </div>
