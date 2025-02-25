@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './Banner.module.css'
-import Button from '../ui/ButtonDiscount.jsx'
+import Button from '../ui/button/Button'
 
 export default function Banner() {
   return (
@@ -8,7 +8,7 @@ export default function Banner() {
     <div className={s.container}>
     <section className={s.section}>
         <h1 className={s.title}>Amazing Discounts on Garden Products!</h1>
-        <Button text= {"Check out"} className={s.btn}/>
+        <Button link='/sales' text= {"Check out"} variant='linkButton'/>
     </section>
     </div>
   )

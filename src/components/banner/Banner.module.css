@@ -8,98 +8,76 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-bottom: 210px;
+  height: 60vh;
+  max-height: 600px;
+  padding-left: 40px;
+  margin: 0 -40px;
 }
 
 .title {
   color: var(--white);
-  font-size: 90px;
+  font-size: 5.625rem;
   font-weight: 700;
-  line-height: 105.6px;
-  padding-top: 80px;
-  padding-left: 20px;
+  line-height: 6.6rem;
+  padding-top: 8vh;
+  margin-bottom: 40px;
 }
 
-.btn {
-  display: block;
-  padding: 16px 56px;
-  border-radius: 6px;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
-  text-align: center;
-  background: #92a134;
-  color: var(--white);
-  border: 0;
-  margin: 40px;
-}
+
+
+/*  ** **  adaptive  ** ** */
 
 @media (max-width: 1000px) {
-  .container {
-    max-width: 1000px;
-  }
   .section {
     background-image: url('../../../public/media/banner/hero1000.jpg');
-    padding-bottom: 120px;
+    max-height: 476px;
+    margin: 0 -20px;
   }
   .title {
-    font-size: 68px;
-    line-height: 74px;
-    padding-top: 60px;
-    padding-left: 40px;
+    font-size: 4.4rem;
+    line-height: 5.8rem;
   }
 }
+
 /* Для планшетов и устройств с шириной экрана до 768px */
 @media (max-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
   .section {
     background-image: url('../../../public/media/banner/hero768.jpg');
-    padding-bottom: 326px;
+    max-height: 634px;
   }
   .title {
-    font-size: 60px;
-    line-height: 66px;
-    padding-top: 60px;
-    padding-left: 20px;
+    font-size: 3.75rem;
+    line-height: 4.125rem;
+    padding-top: 6vh;
   }
 }
 
 /* Для мобильных устройств с шириной экрана до 480px */
 @media (max-width: 480px) {
-  .container {
-    max-width: 480px;
-  }
   .section {
     background-image: url('../../../public/media/banner/hero480.jpg');
-    padding-bottom: 215px;
+    max-height: 600px;
   }
   .title {
-    font-size: 60px;
-    line-height: 66px;
-    padding-top: 50px;
-    padding-left: 20px;
+    font-size: 3.4rem;
+    padding-top: 4vh;
+    margin-bottom: 24px;
+    line-height: 3.6rem;
   }
   .btn {
     padding: 12px 52px;
-    font-size: 18px;
-    line-height: 23.4px;
+    font-size: 1.125rem;
+    line-height: 1.46rem;
   }
 }
 
 @media (max-width: 360px) {
-  .container {
-    max-width: 360px;
-  }
   .section {
     background-image: url('../../../public/media/banner/hero360.jpg');
-    padding-bottom: 251px;
   }
   .title {
-    font-size: 52px;
-    line-height: 52.2px;
+    font-size: 2.9rem;
+    line-height: 3.3rem;
   }
 }
 

@@ -1,0 +1,29 @@
+/* стили для бургер-меню
+.burger_icon {
+    width: 44px;
+    max-height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+    border: none;
+    background-color: transparent;
+  }
+  .burger_icon div {
+    width: 80%;
+    height: 3px;
+    background-color: var(--grey);
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 9px;
+  }
+
+  @media (max-width: 650px) {
+    .navMenuContainer {
+      display: none;  
+    }
+    .burger_icon {
+      display: flex;
+    }
+  } */

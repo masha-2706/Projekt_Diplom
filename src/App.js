@@ -1,47 +1,49 @@
 import "./App.css";
-import './styles/global.css' // импорт файла с цветовой палитрой и глобальными стилями
+import "./styles/global.css"; // импорт файла с цветовой палитрой и глобальными стилями
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
-import Breadcrumbs from "./components/ui/breadCrumbs/BreadCrumbs";
 import IconButton from "./components/ui/IconButton/IconButton";
-
+import ShoppingCartPage from './pages/ShoppingCartPage'
+import NotFound from "./pages/NotFound";
+import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
+import ScrollToTop from "./components/scrollToTop/ScrollToTop";
+import ProductPage from "./pages/ProductPage";
+import ProductsInCategory from "./pages/ProductsInCategory";
+import { useInitializeData } from "./hooks/initializeData";
 
 function App() {
+  //при первой загрузке приложения составляется справочник категорий с названиями
+  useInitializeData() //кастомный хук для этого
   return (
     <div className="App">
+      <ScrollToTop />
       <Header />
 
-      {/* Добавляем хлебные крошки, но скрываем их на главной */}
-      <Breadcrumbs />
-
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home />
-          } />
+        <Route path="/" element={<Home />} />
         {/* Страница "Все категории" */}
         <Route
           path="/categories"
           element={
             <CardsPage
               title="Categories"
-              type='categories' />}
+              type='categories'
+              breadCrumbs={true} />}
         />
 
         {/* Страница "Товары определенной категории" */}
         <Route
           path="/categories/:category"
           element={
-            <CardsPage
+            <ProductsInCategory
               title="Products"
-              filter={true}
-              type='productsFromCategory'
               breadCrumbs={true}
-            />} />
+            />
+          }
+        />
 
         {/* Страница "Все скидки" */}
         <Route
@@ -50,9 +52,11 @@ function App() {
             <CardsPage
               title="All sales"
               filter={true}
-              type='randomSales'
+              type="randomSales"
               breadCrumbs={true}
-            />} />
+            />
+          }
+        />
 
         {/* Страница "Все продукты" */}
         <Route
@@ -61,32 +65,35 @@ function App() {
             <CardsPage
               title="All products"
               filter={true}
-              type='productsAll'
+              type="productsAll"
               breadCrumbs={true}
-            />} />
+            />
+          }
+        />
 
-        {/* Страница "Избранное" */}
+        {/* Страница "Товар по ID" */}
         <Route
-          path="/favorites"
-          element={
-            <CardsPage
-              title="Favorites"
-              type='favorites'
-              breadCrumbs={true}
-            />} />
+          path="/categories/:categoryId/:productId"
+          element={<ProductPage />}
+        />
 
         {/* Страница "Корзина" */}
+
         <Route
           path="/cart"
           element={
-            <CardsPage
+            <ShoppingCartPage
               title="Cart"
               type='cart'
               breadCrumbs={true}
             />} />
 
+        {/* Страница Not Found */}
+            <Route path="*" element={<NotFound />} /> 
       </Routes>
+
       <Footer />
+      <ModalBurgerMenu />
     </div>
   );
 }

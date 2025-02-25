@@ -13,6 +13,7 @@
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .footer_contact_phone,
@@ -33,7 +34,7 @@
 }
 .footer_contact_map {
   width: 100%;
-  height: 21.87rem;
+  height: 25vh;
   border-radius: 0.75rem;
   border: none;
 }
@@ -45,8 +46,7 @@
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.625rem;
-  padding-bottom: 1rem;
-  
+  padding-bottom: 1rem; 
 }
 
 .footer_contact_description {
@@ -57,7 +57,7 @@
   text-decoration: none;
 }
 
-/* адаптивность страницы*/
+/*  ** **  adaptive  ** ** */
 /* для экранов менее 1170px */
 @media screen and (max-width: 1170px) {
   .footer_contact_description {
@@ -70,8 +70,7 @@
   .footer_contact_phone,
   .footer_contact_socials,
   .footer_contact_address,
-  .footer_contact_workingHours,
-  .footer_contact_map {
+  .footer_contact_workingHours {
     padding: 1.875rem;
   }
 }
@@ -80,6 +79,9 @@
 @media screen and (max-width: 1000px) {
   .footer_container {
     gap: 1.25rem;
+  }
+  .footer_contact_map {
+    height: 18vh;
   }
 }
 
@@ -94,8 +96,7 @@
   .footer_contact_phone,
   .footer_contact_socials,
   .footer_contact_address,
-  .footer_contact_workingHours,
-  .footer_contact_map {
+  .footer_contact_workingHours {
     padding: 1.5rem;
   }
   .footer_contact_title {
@@ -103,72 +104,50 @@
     line-height: 0.31rem;
   }
   .footer_contact_description {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     line-height: 1.875rem;
+  }
+  .footer_contact_map {
+    height: 15vh;
+  }
+}
+
+@media screen and (max-width: 745px) {
+  .footer_contact_description {
+    font-size: 1.2rem;
+  }
+  .footer_contact_phone,
+  .footer_contact_address {
+    width: 55%;
   }
 }
 
 /* для экранов менее 600px */
 @media screen and (max-width: 600px) {
-  .footer_container {
-    gap: 0.625rem;
-  }
-  .footer_title {
-    padding-bottom: 1.25rem;
-  }
-  .footer_contact_phone,
-  .footer_contact_socials,
-  .footer_contact_address,
-  .footer_contact_workingHours,
-  .footer_contact_map {
-    padding: 1.25rem;
+  .footer_contact_title {
+    font-size: 1rem;
   }
 }
 
 /* для экранов менее 480px */
 @media screen and (max-width: 480px) {
-  .footer_container {
-    gap: 0.75rem;
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-  .footer_title {
-    font-size: 3rem;
-    padding-bottom: 1.5rem;
-  }
   .footer_contact_phone,
   .footer_contact_address,
   .footer_contact_socials,
   .footer_contact_workingHours {
     width: 100%;
   }
-  .footer_contact_title {
-    line-height: 0.31rem;
+  .footer_contact_map {
+    height: 20vh;
   }
-  .footer_contact_description {
-    line-height: 1rem;
+  .footer_container {
+    gap: 1rem;
   }
 }
 
 /* для экранов менее 360px */
 @media screen and (max-width: 360px) {
-  .footer_title {
-    font-size: 2.7rem;
-    padding-bottom: 0.625rem;
-  }
-  .footer_contact_title {
-    font-size: 1.7rem;
-    line-height: 0.625rem;
-    padding-bottom: 0.31;
-  }
-  .footer_contact_description {
-    font-size: 2.5rem;
-  }
-  .footer_contact_phone,
-  .footer_contact_socials,
-  .footer_contact_address,
-  .footer_contact_workingHours,
   .footer_contact_map {
-    padding: 1.25rem;
+    height: 24vh;
   }
 }

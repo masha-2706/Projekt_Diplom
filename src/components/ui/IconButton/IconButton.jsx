@@ -1,8 +1,10 @@
 import { useState } from "react";
 import s from "./IconButton.module.css";
 import { useNavigate } from "react-router";
+import { useAddToCart } from "../../../hooks/useAddToCart";
+import { useRemoveAll } from "../../../hooks/useRemoveAll";
 
-export default function IconButton({ type, variant, count = 0, isActive = false }) {
+export default function IconButton({ id, type, variant, count = 0, isActive, product }) {
     // type - тип иконки (cart, like)
     // variant - вариант отображения (header, product)
     // count - количество товаров в корзине
@@ -44,11 +46,28 @@ export default function IconButton({ type, variant, count = 0, isActive = false 
     // для product комбинируем базовый класс с классом состояния
     const combinedClass = variant === "header" ? baseClass : `${baseClass} ${stateClass}`;
 
+    // Инициализируем хуки для добавления и полного удаления товара из корзины
+    const addOne = useAddToCart();
+    const removeAll = useRemoveAll();
+
     const svgClickHandler = () => {
         if (variant === "product") {
-            // При клике на продукт переключаем состояние: если было default, то делаем active, иначе наоборот
-            // в будущем будем получать информацию из состояния
-            setDefaultState(defaultState === s.default ? s.active : s.default);
+            if (type === "like") {
+
+            } else if (type === "cart") {
+                // При клике на продукт добавляем 1 единицу товара в корзину
+                // если товар уже есть в корзине, 
+                // то клик удаляет все единицы этого товара из корзины
+                if (!isActive) {
+                    addOne(product)
+                    setDefaultState(s.active)
+                } else {
+                    removeAll(id)
+                    setDefaultState(s.default)
+                }
+
+            }
+
         } else if (variant === "header") {
             // для header, клик перенаправляет на нужную страницу
             navigate(type === "like" ? "/favorites" : "/cart");
@@ -60,10 +79,8 @@ export default function IconButton({ type, variant, count = 0, isActive = false 
         if (type === "like") {
             return (
                 <svg
-                    className={combinedClass}
-                    width="48"
-                    height="48"
                     viewBox="0 0 48 48"
+                    className={combinedClass}
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
@@ -76,10 +93,8 @@ export default function IconButton({ type, variant, count = 0, isActive = false 
         } else if (type === "cart") {
             return (
                 <svg
-                    className={combinedClass}
-                    width="48"
-                    height="48"
                     viewBox="0 0 48 48"
+                    className={combinedClass}
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >

@@ -1,5 +1,7 @@
 .icon {
     position: relative;
+    width: 48px;
+    height: 48px;
 }
 
 .header {
@@ -7,6 +9,8 @@
     position: relative;
     stroke-width: 2.2;
     stroke: var(--grey);
+    width: 48px;
+    height: 48px;
 }
 
 .header>.cartContour {
@@ -17,6 +21,8 @@
 .product {
     /* стили для product */
     fill: var(--snow_white);
+    width: 48px;
+    height: 48px;
 }
 
 .active {
