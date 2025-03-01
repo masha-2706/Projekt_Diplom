@@ -42,10 +42,11 @@ const ModalWindow = ({ onClose }) => {
             title: randomProduct.title,
             price: randomProduct.price,
             discont_price: (randomProduct.price / 2).toFixed(2), // применяем скидку 50%
-            image: randomProduct.image,
+            image: `${BASE_URL}${randomProduct.image}`, // добавляем полный путь к изображению
             quantity: 1, // добавляем 1 единицу товара в корзину
         }));
     };
+    
 
     return (
         randomProduct && (
