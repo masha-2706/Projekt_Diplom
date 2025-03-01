@@ -7,11 +7,16 @@ import Button from "../ui/button/Button";
 import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
 import ProductCount from "../ui/productCount/ProductCount";
 import { useSelector } from "react-redux";
-import { selectCartItems, selectCartTotalQuantity, selectCartTotalSum } from "../../redux/selectors/cartSliceSelectors";
+import {
+  selectCartItems,
+  selectCartTotalQuantity,
+  selectCartTotalSum
+} from "../../redux/selectors/cartSliceSelectors";
 import ProductCartItem from "../ProductCartItem/ProductCartItem";
 import { useRemoveAll } from "../../hooks/useRemoveAll";
+import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
-export default function ShoppingCart() {
+export default function ShoppingCart({ title = "no title", navButton = true }) {
   const {
     register,
     handleSubmit,
@@ -22,29 +27,23 @@ export default function ShoppingCart() {
   const quantityProducts = useSelector(selectCartTotalQuantity);
   const totalSum = useSelector(selectCartTotalSum);
 
-  const removeAll = useRemoveAll()
-
+  const removeAll = useRemoveAll();
 
   return (
     <section className={s.shoppingCart_container}>
-
-
-
-
-      {/* тут должна быть реклама ;) и отрисовка заголовка и хлебной крошки */}
-
-
-
-
-
-      <h1 className={s.shoppingCart_title}>Shopping cart</h1>
+      <div className={s.shoppingCart_block_title}>
+        <h1 className={s.shoppingCart_title}>Shopping cart</h1>
+        <div className={s.crumbs_button}>
+          <div className={s.divider}></div>
+          <NavigationButton text="Back to the store" link="/" />
+        </div>
+      </div>
 
       {/* отрисовка внутреннего содержания Корзины */}
       <div className={s.shoppingCart_wrapper}>
-
         {/* отрисовка положенных в Корзину товаров */}
         <div className={s.shoppingCart_products}>
-          {products.map(product => (
+          {products.map((product) => (
             <ProductCartItem
               key={product.id}
               id={product.id}
@@ -112,6 +111,11 @@ export default function ShoppingCart() {
           </form>
         </div>
       </div>
+
+      <div className={s.crumbs_button_down}>
+          <NavigationButton text="Back to the store" link="/" />
+        </div>
+
     </section>
   );
 }

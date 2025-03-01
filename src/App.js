@@ -13,6 +13,7 @@ import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import ProductPage from "./pages/ProductPage";
 import ProductsInCategory from "./pages/ProductsInCategory";
 import { useInitializeData } from "./hooks/initializeData";
+import Categories from "./pages/Categories";
 
 function App() {
   //при первой загрузке приложения составляется справочник категорий с названиями
@@ -24,11 +25,11 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+
         {/* Страница "Все категории" */}
-        <Route
-          path="/categories"
+        <Route path="/categories"
           element={
-            <CardsPage
+            <Categories
               title="Categories"
               type='categories'
               breadCrumbs={true} />}
@@ -54,6 +55,7 @@ function App() {
               filter={true}
               type="randomSales"
               breadCrumbs={true}
+              checkbox={false}
             />
           }
         />
