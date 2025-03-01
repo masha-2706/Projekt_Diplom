@@ -3,9 +3,10 @@ import ProductCount from "../ui/productCount/ProductCount";
 import s from "./ProductCartItem.module.css";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import { useRemoveOne } from "../../hooks/useRemoveOne";
+import { useNavigate } from "react-router";
 
 const ProductCartItem = ({ product, quantity, onDelete }) => {
-    const { id, image, title, discont_price, price } = product;
+    const { id, categoryId, image, title, discont_price, price } = product;
 
     const addOne = useAddToCart();
     const removeOne = useRemoveOne();
@@ -16,13 +17,21 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
     };
 
     const handleDecrement = () => removeOne(id); // передаем только id и по нему уменьшаем количество
+    
+    
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(`/categories/${categoryId}/${id}`);
+    };
+    
+    
     return (
         <div className={s.productItem}>
-            <img className={s.productItem_image} src={image} alt={title}/>
+            <img className={s.productItem_image} src={image} alt={title} onClick={handleClick}/>
 
             <div className={s.productItem_description}>
                 <div className={s.productItem_title}>
-                    <p>{title}</p>
+                    <p onClick={handleClick}>{title}</p>
                     <button onClick={() => onDelete(id)} className={s.productItem_closeBtn}>
                         ✖
                     </button>

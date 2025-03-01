@@ -32,7 +32,6 @@ export default function ShoppingCart({ id, title = "no title", navButton = true 
   // маркер пустой корзины
   const leerkorb_Marker = products.length;
 
-
   return (
     <section className={s.shoppingCart_container}>
       <div className={s.shoppingCart_block_title}>
@@ -45,8 +44,6 @@ export default function ShoppingCart({ id, title = "no title", navButton = true 
 
       {/* отрисовка внутреннего содержания Корзины */}
       <div className={s.shoppingCart_wrapper}>
-
-
 
         {/* отрисовка положенных в Корзину товаров */}
         <div className={s.shoppingCart_products}>
