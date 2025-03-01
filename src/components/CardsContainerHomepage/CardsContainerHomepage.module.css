@@ -1,0 +1,38 @@
+.CardsContainer {
+    width: 100%;
+    max-width: 1360px;
+    margin-top: 3.75vh;
+    margin: 4vh auto;
+}
+
+.CardsContainer_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4.2vh;
+}
+
+/*  ** **  adaptive  ** ** */
+@media screen and (max-width: 768px) {
+    .CardsContainer_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .CardsContainer_container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .CardsContainer_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .CardsContainer_container {
+        grid-template-columns: 1fr;
+    }
+}

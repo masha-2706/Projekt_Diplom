@@ -27,3 +27,10 @@ export function getProductById(id) {
         .then(response => response.json())
         .then(data => data);
 }
+
+//получить все скидки
+export function getAllDiscounts() {
+    return fetch(`${BASE_URL}/products/all`)
+        .then(response => response.json())
+        .then(data => data.filter(item => item.discont_price !== null))
+}

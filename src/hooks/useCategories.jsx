@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCategories } from '../redux/slices/sliceCategories';
+import { getAllCategories } from '../services/baseBackEnd';
+import { useCallback } from 'react';
 
 export const useCategories = () => {
     const dispatch = useDispatch();
@@ -7,10 +9,16 @@ export const useCategories = () => {
     // Получение списка категорий
     const categories = useSelector((state) => state.categories.categories);
 
-    // Обновление списка категорий
-    const setCategories = (newCategories) => {
-        dispatch(updateCategories(newCategories));
-    };
 
-    return { categories, setCategories };
+    //если не обернуть в useCallback, то 
+    // fetchCategories вызывается бесконечным циклом
+    const fetchCategories = useCallback(() => {
+        getAllCategories()
+            .then((data) => {
+                dispatch(updateCategories(data));
+            })
+            .catch((error) => console.error("Ошибка при получении категорий:", error));
+    }, [dispatch])
+
+    return { categories, fetchCategories };
 };

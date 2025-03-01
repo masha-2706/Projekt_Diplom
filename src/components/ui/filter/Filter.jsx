@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import s from './Filter.module.css';
 import { useFilters } from '../../../hooks/useFilters';
 
-export default function Filter({ setArray }) {
+export default function Filter({ checkbox = true }) {
   const { filters, updateFilter, reset } = useFilters();
 
   // При первом монтировании сбрасываем фильтры
@@ -12,12 +12,13 @@ export default function Filter({ setArray }) {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    const newValue = type === 'checkbox' ? checked : value;
+    const newValue = (type === 'checkbox' ? checked : value);
     updateFilter({ [name]: newValue });
   };
 
   return (
     <div className={s.filterContainer}>
+
       {/* Фильтрация по диапазону цен */}
       <div className={s.filterPrice}>
         <p>Price</p>
@@ -36,19 +37,23 @@ export default function Filter({ setArray }) {
           onChange={handleInputChange}
         />
       </div>
+
       {/* Фильтрация по наличию скидки */}
-      <div>
-        <p>Discounted items</p>
-        <label className={s.filterDiscountCheckbox}>
-          <input
-            type="checkbox"
-            name="discontOnly"
-            checked={filters.discontOnly}
-            onChange={handleInputChange}
-          />
-          <span></span>
-        </label>
-      </div>
+      {checkbox && (
+        <div>
+          <p>Discounted items</p>
+          <label className={s.filterDiscountCheckbox}>
+            <input
+              type="checkbox"
+              name="discontOnly"
+              checked={filters.discontOnly}
+              onChange={handleInputChange}
+            />
+            <span></span>
+          </label>
+        </div>
+      )}
+
       {/* Сортировка товаров */}
       <div className={s.filterSorted_wrapper}>
         <p>Sorted</p>

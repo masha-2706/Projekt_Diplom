@@ -7,7 +7,7 @@ import { getDiscount } from "../utils/cardRenderLogic";
 
 export default function ProductPage() {
 
-    const { categoryId, productId } = useParams();
+    const { productId } = useParams();
     const [productInfo, setProductInfo] = useState({})
 
     useEffect(() => {

@@ -5,13 +5,13 @@ import Header from "./components/header/Header";
 import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
-import IconButton from "./components/ui/IconButton/IconButton";
 import ShoppingCartPage from './pages/ShoppingCartPage'
 import NotFound from "./pages/NotFound";
 import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import ProductPage from "./pages/ProductPage";
 import ProductsInCategory from "./pages/ProductsInCategory";
+import CategoriesPage from "./pages/CategoriesPage";
 
 function App() {
 
@@ -26,10 +26,7 @@ function App() {
         <Route
           path="/categories"
           element={
-            <CardsPage
-              title="Categories"
-              type='categories'
-              breadCrumbs={true} />}
+            <CategoriesPage />}
         />
 
         {/* Страница "Товары определенной категории" */}
@@ -43,19 +40,6 @@ function App() {
           }
         />
 
-        {/* Страница "Все скидки" */}
-        <Route
-          path="/sales"
-          element={
-            <CardsPage
-              title="All sales"
-              filter={true}
-              type="randomSales"
-              breadCrumbs={true}
-            />
-          }
-        />
-
         {/* Страница "Все продукты" */}
         <Route
           path="/products"
@@ -64,6 +48,19 @@ function App() {
               title="All products"
               filter={true}
               type="productsAll"
+              breadCrumbs={true}
+            />
+          }
+        />
+
+        {/* Страница "Все скидки" */}
+        <Route
+          path="/sales"
+          element={
+            <CardsPage
+              title="All sales"
+              filter={true}
+              type="randomSales"
               breadCrumbs={true}
             />
           }
