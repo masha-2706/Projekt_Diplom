@@ -5,8 +5,7 @@ import IconButton from "../ui/IconButton/IconButton"
 import { getDiscount } from "../../utils/cardRenderLogic"
 import ProductCount from "../ui/productCount/ProductCount"
 import Button from "../ui/button/Button"
-import { useDispatch } from "react-redux"
-import { addProduct } from "../../redux/slices/cartSlice"
+import { useCart } from "../../hooks/useCart"
 
 export default function ProductInfo({ id, title, price, discont_price, description, image }) {
     const [showModal, setShowModal] = useState(false)
@@ -26,16 +25,16 @@ export default function ProductInfo({ id, title, price, discont_price, descripti
     const quantityDecrement = () => { if (quantityToAdd > 1) { setQuantityToAdd(quantityToAdd - 1) } }
 
     // отправляем товары в корзину
-    const dispatch = useDispatch()
+    const { addProductToCart } = useCart()
     const handleAddToCart = () => {
-        dispatch(addProduct({
+        addProductToCart({
             id,
             title,
             price,
             discont_price,
             image,
             quantity: quantityToAdd,
-        }));
+        })
     };
 
     // ожидается, что action.payload содержит: id, title, price, discont_price, image, и опционально quantity

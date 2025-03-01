@@ -6,8 +6,7 @@ import IconButton from "../ui/IconButton/IconButton";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
 import { useModal } from "../../context/ModalContext";
-import { useSelector } from "react-redux";
-import { selectCartTotalQuantity } from "../../redux/selectors/cartSliceSelectors";
+import { useCart } from "../../hooks/useCart";
 // Это наш Header в котором мы распологаем :
 export default function Header() {
   const { setIsModalOpen } = useModal();
@@ -17,7 +16,8 @@ export default function Header() {
     setIsModalOpen((prevState) => !prevState);
   };
 
-  const amountInCart = useSelector(selectCartTotalQuantity)
+  const { quantity } = useCart();
+  const amountInCart = quantity
 
   return (
     <header className={s.header}>

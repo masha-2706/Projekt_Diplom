@@ -1,21 +1,19 @@
 import React from "react";
 import ProductCount from "../ui/productCount/ProductCount";
 import s from "./ProductCartItem.module.css";
-import { useAddToCart } from "../../hooks/useAddToCart";
-import { useRemoveOne } from "../../hooks/useRemoveOne";
+import { useCart } from "../../hooks/useCart";
 
 const ProductCartItem = ({ product, quantity, onDelete }) => {
     const { id, image, title, discont_price, price } = product;
 
-    const addOne = useAddToCart();
-    const removeOne = useRemoveOne();
+    const { addProductToCart, removeOneProductFromCart } = useCart();
 
     const handleIncrement = () => {// передаем весь продуктдля добавления в массив
         // Передаем продукт с фиксированным количеством 1
-        addOne({ ...product, quantity: 1 });
+        addProductToCart({ ...product, quantity: 1 });
     };
 
-    const handleDecrement = () => removeOne(id); // передаем только id и по нему уменьшаем количество
+    const handleDecrement = () => removeOneProductFromCart(id); // передаем только id и по нему уменьшаем количество
     return (
         <div className={s.productItem}>
             <img

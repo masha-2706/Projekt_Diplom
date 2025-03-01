@@ -1,8 +1,7 @@
 import { useState } from "react";
 import s from "./IconButton.module.css";
 import { useNavigate } from "react-router";
-import { useAddToCart } from "../../../hooks/useAddToCart";
-import { useRemoveAll } from "../../../hooks/useRemoveAll";
+import { useCart } from "../../../hooks/useCart";
 
 export default function IconButton({ id, type, variant, count = 0, isActive, product }) {
     // type - тип иконки (cart, like)
@@ -47,8 +46,9 @@ export default function IconButton({ id, type, variant, count = 0, isActive, pro
     const combinedClass = variant === "header" ? baseClass : `${baseClass} ${stateClass}`;
 
     // Инициализируем хуки для добавления и полного удаления товара из корзины
-    const addOne = useAddToCart();
-    const removeAll = useRemoveAll();
+    const { addProductToCart, removeAllProductFromCart } = useCart();
+    const addOne = addProductToCart;
+    const removeAll = removeAllProductFromCart;
 
     const svgClickHandler = () => {
         if (variant === "product") {

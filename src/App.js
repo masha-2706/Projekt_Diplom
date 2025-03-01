@@ -12,11 +12,9 @@ import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import ProductPage from "./pages/ProductPage";
 import ProductsInCategory from "./pages/ProductsInCategory";
-import { useInitializeData } from "./hooks/initializeData";
 
 function App() {
-  //при первой загрузке приложения составляется справочник категорий с названиями
-  useInitializeData() //кастомный хук для этого
+
   return (
     <div className="App">
       <ScrollToTop />
@@ -89,7 +87,7 @@ function App() {
             />} />
 
         {/* Страница Not Found */}
-            <Route path="*" element={<NotFound />} /> 
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />

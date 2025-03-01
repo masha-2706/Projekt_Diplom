@@ -1,15 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-
 import s from "./ShoppingCart.module.css";
 import Button from "../ui/button/Button";
-import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
-import ProductCount from "../ui/productCount/ProductCount";
-import { useSelector } from "react-redux";
-import { selectCartItems, selectCartTotalQuantity, selectCartTotalSum } from "../../redux/selectors/cartSliceSelectors";
 import ProductCartItem from "../ProductCartItem/ProductCartItem";
-import { useRemoveAll } from "../../hooks/useRemoveAll";
+import { useCart } from "../../hooks/useCart";
 
 export default function ShoppingCart() {
   const {
@@ -18,11 +12,10 @@ export default function ShoppingCart() {
     formState: { errors }
   } = useForm();
 
-  const products = useSelector(selectCartItems);
-  const quantityProducts = useSelector(selectCartTotalQuantity);
-  const totalSum = useSelector(selectCartTotalSum);
-
-  const removeAll = useRemoveAll()
+  const { cart, total, quantity, removeAllProductFromCart } = useCart();
+  const products = cart;
+  const totalSum = total;
+  const removeAll = removeAllProductFromCart;
 
 
   return (
@@ -58,7 +51,7 @@ export default function ShoppingCart() {
         {/* форма "Детали заказа" */}
         <div className={s.shoppingCart_orderForm}>
           <h2>Order details</h2>
-          <p>{quantityProducts} items</p>
+          <p>{quantity} items</p>
           <div className={s.orderForm_sum}>
             <p>Total</p>
             <p className={s.orderForm_totalSum}>${totalSum}</p>

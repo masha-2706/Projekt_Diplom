@@ -3,8 +3,7 @@ import { BASE_URL } from "../../services/baseBackEnd";
 import { getDiscount } from "../../utils/cardRenderLogic";
 import IconButton from "../ui/IconButton/IconButton";
 import s from "./ProductCard.module.css";
-import { useSelector } from "react-redux";
-import { selectCartTotalQuantity, selectIsProductInCart } from "../../redux/selectors/cartSliceSelectors";
+import { useCart } from "../../hooks/useCart";
 
 export default function ProductCard({
     title,
@@ -31,7 +30,8 @@ export default function ProductCard({
     };
 
     // проверка, есть ли товар в корзине
-    const isInCart = useSelector(state => selectIsProductInCart(state, id));
+    const { cart } = useCart();
+    const isInCart = cart.find((item) => item.id === id);
 
     return (
         <div className={s.productCard}>
