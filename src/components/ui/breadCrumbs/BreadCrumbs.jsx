@@ -4,10 +4,10 @@ import styles from "./BreadCrumbs.module.css";
 import { getAllCategories, getAllProducts } from "../../../services/baseBackEnd";
 
 
-// Объект для статических маршрутов (чтобы отображать читаемые названия страниц)
+// объект для статических маршрутов чтобы отображать нормальные названия страниц
 const staticRoutes = {
-  categories: "Categories", // `/categories` → "Categories"
-  products: "All Products", // `/products` → "All Products"
+  categories: "Categories", // `/categories` ===>  "Categories"
+  products: "All Products", // `/products` ===> "All Products"
   sales: "All Sales",
   favorites: "Favorites",
   cart: "Shopping Cart",
@@ -29,21 +29,21 @@ const Breadcrumbs = () => {
         acc[category.id] = category.title; // { "1": "Annuals", "2": "Nursery" }
         return acc;
       }, {});
-      setCategories(categoryMap); // чохраняем в состояние
+      setCategories(categoryMap); // сохраняем в состояние
     });
 
     // получаем список продуктов
     getAllProducts().then((data) => {
-      // преобразуем массив продуктов в объект { id: название }
+      // преобразуем массив продуктов в объект 
       const productMap = data.reduce((acc, product) => {
-        acc[product.id] = product.title; // Например: { "1": "Rose", "2": "Tulip" }
+        acc[product.id] = product.title;
         return acc;
       }, {});
-      setProducts(productMap); // Сохраняем в состояние
+      setProducts(productMap); // сохраняем в состояние
     });
-  }, []); // Пустой массив зависимостей загрузится 1 раз при монтировании
+  }, []); // пустой массив зависимостей загрузится 1 раз при монтировании
 
-  //  Разбиваем текущий URL на массив 
+  //  разбиваем текущий URL на массив 
   const pathnames = location.pathname.split("/").filter(Boolean); 
   //  "/categories/1/5" =====> ["categories", "1", "5"]
 
@@ -82,13 +82,13 @@ const Breadcrumbs = () => {
     <nav aria-label="breadcrumb" className={styles.breadcrumbNav}>
       <ul className={styles.breadcrumbList}>
         {crumbs.map((crumb, index) => {
-          const isLast = index === crumbs.length - 1; // Проверяем, является ли текущая крошка последней
+          const lastCrumb = index === crumbs.length - 1; // проверяем, является ли текущая крошка последней
 
           return (
             <React.Fragment key={crumb.link}>
               {/*ксли это последняя крошка, просто отображаем текст, иначе делаем ссылку */}
-              <li className={isLast ? `${styles.breadcrumbItem} ${styles.activeCrumb}` : styles.breadcrumbItem}>
-                {isLast ? (
+              <li className={lastCrumb ? `${styles.breadcrumbItem} ${styles.activeCrumb}` : styles.breadcrumbItem}>
+                {lastCrumb ? (
                   <span>{crumb.label}</span>
                 ) : (
                   <Link to={crumb.link}>{crumb.label}</Link>
@@ -96,7 +96,7 @@ const Breadcrumbs = () => {
               </li>
 
               {/*  разделительная полоска между крошками (не рендерится после последней крошки) */}
-              {!isLast && (
+              {!lastCrumb && (
                 <div className={styles.breadcrumbItemLineBlock}>
                   <div className={styles.breadcrumbItemLine}></div>
                 </div>
