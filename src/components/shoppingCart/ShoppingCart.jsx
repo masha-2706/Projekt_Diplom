@@ -33,8 +33,10 @@ export default function ShoppingCart({ title = "no title", navButton = true }) {
     <section className={s.shoppingCart_container}>
       <div className={s.shoppingCart_block_title}>
         <h1 className={s.shoppingCart_title}>Shopping cart</h1>
-        <div className={s.divider}></div>
-        <NavigationButton text="Back to the store" link="/" />
+        <div className={s.crumbs_button}>
+          <div className={s.divider}></div>
+          <NavigationButton text="Back to the store" link="/" />
+        </div>
       </div>
 
       {/* отрисовка внутреннего содержания Корзины */}
@@ -109,6 +111,11 @@ export default function ShoppingCart({ title = "no title", navButton = true }) {
           </form>
         </div>
       </div>
+
+      <div className={s.crumbs_button_down}>
+          <NavigationButton text="Back to the store" link="/" />
+        </div>
+
     </section>
   );
 }

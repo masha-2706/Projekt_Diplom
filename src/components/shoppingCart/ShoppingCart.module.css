@@ -1,6 +1,6 @@
 .shoppingCart_container {
   max-width: 1360px;
-  margin: 0 auto;
+  margin: 0 40px;
   margin-bottom: 4vh;
 }
 
@@ -17,6 +17,9 @@
   line-height: 70.4px;
   color: var(--grey);
   margin-right: 2vw;
+}
+.crumbs_button_down {
+  display: none;
 }
 .divider {
   flex-grow: 1;
@@ -91,4 +94,48 @@ form > input {
   font-weight: 500;
   line-height: 1.25rem;
   font-size: 1.25rem;
+}
+
+/* **** ** adaptive ** **** */
+
+/* для экранов менее 1000px */
+@media screen and (max-width: 1000px) {
+  .shoppingCart_container {
+    margin: 0 20px;
+  }
+  .shoppingCart_products {
+    width: 55%;
+  }
+  .shoppingCart_orderForm {
+    width: 44%;
+  }
+}
+
+/* для экранов менее 900px */
+@media screen and (max-width: 900px) {
+  .shoppingCart_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .shoppingCart_products,
+  .shoppingCart_orderForm {
+    width: 100%;
+  }
+  .shoppingCart_products {
+    gap: 12px;
+  }
+}
+
+/* для экранов менее 480px */
+@media screen and (max-width: 480px) {
+  .crumbs_button {
+    display: none;
+  }
+  .crumbs_button_down {
+    display: block;
+    margin: 40px;
+    text-align: center;
+  }
 }
