@@ -1,0 +1,143 @@
+/* фон затемнения */
+.modal {
+    position: fixed; /* фиксируем модальное окно поверх всех элементов */
+    inset: 0; /* растягиваем его на весь экран */
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    background: rgba(40, 40, 40, 0.4);
+    z-index: 9999; /* размещаем поверх всех элементов */
+}
+
+/* контейнер модального окна */
+.modal__container {
+    position: relative; /* позиционирование относительно родителя */
+    background: var(--green); 
+    padding: 32px;
+    border-radius: 15px; 
+    max-width: 548px; 
+    width: 100%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); 
+}
+
+/* кнопка закрытия */
+.modal__closeButton {
+    position: absolute; /* позиционируем относительно контейнера */
+    top: 12px; 
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer; 
+    padding: 5px; 
+    width: 32px; 
+    height: 32px;
+}
+
+/* иконка кнопки закрытия */
+.modal__closeIcon {
+    width: 100%; 
+}
+
+/* заголовок */
+.modal__title {
+    color: var(--snow_white); 
+    font-size: 40px; 
+    font-weight: 600;
+    margin-bottom: 16px; 
+}
+
+/* контейнер с информацией */
+.modal__content {
+    background-color: var(--white); 
+    border-radius: 6px;
+}
+
+/* верхняя строка с ценой и лайком */
+.modal__headerSection {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 16px;
+}
+
+/*  скидка */
+.modal__discount {
+    font-size: 14px; 
+    font-weight: bold; 
+    padding: 6px 10px; 
+    border-radius: 5px; 
+}
+
+/* оформление скидки  */
+.modal__discountOrange {
+    background: #FF6B00; 
+    color: var(--white); 
+}
+
+/* кнопка "лайк" */
+.modal__like {
+    width: 48px; 
+    height: 48px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+/* разделительная линия */
+.modal__divider {
+    width: 100%;
+    height: 1px; 
+    background-color: var(--divider_grey);
+}
+
+/* изображение товара */
+.modal__image {
+    width: 100%; 
+    height: 150px; 
+    object-fit: contain;
+    margin-bottom: 20px; 
+}
+
+/* название товара */
+.modal__productName {
+    font-size: 20px; 
+    font-weight: 500;
+    padding: 20px 0 16px 32px; 
+}
+
+/* контейнер цен */
+.modal__priceContainer {
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    padding: 16px 0 32px 32px; 
+}
+
+/* старая цена (зачеркнутая) */
+.modal__priceOld {
+    text-decoration: line-through; 
+    color: var(--light_grey); 
+    font-size: 20px; 
+}
+
+/* новая цена (со скидкой) */
+.modal__priceNew {
+    font-size: 40px; 
+    color: var(--grey);
+    font-weight: 600; 
+}
+
+/* контейнер кнопки */
+.modal__buttonContainer {
+    width: 100%; 
+    margin-top: 10px; 
+}
+
+/* адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .modal__container {
+        margin: 20px; /* добавляем отступы */
+        width: calc(100% - 40px); /* уменьшаем ширину с учетом отступов */
+    }
+}
+  

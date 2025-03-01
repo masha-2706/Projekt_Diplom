@@ -121,7 +121,8 @@ function DiscountForm() {
             )}
 
             {/* Кнопка отправки формы */}
-            <Button text="Get a discount" type="submit" submittedText = "Request Submitted" variant="submittedButton"  />
+        
+            <Button  text="Get a discount" type="submit"  variant="getDiscountBtn"  />
           </form>
         </div>
       </div>
