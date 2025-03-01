@@ -1,8 +1,20 @@
+import { useEffect } from 'react';
 import s from './Filter.module.css';
+import { useFilters } from '../../../hooks/useFilters';
 
 export default function Filter({ setArray }) {
+  const { filters, updateFilter, reset } = useFilters();
 
+  // При первом монтировании сбрасываем фильтры
+  useEffect(() => {
+    reset();
+  }, [reset]);
 
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+    updateFilter({ [name]: newValue });
+  };
 
   return (
     <div className={s.filterContainer}>
@@ -13,11 +25,15 @@ export default function Filter({ setArray }) {
           type="text"
           placeholder="from"
           name="minPrice"
+          value={filters.minPrice}
+          onChange={handleInputChange}
         />
         <input
           type="text"
           placeholder="to"
           name="maxPrice"
+          value={filters.maxPrice}
+          onChange={handleInputChange}
         />
       </div>
       {/* Фильтрация по наличию скидки */}
@@ -27,7 +43,8 @@ export default function Filter({ setArray }) {
           <input
             type="checkbox"
             name="discontOnly"
-
+            checked={filters.discontOnly}
+            onChange={handleInputChange}
           />
           <span></span>
         </label>
@@ -36,7 +53,7 @@ export default function Filter({ setArray }) {
       <div className={s.filterSorted_wrapper}>
         <p>Sorted</p>
         <div className={s.filterSorted}>
-          <select name="sort">
+          <select name="sort" value={filters.sort} onChange={handleInputChange}>
             <option value="default">by default</option>
             <option value="price:high-low">price: high-low</option>
             <option value="price:low-high">price: low-high</option>
