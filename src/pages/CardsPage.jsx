@@ -5,13 +5,15 @@ import Filter from "../components/ui/filter/Filter";
 import { useEffect, useState } from "react";
 import BlockTitle from "../components/BlockTitle/BlockTitle";
 import { useProducts } from "../hooks/useProducts";
+import { useFavorites } from "../hooks/useFavorites";
 
 export default function CardsPage() {
     const path = useLocation().pathname.slice(1);
     const [checkbox, setCheckbox] = useState();
-    const [title, setTitle] = useState();
-    const [array, setArray] = useState();
+    const [title, setTitle] = useState('');
+    const [array, setArray] = useState([]);
     const { products, fetchAllProducts, fetchAllSales } = useProducts();
+    const { favorites } = useFavorites();
 
 
     useEffect(() => {
@@ -30,14 +32,17 @@ export default function CardsPage() {
             case 'favorites':
                 setTitle('Liked products');
                 setCheckbox(false);
+                setArray(favorites);
                 break;
             default:
                 break;
         }
-    }, [path, fetchAllProducts, fetchAllSales]);
+    }, [path, fetchAllProducts, fetchAllSales, favorites]);
 
     useEffect(() => {
         setArray(products);
+        console.log(products);
+
     }, [products]);
 
 

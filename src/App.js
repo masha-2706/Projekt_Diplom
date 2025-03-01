@@ -44,12 +44,7 @@ function App() {
         <Route
           path="/products"
           element={
-            <CardsPage
-              title="All products"
-              filter={true}
-              type="productsAll"
-              breadCrumbs={true}
-            />
+            <CardsPage />
           }
         />
 
@@ -57,14 +52,19 @@ function App() {
         <Route
           path="/sales"
           element={
-            <CardsPage
-              title="All sales"
-              filter={true}
-              type="randomSales"
-              breadCrumbs={true}
-            />
+            <CardsPage />
           }
         />
+
+        {/* Страница "Избранное" */}
+        <Route
+          path="/favorites"
+          element={
+            <CardsPage />
+          }
+        />
+
+
 
         {/* Страница "Товар по ID" */}
         <Route

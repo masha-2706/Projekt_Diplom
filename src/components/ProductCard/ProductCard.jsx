@@ -4,6 +4,7 @@ import { getDiscount } from "../../utils/cardRenderLogic";
 import IconButton from "../ui/IconButton/IconButton";
 import s from "./ProductCard.module.css";
 import { useCart } from "../../hooks/useCart";
+import { useFavorites } from "../../hooks/useFavorites";
 
 export default function ProductCard({
     title,
@@ -33,6 +34,10 @@ export default function ProductCard({
     const { cart } = useCart();
     const isInCart = cart.find((item) => item.id === id);
 
+    // проверка, есть ли товар в избранном
+    const { favorites } = useFavorites();
+    const isFavorite = favorites.find((item) => item.id === id);
+
     return (
         <div className={s.productCard}>
             <div className={s.productCard_image} onClick={handleClick}>
@@ -42,7 +47,7 @@ export default function ProductCard({
                 <IconButton
                     type="like"
                     variant="product"
-                    isActive={false}
+                    isActive={isFavorite}
                     id={id}
                     product={{ id, title, image: image, price, discont_price }}
                 />

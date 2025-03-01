@@ -23,7 +23,7 @@ const favoritesSlice = createSlice({
         },
         removeFavorite(state, action) {
             // action.payload ожидается как id удаляемого продукта
-            state.products = state.products.filter(product => product.id !== action.payload);
+            state.favorites = state.favorites.filter(product => product.id !== action.payload);
             state.quantity = state.favorites.length; // обновляем количество продуктов в избранном. 
             // можно было просто написать state.quantity -= 1, но так надёжнее
         },
