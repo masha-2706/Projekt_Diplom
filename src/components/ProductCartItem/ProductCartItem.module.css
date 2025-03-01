@@ -67,3 +67,16 @@
     color: var(--light_grey);
     text-decoration: line-through;
 }
+
+
+/* **** ** adaptive ** **** */
+
+/* для экранов менее 1260px */
+@media screen and (max-width: 1260px) {
+    .productItem_container {
+        gap: 12px;
+        align-items: start;
+        flex-direction: column;
+    }
+  }
+  

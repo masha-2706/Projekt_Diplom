@@ -4,12 +4,24 @@
   margin-bottom: 4vh;
 }
 
+.shoppingCart_block_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0;
+}
+
 .shoppingCart_title {
   font-size: 64px;
   font-weight: 700;
   line-height: 70.4px;
   color: var(--grey);
-  margin: 40px 0;
+  margin-right: 2vw;
+}
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--divider_grey);
 }
 
 .shoppingCart_wrapper {
@@ -32,7 +44,7 @@
   max-height: 582px;
 }
 
-.shoppingCart_orderForm>h2 {
+.shoppingCart_orderForm > h2 {
   font-size: 2.5rem;
   line-height: 2.7rem;
   font-weight: 700;
@@ -69,7 +81,7 @@ form {
   margin-top: 32px;
 }
 
-form>input {
+form > input {
   min-height: 58px;
   border-radius: 5px;
   border: 1px solid var(--divider_grey);

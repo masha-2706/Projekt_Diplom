@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import s from './Filter.module.css';
 import { setFilter, resetFilters } from '../../../redux/slices/filterSlice';
 
-export default function Filter() {
+export default function Filter({checkbox = true}) {
   const dispatch = useDispatch();
   const filterOptions = useSelector((state) => state.filter);
 
@@ -45,6 +45,7 @@ export default function Filter() {
         />
       </div>
       {/* Фильтрация по наличию скидки */}
+      {checkbox === true &&
       <div>
         <p>Discounted items</p>
         <label className={s.filterDiscountCheckbox}>
@@ -57,6 +58,8 @@ export default function Filter() {
           <span></span>
         </label>
       </div>
+      }
+
       {/* Сортировка товаров */}
       <div className={s.filterSorted_wrapper}>
         <p>Sorted</p>

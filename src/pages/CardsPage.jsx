@@ -8,7 +8,8 @@ export default function CardsPage({
     type,
     breadCrumbs = false,
     navButton = false,
-    filter = false
+    filter = false,
+    checkbox 
 }) {
     // пояснения по пропсам
     // filter - нужно ли отображать интерфейс фильтрации и сортировки карточек (true/false)
@@ -29,6 +30,7 @@ export default function CardsPage({
                 navButton={navButton}
                 filter={filter}
                 id={category}
+                checkbox={checkbox}
             />
 
         </main>

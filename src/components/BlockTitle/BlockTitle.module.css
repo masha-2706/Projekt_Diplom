@@ -1,7 +1,7 @@
 .CardsContainer_header {
     display: flex;
     align-items: center;
-    color: var(--grey);
+    /* color: var(--grey); */
 }
 
 .CardsContainer_header>h2 {
@@ -47,6 +47,13 @@
     .CardsContainer_header > h2 {
         font-size: 2.7rem;
         line-height: 3rem;
+    }
+  }
+
+  /* для экранов менее 470px */
+  @media screen and (max-width: 470px) {
+    .CardsContainer_header_line, .CardsContainer_header_buttons{
+        display: none;
     }
   }
 

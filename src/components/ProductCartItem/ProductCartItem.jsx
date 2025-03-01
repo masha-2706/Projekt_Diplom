@@ -18,11 +18,11 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
     const handleDecrement = () => removeOne(id); // передаем только id и по нему уменьшаем количество
     return (
         <div className={s.productItem}>
-            <img
-                className={s.productItem_image}
-                src={image}
-                alt={title}
-            />
+            <img className={s.productItem_image} src={image} alt={title}/>
+
+
+
+
             <div className={s.productItem_description}>
                 <div className={s.productItem_title}>
                     <p>{title}</p>
@@ -45,7 +45,12 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
                         )}
                     </div>
                 </div>
+                
             </div>
+
+
+
+
         </div>
     );
 };

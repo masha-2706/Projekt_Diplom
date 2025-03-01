@@ -6,25 +6,25 @@ import Filter from "../ui/filter/Filter";
 import { useSelector } from "react-redux";
 import { fetchData, applyFilterLogic } from "../../utils/fetchData";
 import BlockTitle from "../BlockTitle/BlockTitle";
+import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
 export default function CardsContainer({
-  title = "no title",    // заголовок
-  quantity = 0,          // количество карточек (0 – отобразить всё)
-  navButton = false,     // отображение кнопки навигации
-  filter = false,        // отображение интерфейса фильтрации
+  title = "no title", // заголовок
+  quantity = 0, // количество карточек (0 – отобразить всё)
+  navButton = false, // отображение кнопки навигации
+  filter = false, // отображение интерфейса фильтрации
   id = 0,
-  type,                   // тип данных: categories, productsFromCategory, productsAll, sales, randomSales, favorites
-
-})
-// type - тип отображаемых данных. на текщий момент это могут быть:
-//      сategories - список категорий
-//      productsFromCategory - товары определенной категории
-//      productsAll - все товары
-//      sales - товары со скидками
-//      randomSales - случайные товары со скидками
-{
+  type, // тип данных: categories, productsFromCategory, productsAll, sales, randomSales, favorites
+  checkbox
+}) {
+  // type - тип отображаемых данных. на текщий момент это могут быть:
+  //      сategories - список категорий
+  //      productsFromCategory - товары определенной категории
+  //      productsAll - все товары
+  //      sales - товары со скидками
+  //      randomSales - случайные товары со скидками
   const [originalData, setOriginalData] = useState([]); // исходный массив с сервера
-  const [array, setArray] = useState([]);               // массив для отрисовки (может быть отфильтрован)
+  const [array, setArray] = useState([]); // массив для отрисовки (может быть отфильтрован)
   const filterOptions = useSelector((state) => state.filter);
 
   // Загружаем данные с сервера только при изменении type, quantity или id
@@ -48,7 +48,8 @@ export default function CardsContainer({
   useEffect(() => {
     if (filter) {
       // Фильтруем исходный массив (для favorites это favoriteItems)
-      const dataToFilter = originalData && originalData.length ? originalData : [];
+      const dataToFilter =
+        originalData && originalData.length ? originalData : [];
       const filtered = applyFilterLogic(dataToFilter, filterOptions);
       setArray(filtered);
     }
@@ -59,7 +60,7 @@ export default function CardsContainer({
       <BlockTitle title={title} navButton={navButton} />
 
       {/* Отрисовка интерфейса фильтрации */}
-      {filter && <Filter />}
+      {filter && <Filter checkbox={checkbox} />}
 
       <div className={s.CardsContainer_container}>
         {type === "categories" &&
@@ -86,6 +87,19 @@ export default function CardsContainer({
             />
           ))}
       </div>
+
+      {/* отрисовка кнопки навигации для экранов менее 430 рх */}
+      {navButton && <div className={s.CardsContainer_header_line}></div>}
+      {navButton && (
+        <div className={s.CardsContainer_header_buttons}>
+          {title === "Categories" && (
+            <NavigationButton text="All сategories" link="/categories" />
+          )}
+          {title === "Sales" && (
+            <NavigationButton text="All sales" link="/sales" />
+          )}
+        </div>
+      )}
     </section>
   );
 }
