@@ -11,6 +11,6 @@ export default configureStore({
         categories: categoriesReducer,
         products: productsReducer,
         favorites: favoritesReducer,
-        filters: filtersReducer,
+        filter: filtersReducer,
     },
 });
