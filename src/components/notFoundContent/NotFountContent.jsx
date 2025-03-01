@@ -17,7 +17,7 @@ export default function NotFoundContent() {
         <div className={s.item}>
           <img className={s.image} src={fourImage} alt="404 page" />
         </div>
-        
+
       </div>
       <div className={s.container}>
         <h2 className={s.title}>Page Not Found</h2>

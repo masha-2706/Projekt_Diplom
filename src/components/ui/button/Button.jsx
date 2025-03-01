@@ -9,7 +9,7 @@ const Button = ({ text, link, variant = "", onClick, type = "" }) => {
     return (
       <Link
         to={link}
-        className={`${styles.baseButton} ${variantStyle} `}>
+        className={` ${styles.baseButton} ${variantStyle} `}>
         {text}
       </Link>
     );

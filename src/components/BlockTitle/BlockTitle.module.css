@@ -1,7 +1,7 @@
 .CardsContainer_header {
     display: flex;
     align-items: center;
-    color: var(--grey);
+    /* color: var(--grey); theme*/
 }
 
 .CardsContainer_header>h2 {

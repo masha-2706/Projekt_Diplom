@@ -20,7 +20,8 @@ export default function Header() {
   const amountInCart = useSelector(selectCartTotalQuantity)
 
   return (
-    <header className={s.header}>
+    <header className={s.headerwrapper}>
+      <div  className={s.header}>
       {/* логотип */}
       <div className={s.logoContainer}>
         {/* Обернули логотип в нав линк для обеспечения навигации при клике на линк */}
@@ -41,6 +42,7 @@ export default function Header() {
             <Icon id="icon-menu" className={s.iconBurger} />
           </div>
         )}
+        </div>
       </div>
     </header>
   );

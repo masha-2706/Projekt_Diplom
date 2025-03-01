@@ -68,3 +68,7 @@
     cursor: default;
     /* отключение курсора при наведении */
 }
+
+/* body.dark svg path{
+    fill: var(--white) !important;
+} */

@@ -1,37 +1,43 @@
 /* Контейнер, в котором лежат ссылки (ul) */
 .breadcrumbList {
-    display: flex;          /* размещаем в строку */
-           /* расстояние между «пилюлями» */
-    list-style: none;       /* убираем стандартные маркеры списка */
-    padding: 0;
-    margin: 40px;
-  }
+  display: flex; /* размещаем в строку */
+  /* расстояние между «пилюлями» */
+  list-style: none; /* убираем стандартные маркеры списка */
+  padding: 0;
+  margin: 40px;
+}
 
-  /* Каждый li-элемент списка */
-  .breadcrumbItem {
-    display: inline-block;  /* ширина подстраивается под текст */
-    padding: 6px 12px;
-    color: var(--light_grey);
-    border: 1px solid var(--divider_grey);     /* внутренние отступы: формируют «пилюлю» */
-    border-radius: 4px;     /* закруглённые углы, меняйте при необходимости */
-  }
-  .breadcrumbItemLineBlock{
-    display: flex;
-    align-items: center;
-  }
-  .breadcrumbItemLine{
-    width: 16px;
-    height: 1px;
-    background-color: var(--divider_grey);
-  }
-  
-  /* ссылки внутри «пилюли» */
-  .breadcrumbItem a {
-    color: inherit;         /* унаследует цвет (#fff) */
-    text-decoration: none;  /* убираем стандартное подчеркивание */
-  }
-  
-  .activeCrumb {
-    color: var(--grey);
-  }
-  
+/* Каждый li-элемент списка */
+.breadcrumbItem {
+  display: inline-block; /* ширина подстраивается под текст */
+  padding: 6px 12px;
+  color: var(--light_grey);
+  border: 1px solid var(--divider_grey); /* внутренние отступы: формируют «пилюлю» */
+  border-radius: 4px; /* закруглённые углы, меняйте при необходимости */
+}
+.breadcrumbItemLineBlock {
+  display: flex;
+  align-items: center;
+}
+.breadcrumbItemLine {
+  width: 16px;
+  height: 1px;
+  background-color: var(--divider_grey);
+}
+
+/* ссылки внутри «пилюли» */
+.breadcrumbItem a {
+  color: inherit; /* унаследует цвет (#fff)*/
+   text-decoration: none; /*убираем стандартное подчеркивание */
+ }  
+ /* работает наоборот , активная ссылка первая а остальнве нет, сказала Виоле она пофиксит  */
+
+
+
+ body.light .activeCrumb {
+  color: var(--grey);
+}
+ /* Стили для темной темы */ 
+ body.dark .activeCrumb {
+  color: var(--snow_white);
+} 

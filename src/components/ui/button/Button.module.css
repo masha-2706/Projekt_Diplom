@@ -12,15 +12,15 @@
 }
 
 .baseButton:hover {
-  background: var(--grey);
-  color: var(--snow_white);
+      background: var(--grey);
+   color: var(--snow_white); 
 }
 
 .linkButton {
   padding: 16px 56px;
   line-height: 26px;
-  background: var(--green);
-  color: var(--white);
+  background: var(--green)!important;
+  color: var(--white)!important;
   text-decoration: none;
 }
 
@@ -29,8 +29,8 @@
   border-radius: 8px;
   font-size: 16px;
   font-weight: 500;
-  background: var(--green);
-  color: var(--snow_white);
+  background: var(--green)!important;
+  color: var(--snow_white)!important;
   margin-bottom: 12px;
   text-decoration: none;
 }
@@ -39,6 +39,7 @@
   background-color: var(--light_green);
   color: var(--green);
 }
+
 
 .shoppingCartOrder {
   padding: 16px 56px;

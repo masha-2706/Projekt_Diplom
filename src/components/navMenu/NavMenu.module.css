@@ -8,7 +8,7 @@
     line-height: 26px;
     display: block;
     text-decoration: none;
-    color: var(--grey); 
+    /* color: var(--grey); theme */
 }
 
 .link:hover {
