@@ -60,6 +60,7 @@ const cartSlice = createSlice({
             if (existingItem) {
                 state.totalQuantity = state.cart.length;
                 state.totalSum -= (existingItem.discont_price || existingItem.price) * existingItem.quantity;
+                state.totalSum = parseFloat(state.totalSum.toFixed(2)); //пришлось округлять, иначе баг из-за плавающей запятой
                 state.cart = state.cart.filter(item => item.id !== id);
             }
         },
