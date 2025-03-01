@@ -4,7 +4,7 @@ import { useModal } from "../../context/ModalContext";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
 import Button from "../ui/button/Button";
-import RandomProductModal from "../modalWindow/ModalWindow";
+import ModalWindow from "../modalWindow/ModalWindow";
 
 const ModalBurgerMenu = () => {
   // Получаем состояние бургер-меню из контекста
@@ -61,8 +61,8 @@ const ModalBurgerMenu = () => {
         </div>
       </div>
 
-      {/* Если модалка открыта, рендерим `RandomProductModal`, но бургер-меню остается */}
-      {modalWindowOpen && <RandomProductModal onClose={handleCloseModal} />}
+      {/* Если модалка открыта, рендерим `ModalWindow`, но бургер-меню остается */}
+      {modalWindowOpen && <ModalWindow onClose={handleCloseModal} />}
     </div>
   );
 };

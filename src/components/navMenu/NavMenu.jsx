@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router";
 import s from "./NavMenu.module.css";
 import Button from "../ui/button/Button";
-import RandomProductModal from "../modalWindow/ModalWindow";
+import ModalWindow from "../modalWindow/ModalWindow";
 
 function NavMenu() {
   const [modalWindowOpen, setModalWindowOpen] = useState(false); // Состояние для открытия модального окна
@@ -25,7 +25,7 @@ function NavMenu() {
       </div>
 
       {/* Вставляем модальное окно, оно рендерится, когда isModalOpen === true */}
-      {modalWindowOpen && <RandomProductModal onClose={() => setModalWindowOpen(false)} />}
+      {modalWindowOpen && <ModalWindow onClose={() => setModalWindowOpen(false)} />}
     </div>
   );
 }

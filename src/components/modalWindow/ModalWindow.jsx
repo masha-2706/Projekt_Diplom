@@ -8,7 +8,7 @@ import IconButton from "../ui/IconButton/IconButton";
 import Button from "../ui/button/Button";
 
 
-const RandomProductModal = ({ onClose }) => {
+const ModalWindow = ({ onClose }) => {
     // состояние для хранения случайного продукта
     const [randomProduct, setRandomProduct] = useState(null);
     // состояние для хранения списка всех продуктов
@@ -60,7 +60,7 @@ const RandomProductModal = ({ onClose }) => {
                     <h2 className={styles.modal__title}>50% discount on product of the day!</h2>
 
                     <div className={styles.modal__content}>
-                        <div className={styles.modal__topRow}>
+                        <div className={styles.modal__headerSection}>
                             {/* стикер со скидкой */}
                             <div className={`${styles.modal__discount} ${styles.modal__discountOrange}`}>
                                 -50%
@@ -101,5 +101,5 @@ const RandomProductModal = ({ onClose }) => {
     );
 };
 
-export default RandomProductModal;
+export default ModalWindow;
 
