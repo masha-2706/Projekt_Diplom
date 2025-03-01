@@ -14,7 +14,7 @@ export function applyFilterLogic(data, filterOptions) {
 
     // Фильтрация по наличию скидки
     if (filterOptions.discontOnly) {
-        filteredData = filteredData.filter(item => item.discontPrice !== null);
+        filteredData = filteredData.filter(item => item.discont_price !== null);
     }
 
     // Сортировка

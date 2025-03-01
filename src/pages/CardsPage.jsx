@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import BlockTitle from "../components/BlockTitle/BlockTitle";
 import { useProducts } from "../hooks/useProducts";
 import { useFavorites } from "../hooks/useFavorites";
+import { applyFilterLogic } from "../utils/applyFilterLogic";
+import { useFilters } from "../hooks/useFilters";
+
 
 export default function CardsPage() {
     const path = useLocation().pathname.slice(1);
@@ -14,7 +17,7 @@ export default function CardsPage() {
     const [array, setArray] = useState([]);
     const { products, fetchAllProducts, fetchAllSales } = useProducts();
     const { favorites } = useFavorites();
-
+    const { filters } = useFilters();
 
     useEffect(() => {
         switch (path) {
@@ -40,10 +43,16 @@ export default function CardsPage() {
     }, [path, fetchAllProducts, fetchAllSales, favorites]);
 
     useEffect(() => {
-        setArray(products);
-        console.log(products);
+        if (path === 'favorites') {
+            setArray(applyFilterLogic(favorites, filters));
+        } else {
+            setArray(applyFilterLogic(products, filters));
+        }
 
-    }, [products]);
+
+    }, [path, favorites, products, filters]);
+
+
 
 
     return (

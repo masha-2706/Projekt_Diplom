@@ -1,14 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import s from './Filter.module.css';
 import { useFilters } from '../../../hooks/useFilters';
 
 export default function Filter({ checkbox = true }) {
   const { filters, updateFilter, reset } = useFilters();
+  const clearFilters = useRef(false)
 
   // При первом монтировании сбрасываем фильтры
   useEffect(() => {
-    reset();
+    if (!clearFilters.current) {
+      reset();
+      clearFilters.current = true;
+    }
   }, [reset]);
+
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
