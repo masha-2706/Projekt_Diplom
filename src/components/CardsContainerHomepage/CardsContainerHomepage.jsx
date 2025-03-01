@@ -14,6 +14,7 @@ export default function CardsContainerHomepage({ title, array }) {
                         key={el.id}
                         title={el.title}
                         image={el.image}
+                        id={el.id}
                     />))}
 
                 {title === 'Sale' && array.map((el) => (

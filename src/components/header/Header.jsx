@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import NavMenu from "../navMenu/NavMenu";
 import ThemeBtn from "../ui/themeSwitchElement/themeBtn/ThemeBtn";
 import s from "./Header.module.css";
@@ -17,7 +16,7 @@ export default function Header() {
     setIsModalOpen((prevState) => !prevState);
   };
 
-  const { quantity: quantityCart } = useCart(); // заменил на quantityCart, чтобы было понятнее
+  const { totalQuantity: quantityCart } = useCart(); // заменил на quantityCart, чтобы было понятнее
   const amountInCart = quantityCart
 
   const { favoritesQuantity } = useFavorites();

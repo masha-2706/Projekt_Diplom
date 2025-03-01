@@ -12,9 +12,9 @@ export default function ShoppingCart() {
     formState: { errors }
   } = useForm();
 
-  const { cart, total, quantity, removeAllProductFromCart } = useCart();
+  const { cart, totalSum, totalQuantity, removeAllProductFromCart } = useCart();
   const products = cart;
-  const totalSum = total;
+  const sum = totalSum;
   const removeAll = removeAllProductFromCart;
 
 
@@ -51,10 +51,10 @@ export default function ShoppingCart() {
         {/* форма "Детали заказа" */}
         <div className={s.shoppingCart_orderForm}>
           <h2>Order details</h2>
-          <p>{quantity} items</p>
+          <p>{totalQuantity} items</p>
           <div className={s.orderForm_sum}>
             <p>Total</p>
-            <p className={s.orderForm_totalSum}>${totalSum}</p>
+            <p className={s.orderForm_totalSum}>${sum}</p>
           </div>
 
           <form onSubmit={handleSubmit}>

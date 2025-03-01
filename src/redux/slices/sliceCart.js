@@ -2,56 +2,67 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     cart: [], // массив продуктов для отображения
-    total: 0, // общая стоимость корзины
-    quantity: 0, // количество уникальных продуктов в корзине
+    totalQuantity: 0, // количество уникальных товаров в корзине
+    totalSum: 0, // общая сумма товаров в корзине
 };
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addToCart: (state, action) => {
-            // action.payload ожидается как объект продукта:
-            // { id, title, price, discontPrice, image, quantity }
-            // Для продукта вычисляем actualPrice
-            // total - округляем до 2 знаков после запятой
-            // если товар уже есть в корзине, то увеличиваем его количество на 1
-            // если товара нет в корзине, то добавляем его
+        addToCart(state, action) {
+            // ожидается, что action.payload содержит: id, title, price, discont_price, image, и опционально quantity
             const product = action.payload;
-            const productInCart = state.cart.find(item => item.id === product.id);
-            if (productInCart) {
-                productInCart.quantity += 1;
+
+            // если количество не указано - добавляем 1 единицу товара
+            const quantityToAdd = product.quantity ? product.quantity : 1;
+
+            // если товар уже в корзине - просто увеличиваем количество
+            const existingItem = state.cart.find(item => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity += quantityToAdd;
             } else {
-                state.cart.push({
-                    ...product,
-                    actualPrice: product.discontPrice ? product.discontPrice : product.price,
-                    quantity: 1,
-                });
+                state.cart.push({ ...product, quantity: quantityToAdd });
             }
-            state.total = +(state.total + product.actualPrice).toFixed(2);
-            state.quantity = state.cart.length;
+
+            // Обновление общих показателей корзины
+            state.totalQuantity = state.cart.length;
+            state.totalSum += (product.discont_price || product.price) * quantityToAdd;
+            state.totalSum = parseFloat(state.totalSum.toFixed(2));//пришлось округлять, иначе баг из-за плавающей запятой
         },
+
+        // удаление одной единицы товара по id
         removeOneFromCart: (state, action) => {
-            // action.payload ожидается как id удаляемого продукта
-            // Если количество товара больше 1, то уменьшаем его количество на 1
-            // Если количество товара равно 1, то удаляем товар из корзины
-            const product = state.cart.find(item => item.id === action.payload);
-            if (product.quantity > 1) {
-                product.quantity -= 1;
-            } else {
-                state.cart = state.cart.filter(item => item.id !== action.payload);
+            // action.payload - id товара
+            const id = action.payload;
+            const existingItem = state.cart.find(item => item.id === id);
+
+            if (existingItem) { // если найден по id, обновляем поля слайса
+                existingItem.quantity -= 1;
+                state.totalQuantity = state.cart.length;
+                state.totalSum -= existingItem.discont_price || existingItem.price;
+                state.totalSum = parseFloat(state.totalSum.toFixed(2)); //пришлось округлять, иначе баг из-за плавающей запятой
+
+                // если товара в корзине 0 или меньше - пересоздаем массив элементов,
+                // но уже без этого товара
+                if (existingItem.quantity <= 0) {
+                    state.cart = state.cart.filter(item => item.id !== id);
+                }
             }
-            state.total = +(state.total - product.actualPrice).toFixed(2);
-            state.quantity = state.cart.length;
         },
+
+        // Удаление всех единиц товара из корзины
         removeAllFromCart: (state, action) => {
-            // action.payload ожидается как id удаляемого продукта
-            // Удаляем товар из корзины
-            const product = state.cart.find(item => item.id === action.payload);
-            state.cart = state.cart.filter(item => item.id !== action.payload);
-            state.total = +(state.total - product.actualPrice * product.quantity).toFixed(2);
-            state.quantity = state.cart.length;
-        }
+            // action.payload - id товара
+            const id = action.payload;
+            const existingItem = state.cart.find(item => item.id === id);
+
+            if (existingItem) {
+                state.totalQuantity = state.cart.length;
+                state.totalSum -= (existingItem.discont_price || existingItem.price) * existingItem.quantity;
+                state.cart = state.cart.filter(item => item.id !== id);
+            }
+        },
 
     },
 });

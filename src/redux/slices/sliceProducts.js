@@ -10,12 +10,12 @@ const productsSlice = createSlice({
     reducers: {
         updateProducts(state, action) {
             // action.payload ожидается как актуальный массив объектов продукта:
-            // { id, title, price, discontPrice, image, categoryId }
+            // { id, title, price, discont_price, image, categoryId }
             // Для каждого продукта вычисляем actualPrice:
-            // если присутствует discontPrice, то actualPrice = discontPrice, иначе actualPrice = price.
+            // если присутствует discont_price, то actualPrice = discont_price, иначе actualPrice = price.
             state.products = action.payload.map(product => ({
                 ...product,
-                actualPrice: product.discontPrice ? product.discontPrice : product.price,
+                actualPrice: product.discont_price ? product.discont_price : product.price,
             }));
         },
     },

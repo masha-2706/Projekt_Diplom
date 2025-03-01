@@ -11,12 +11,12 @@ const favoritesSlice = createSlice({
     reducers: {
         addFavorite(state, action) {
             // action.payload ожидается как объект продукта:
-            // { id, title, price, discontPrice, image }
+            // { id, title, price, discont_price, image }
             // Для продукта вычисляем actualPrice:
-            // если присутствует discontPrice, то actualPrice = discontPrice, иначе actualPrice = price.
+            // если присутствует discont_price, то actualPrice = discont_price, иначе actualPrice = price.
             state.favorites = [...state.favorites, {
                 ...action.payload,
-                actualPrice: action.payload.discontPrice ? action.payload.discontPrice : action.payload.price,
+                actualPrice: action.payload.discont_price ? action.payload.discont_price : action.payload.price,
             }];
             state.quantity = state.favorites.length; // обновляем количество продуктов в избранном. 
             // можно было просто написать state.quantity += 1, но так надёжнее
