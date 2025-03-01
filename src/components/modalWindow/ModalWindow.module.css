@@ -1,0 +1,140 @@
+/* 🔹 Оверлей (фон затемнения) */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(40, 40, 40, 0.4);
+    z-index: 9999;
+}
+
+/* 🔹 Контейнер модального окна */
+.modal__container {
+    position: relative;
+    background: var(--green);
+    padding: 32px;
+    border-radius: 15px;
+    max-width: 548px;
+    width: 100%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 Кнопка закрытия */
+.modal__closeButton {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    width: 32px;
+    height: 32px;
+}
+
+.modal__closeIcon {
+    width: 100%;
+}
+
+/* 🔹 Заголовок */
+.modal__title {
+    color: var(--snow_white);
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* 🔹 Контейнер с информацией */
+.modal__content {
+    background-color: var(--white);
+    border-radius: 6px;
+}
+
+/* 🔹 Блок с ценой и лайком */
+.modal__topRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+/* 🔹 Стикер скидки */
+.modal__discount {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+.modal__discountOrange {
+    background: #FF6B00;
+    color: white;
+}
+
+/* 🔹 Кнопка "лайк" */
+.modal__like {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🔹 Разделительная линия */
+.modal__divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--divider_grey);
+}
+
+/* 🔹 Изображение товара */
+.modal__image {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* 🔹 Название товара */
+.modal__productName {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px 0 16px 32px;
+}
+
+/* 🔹 Блок с ценами */
+.modal__priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0 32px 32px;
+}
+
+/* 🔹 Старая цена */
+.modal__priceOld {
+    text-decoration: line-through;
+    color: var(--light_grey);
+    font-size: 20px;
+}
+
+/* 🔹 Новая цена */
+.modal__priceNew {
+    font-size: 40px;
+    color: var(--grey);
+    font-weight: 600;
+}
+
+/* 🔹 Контейнер кнопки */
+.modal__buttonContainer {
+    width: 100%;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .modal__container {
+        margin: 20px;
+        width: calc(100% - 40px); /* Учитываем отступы по 25px с каждой стороны */
+    }
+}
+  
