@@ -10,7 +10,7 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
     const addOne = useAddToCart();
     const removeOne = useRemoveOne();
 
-    const handleIncrement = () => {// передаем весь продуктдля добавления в массив
+    const handleIncrement = () => {// передаем весь продукт для добавления в массив
         // Передаем продукт с фиксированным количеством 1
         addOne({ ...product, quantity: 1 });
     };
@@ -20,9 +20,6 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
         <div className={s.productItem}>
             <img className={s.productItem_image} src={image} alt={title}/>
 
-
-
-
             <div className={s.productItem_description}>
                 <div className={s.productItem_title}>
                     <p>{title}</p>
@@ -30,7 +27,6 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
                         ✖
                     </button>
                 </div>
-
                 <div className={s.productItem_container}>
                     {/* Отрисовка количества товара */}
                     <ProductCount quantity={quantity} increment={handleIncrement} decrement={handleDecrement} />
@@ -44,13 +40,8 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
                             <p className={s.actual_price}>${price}</p>
                         )}
                     </div>
-                </div>
-                
+                </div>                
             </div>
-
-
-
-
         </div>
     );
 };

@@ -12,15 +12,25 @@
 }
 
 .shoppingCart_title {
-  font-size: 64px;
+  font-size: 4rem;
+  line-height: 4.4rem;
   font-weight: 700;
-  line-height: 70.4px;
   color: var(--grey);
   margin-right: 2vw;
 }
+
+.crumbs_button {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 175px;
+}
+
 .crumbs_button_down {
   display: none;
 }
+
 .divider {
   flex-grow: 1;
   height: 1px;
@@ -96,6 +106,14 @@ form > input {
   font-size: 1.25rem;
 }
 
+.shoppingCart_leerkorb_text {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  font-weight: 500;
+  color: var(--dark_grey);
+  margin-bottom: 32px;
+}
+
 /* **** ** adaptive ** **** */
 
 /* для экранов менее 1000px */
@@ -128,8 +146,39 @@ form > input {
   }
 }
 
+/* для экранов менее 768px */
+@media screen and (max-width: 768px) {
+  .shoppingCart_title {
+    font-size: 3.5rem;
+    line-height: 3.85rem;
+  }
+  .shoppingCart_orderForm > h2 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+  }
+  .shoppingCart_orderForm {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+  .orderForm_totalSum {
+    font-size: 3.5rem;
+    line-height: 3.85rem;
+  }
+}
+
+/* для экранов менее 530px */
+@media screen and (max-width: 530px) {
+  .shoppingCart_title {
+    font-size: 2.9rem;
+  }
+}
+
 /* для экранов менее 480px */
 @media screen and (max-width: 480px) {
+  .shoppingCart_title {
+    font-size: 3rem;
+    line-height: 3.3rem;
+  }
   .crumbs_button {
     display: none;
   }
@@ -137,5 +186,32 @@ form > input {
     display: block;
     margin: 40px;
     text-align: center;
+  }
+  .shoppingCart_orderForm > h2 {
+    font-size: 1.75rem;
+    line-height: 1.925rem;
+  }
+  .shoppingCart_orderForm {
+    font-size: 1.75rem;
+    line-height: 2.28rem;
+  }
+  .orderForm_totalSum {
+    font-size: 3rem;
+    line-height: 3.3rem;
+  }
+  form > input, .shoppingCart_leerkorb_text {
+      font-size: 1.125rem;
+      line-height: 1.46rem;
+  }
+  .shoppingCart_leerkorb_text {
+    margin-bottom: 24px;
+  }
+}
+
+/* для экранов менее 360px */
+@media screen and (max-width: 360px) {
+  .shoppingCart_title, .orderForm_totalSum {
+    font-size: 2.5rem;
+    line-height: 2.75rem;
   }
 }

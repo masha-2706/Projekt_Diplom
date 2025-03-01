@@ -52,4 +52,21 @@
   background: var(--green);
   color: var(--white);
   width: 100%;
+  text-decoration: none;
+}
+
+.shoppingCart_leerkorb {
+  padding: 16px 56px;
+  background: var(--green);
+  color: var(--white);
+  max-width: 313px;
+  text-decoration: none;
+}
+
+/* для экранов менее 360px */
+@media screen and (max-width: 360px) {
+  .shoppingCart_leerkorb {
+    padding: 16px 40px;
+  }
+
 }

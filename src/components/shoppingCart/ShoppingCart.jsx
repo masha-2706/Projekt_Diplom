@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-
+import { useNavigate } from "react-router";
 import s from "./ShoppingCart.module.css";
 import Button from "../ui/button/Button";
 import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
@@ -16,7 +16,7 @@ import ProductCartItem from "../ProductCartItem/ProductCartItem";
 import { useRemoveAll } from "../../hooks/useRemoveAll";
 import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
-export default function ShoppingCart({ title = "no title", navButton = true }) {
+export default function ShoppingCart({ id, title = "no title", navButton = true }) {
   const {
     register,
     handleSubmit,
@@ -28,6 +28,10 @@ export default function ShoppingCart({ title = "no title", navButton = true }) {
   const totalSum = useSelector(selectCartTotalSum);
 
   const removeAll = useRemoveAll();
+
+  // маркер пустой корзины
+  const leerkorb_Marker = products.length;
+
 
   return (
     <section className={s.shoppingCart_container}>
@@ -41,6 +45,9 @@ export default function ShoppingCart({ title = "no title", navButton = true }) {
 
       {/* отрисовка внутреннего содержания Корзины */}
       <div className={s.shoppingCart_wrapper}>
+
+
+
         {/* отрисовка положенных в Корзину товаров */}
         <div className={s.shoppingCart_products}>
           {products.map((product) => (
@@ -52,6 +59,15 @@ export default function ShoppingCart({ title = "no title", navButton = true }) {
               onDelete={removeAll}
             />
           ))}
+          
+          {/* отрисовка блока, если Корзина пустая */}
+          { leerkorb_Marker === 0 && <>
+            <p className={s.shoppingCart_leerkorb_text}>Looks like you have no items in your basket currently.</p>
+            <Button
+              text="Continue Shopping" link="/products"
+              variant="shoppingCart_leerkorb"
+            />
+          </> }
         </div>
 
         {/* форма "Детали заказа" */}
