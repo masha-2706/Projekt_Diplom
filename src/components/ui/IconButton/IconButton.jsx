@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./IconButton.module.css";
 import { useNavigate } from "react-router";
 import { useCart } from "../../../hooks/useCart";
@@ -16,6 +16,9 @@ export default function IconButton({ id, type, variant, count = 0, isActive, pro
 
     // defaultState нужен для хранения этого исходного состояния. в будущем будем получать информацию из состояния
     const [defaultState, setDefaultState] = useState(isActive ? s.active : s.default);
+    useEffect(() => {
+        setDefaultState(isActive ? s.active : s.default);
+    }, [isActive]);
 
     // отслеживание наведения мыши (актуально только для variant "product")
     const [hovered, setHovered] = useState(false);

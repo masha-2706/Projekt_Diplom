@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
 import s from './ProductInfo.module.css'
 import IconButton from "../ui/IconButton/IconButton"
@@ -6,6 +6,7 @@ import { getDiscount } from "../../utils/cardRenderLogic"
 import ProductCount from "../ui/productCount/ProductCount"
 import Button from "../ui/button/Button"
 import { useCart } from "../../hooks/useCart"
+import { useFavorites } from "../../hooks/useFavorites"
 
 export default function ProductInfo({ id, title, price, discont_price, description, image }) {
     const [showModal, setShowModal] = useState(false)
@@ -37,7 +38,9 @@ export default function ProductInfo({ id, title, price, discont_price, descripti
         })
     };
 
-    // ожидается, что action.payload содержит: id, title, price, discont_price, image, и опционально quantity
+    // проверка, есть ли товар в избранном
+    const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+    const isFavorite = favorites.find(item => item.id === id) ? true : false;
 
 
     return (
@@ -59,7 +62,13 @@ export default function ProductInfo({ id, title, price, discont_price, descripti
             {/* бокс с названием */}
             <div className={`${s.title} ${s.box}`}>
                 <h2>{title}</h2>
-                <IconButton type={'like'} variant={'product'} />
+                <IconButton
+                    type="like"
+                    variant="product"
+                    isActive={isFavorite}
+                    id={id}
+                    product={{ id, title, image, price, discont_price }}
+                />
             </div>
 
             {/* бокс с ценой и интерфейсом добавления в корзину */}
