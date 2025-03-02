@@ -7,6 +7,7 @@ import ProductCount from "../ui/productCount/ProductCount"
 import Button from "../ui/button/Button"
 import { useCart } from "../../hooks/useCart"
 import { useFavorites } from "../../hooks/useFavorites"
+import { BASE_URL } from "../../services/baseBackEnd"
 
 export default function ProductInfo({ id, title, price, discont_price, description, image }) {
     const [showModal, setShowModal] = useState(false)
@@ -39,7 +40,7 @@ export default function ProductInfo({ id, title, price, discont_price, descripti
     };
 
     // проверка, есть ли товар в избранном
-    const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+    const { favorites } = useFavorites();
     const isFavorite = favorites.find(item => item.id === id) ? true : false;
 
 
@@ -49,7 +50,7 @@ export default function ProductInfo({ id, title, price, discont_price, descripti
             {/* бокс с картинкой */}
             <div className={`${s.imageContainer} ${s.box}`}>
                 <img
-                    src={image}
+                    src={`${BASE_URL}${image}`}
                     alt={`Product ${title}`}
                     onClick={openCloseModal}
                 />
