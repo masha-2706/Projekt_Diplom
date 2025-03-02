@@ -35,14 +35,38 @@
   text-decoration: none;
 }
 
-.suсcessButton {
-  background-color: var(--light_green);
-  color: var(--green);
+.getDiscountBtn{
+  margin-bottom: 20px;
 }
 
+.modulWindowBtn{
+  padding: 16px 32px;
+  font-size: 20px;
+  font-weight: 600;
+  width: 100%;
+  background: var(--white);
+  margin-top: 16px;
+}
 .shoppingCartOrder {
   padding: 16px 56px;
   background: var(--green);
   color: var(--white);
   width: 100%;
+  text-decoration: none;
+}
+
+.shoppingCart_leerkorb {
+  padding: 16px 56px;
+  background: var(--green);
+  color: var(--white);
+  max-width: 313px;
+  text-decoration: none;
+}
+
+/* для экранов менее 360px */
+@media screen and (max-width: 360px) {
+  .shoppingCart_leerkorb {
+    padding: 16px 40px;
+  }
+
 }
