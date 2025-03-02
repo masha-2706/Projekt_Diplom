@@ -12,6 +12,8 @@ function Home() {
   useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
+
+
   const arrayCategories = categories.slice(0, 4)
 
   const [discounts, setDiscounts] = useState([])

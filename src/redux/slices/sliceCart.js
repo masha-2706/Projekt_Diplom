@@ -11,7 +11,8 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state, action) {
-            // ожидается, что action.payload содержит: id, title, price, discont_price, image, и опционально quantity
+            // ожидается, что action.payload содержит: 
+            // id, title, price, discont_price, image, и опционально quantity
             const product = action.payload;
 
             // если количество не указано - добавляем 1 единицу товара
