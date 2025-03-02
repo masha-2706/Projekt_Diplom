@@ -32,12 +32,8 @@
  }  
  /* работает наоборот , активная ссылка первая а остальнве нет, сказала Виоле она пофиксит  */
 
-
-
- body.light .activeCrumb {
-  color: var(--grey);
+.activeCrumb{
+  color: var(--grey); 
 }
- /* Стили для темной темы */ 
- body.dark .activeCrumb {
-  color: var(--snow_white);
-} 
+
+
