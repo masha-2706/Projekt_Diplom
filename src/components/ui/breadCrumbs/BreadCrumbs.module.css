@@ -1,13 +1,12 @@
 /* Контейнер, в котором лежат ссылки (ul) */
 .breadcrumbList {
     display: flex;          /* размещаем в строку */
-           /* расстояние между «пилюлями» */
     list-style: none;       /* убираем стандартные маркеры списка */
     padding: 0;
     margin: 40px;
   }
 
-  /* Каждый li-элемент списка */
+  /* Каждый li списка */
   .breadcrumbItem {
     display: inline-block;  /* ширина подстраивается под текст */
     padding: 6px 12px;
@@ -15,6 +14,7 @@
     border: 1px solid var(--divider_grey);     /* внутренние отступы: формируют «пилюлю» */
     border-radius: 4px;     /* закруглённые углы, меняйте при необходимости */
   }
+  
   .breadcrumbItemLineBlock{
     display: flex;
     align-items: center;
