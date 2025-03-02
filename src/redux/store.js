@@ -1,15 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import filterReducer from "./slices/filterSlice";
-import categoriesReducer from './slices/categoriesSlice'
-import productsReducer from './slices/productsSlice'
-import cartItemsReducer from './slices/cartSlice'
-
+import cartReducer from "./slices/sliceCart";
+import categoriesReducer from "./slices/sliceCategories";
+import productsReducer from "./slices/sliceProducts";
+import favoritesReducer from "./slices/sliceFavorites";
+import filtersReducer from "../redux/slices/sliceFilters";
 
 export default configureStore({
     reducer: {
-        filter: filterReducer,
+        cart: cartReducer,
         categories: categoriesReducer,
         products: productsReducer,
-        cartItems: cartItemsReducer
+        favorites: favoritesReducer,
+        filter: filtersReducer,
     },
 });

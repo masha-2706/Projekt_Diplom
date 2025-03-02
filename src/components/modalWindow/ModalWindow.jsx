@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ModalWindow.module.css";
-import { useDispatch } from "react-redux";
 import { BASE_URL, getAllProducts } from "../../services/baseBackEnd";
 import { getRandomArray } from "../../utils/cardRenderLogic";
-import { addProduct } from "../../redux/slices/cartSlice";
 import IconButton from "../ui/IconButton/IconButton";
 import Button from "../ui/button/Button";
+import { useCart } from "../../hooks/useCart";
+import { useFavorites } from "../../hooks/useFavorites";
 
 
 const ModalWindow = ({ onClose }) => {
@@ -13,8 +13,8 @@ const ModalWindow = ({ onClose }) => {
     const [randomProduct, setRandomProduct] = useState(null);
     // состояние для хранения списка всех продуктов
     const [products, setProducts] = useState([]);
-    // инициализируем dispatch для работы с Redux
-    const dispatch = useDispatch(); 
+
+    const { addProductToCart } = useCart();
 
     // путь к иконке закрытия модального окна
     const closeIcon = "/media/closeIcon/closeIcon.png";
@@ -37,16 +37,12 @@ const ModalWindow = ({ onClose }) => {
     // обработчик добавления товара в корзину
     const handleAddToCart = () => {
         if (!randomProduct) return;
-        dispatch(addProduct({
-            id: randomProduct.id,
-            title: randomProduct.title,
-            price: randomProduct.price,
-            discont_price: (randomProduct.price / 2).toFixed(2), // применяем скидку 50%
-            image: `${BASE_URL}${randomProduct.image}`, // добавляем полный путь к изображению
-            quantity: 1, // добавляем 1 единицу товара в корзину
-        }));
+        addProductToCart({ ...randomProduct, image: `${BASE_URL}${randomProduct.image}` });
     };
-    
+
+    // проверка, есть ли товар в избранном
+    const { favorites } = useFavorites();
+    const isFavorite = favorites.find(item => item.id === randomProduct.id) ? true : false;
 
     return (
         randomProduct && (
@@ -68,7 +64,19 @@ const ModalWindow = ({ onClose }) => {
                             </div>
                             {/* кнопка "лайк" для продукта */}
                             <div className={styles.modal__like}>
-                                <IconButton id={randomProduct.id} type="like" variant="product" isActive={false} />
+                                <IconButton
+                                    type="like"
+                                    variant="product"
+                                    isActive={isFavorite}
+                                    id={randomProduct.id}
+                                    product={{
+                                        id: randomProduct.id,
+                                        title: randomProduct.title,
+                                        image: randomProduct.image,
+                                        price: randomProduct.price,
+                                        discont_price: randomProduct.discont_price
+                                    }}
+                                />
                             </div>
                         </div>
 

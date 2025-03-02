@@ -1,33 +1,31 @@
 import React from "react";
 import ProductCount from "../ui/productCount/ProductCount";
 import s from "./ProductCartItem.module.css";
-import { useAddToCart } from "../../hooks/useAddToCart";
-import { useRemoveOne } from "../../hooks/useRemoveOne";
+import { useCart } from "../../hooks/useCart";
 import { useNavigate } from "react-router";
 
 const ProductCartItem = ({ product, quantity, onDelete }) => {
     const { id, categoryId, image, title, discont_price, price } = product;
 
-    const addOne = useAddToCart();
-    const removeOne = useRemoveOne();
+    const { addProductToCart, removeOneProductFromCart } = useCart();
 
     const handleIncrement = () => {// передаем весь продукт для добавления в массив
         // Передаем продукт с фиксированным количеством 1
-        addOne({ ...product, quantity: 1 });
+        addProductToCart({ ...product, quantity: 1 });
     };
 
-    const handleDecrement = () => removeOne(id); // передаем только id и по нему уменьшаем количество
-    
-    
+    const handleDecrement = () => removeOneProductFromCart(id); // передаем только id и по нему уменьшаем количество
+
+
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/categories/${categoryId}/${id}`);
     };
-    
-    
+
+
     return (
         <div className={s.productItem}>
-            <img className={s.productItem_image} src={image} alt={title} onClick={handleClick}/>
+            <img className={s.productItem_image} src={image} alt={title} onClick={handleClick} />
 
             <div className={s.productItem_description}>
                 <div className={s.productItem_title}>
@@ -49,7 +47,7 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
                             <p className={s.actual_price}>${price}</p>
                         )}
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     );

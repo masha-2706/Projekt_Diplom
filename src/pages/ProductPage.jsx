@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { BASE_URL, getProductById } from "../services/baseBackEnd";
+import { getProductById } from "../services/baseBackEnd";
 import Breadcrumbs from "../components/ui/breadCrumbs/BreadCrumbs";
 import ProductInfo from "../components/ProductInfo/ProductInfo";
 import { getDiscount } from "../utils/cardRenderLogic";
-import { useInitializeData } from "../hooks/initializeData";
 
 export default function ProductPage() {
-    useInitializeData() //обновляем справочник категорий и продуктов (id: title)
 
     const { categoryId, productId } = useParams();
     const [productInfo, setProductInfo] = useState({})
@@ -31,7 +29,7 @@ export default function ProductPage() {
                 discont_price={productInfo.discont_price}
                 discont={discont}
                 description={productInfo.description}
-                image={`${BASE_URL}${productInfo.image}`}
+                image={`${productInfo.image}`}
             />
         </main>
     )
