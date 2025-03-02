@@ -27,14 +27,12 @@ export default function ShoppingCart() {
   // имитация отправки введеных данных в форму
   const onSubmit = (data) => {
     console.log("Форма отправлена", data);
+    setPopUpOpen(true);
   };
 
   // состояние для отображения popUp
   const [popUpOpen, setPopUpOpen] = useState(false);
 
-  const click_Senden_Form = () => {
-    setPopUpOpen(true);
-  };
 
   const error = "/media/discountFormImages/x-octagon.png"; // Иконка ошибки
   // путь к иконке закрытия модального окна
@@ -170,7 +168,7 @@ export default function ShoppingCart() {
               type="submit"
               submittedText="Request Submitted"
               variant="shoppingCartOrder"
-              onClick={click_Senden_Form}
+              onClick={handleSubmit(onSubmit)}
             />
           </form>
         </div>

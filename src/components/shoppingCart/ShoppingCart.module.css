@@ -54,7 +54,6 @@
   background-color: var(--light_green);
   padding: 2rem;
   border-radius: 0.75rem;
-  max-height: 582px;
 }
 
 .shoppingCart_orderForm > h2 {
