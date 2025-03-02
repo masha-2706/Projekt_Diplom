@@ -30,3 +30,18 @@
   font-weight: 500;
   color: var(--grey);
 }
+
+
+/* **** ** adaptive ** **** */
+
+/* для экранов менее 768px */
+@media screen and (max-width: 768px) {
+  .productItem_count>button {
+    padding: 0;
+    width: 47px;
+    height: 47px;
+  }
+  .productItem_count>p {
+    padding: 10px 35px 7px;
+  }
+}

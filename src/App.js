@@ -22,9 +22,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+
         {/* Страница "Все категории" */}
-        <Route
-          path="/categories"
+        <Route path="/categories"
           element={
             <CategoriesPage />}
         />

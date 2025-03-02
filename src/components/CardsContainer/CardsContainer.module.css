@@ -3,6 +3,7 @@
   max-width: 1360px;
   margin-top: 3.75vh;
   margin: 4vh auto;
+
 }
 
 .CardsContainer {
@@ -10,6 +11,11 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin-top: 4.2vh;
+}
+
+.CardsContainer_header_line,
+.CardsContainer_header_buttons {
+  display: none;
 }
 
 /*  ** **  adaptive  ** ** */
