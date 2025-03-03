@@ -1,29 +1,38 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "./ModalBurgerMenu.module.css";
 import { useModal } from "../../context/ModalContext";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
 import Button from "../ui/button/Button";
+import ModalWindow from "../modalWindow/ModalWindow";
+
 import { useTheme } from "../../context/ThemeContext";
 const ModalBurgerMenu = () => {
   const { isDarkTheme } = useTheme();
   //  для получения переменных из контекста используем хук useModal
   const { isModalOpen, setIsModalOpen } = useModal();
-  const modalRef = useRef(false);
-  // Используем useEffect для добавления класса сss modalOpen и modalClose
+  const [modalWindowOpen, setModalWindowOpen] = useState(false);
+  const modalRef = useRef(null);
+
+  // Открытие модального окна
+  const handleOpenModal = () => {
+    setModalWindowOpen(true);
+  };
+
+  // Закрытие только модального окна (бургер остается открытым)
+  const handleCloseModal = () => {
+    setModalWindowOpen(false);
+  };
+
   useEffect(() => {
     if (modalRef.current) {
-      if (isModalOpen) {
-        modalRef.current.classList.add("modalOpen");
-        modalRef.current.classList.remove("modalClose");
-      } else {
-        modalRef.current.classList.add("modalClose");
-        modalRef.current.classList.remove("modalOpen");
-      }
+      modalRef.current.classList.toggle("modalOpen", isModalOpen);
+      modalRef.current.classList.toggle("modalClose", !isModalOpen);
     }
   }, [isModalOpen]);
-  const handleCloseModal = () => setIsModalOpen(false);
+
   if (!isModalOpen) return null;
+
   return (
     <>
       {isModalOpen && <div className={s.overlay}></div>}
@@ -74,4 +83,5 @@ const ModalBurgerMenu = () => {
     </>
   );
 };
+
 export default ModalBurgerMenu;

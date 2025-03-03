@@ -1,89 +1,102 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./BreadCrumbs.module.css";
+import { getAllCategories, getAllProducts } from "../../../services/baseBackEnd";
 
-// Объект для "человеческих" названий страниц
-// Если в URL встречается, например, "/products", то в хлебных крошках будет отображаться "All products".
-const breadcrumbNameMap = {
-  categories: "Categories",
-  products: "All products",
-  sales: "All sales",
+
+// объект для статических маршрутов чтобы отображать нормальные названия страниц
+const staticRoutes = {
+  categories: "Categories", // `/categories` ===>  "Categories"
+  products: "All Products", // `/products` ===> "All Products"
+  sales: "All Sales",
   favorites: "Favorites",
-  cart: "Cart",
-  1: "Annuals",
-  2: "Nursery",
-  3: "Garden Art",
-  4: "Plant Care"
+  cart: "Shopping Cart",
 };
 
 const Breadcrumbs = () => {
-  // Хук useLocation позволяет получить текущий URL из браузерв
-  const location = useLocation();
+  const location = useLocation(); // Получаем текущий URL из React Router
 
-  // создаем массив из pathname`сов
-  // split("/") делает из "/categories/products" -> ['',"categories", "products"]
-  // filter(Boolean) убирает пустые элементы
-  const pathnames = location.pathname.split("/").filter(Boolean);
+  // состояния для хранения загруженных категорий и продуктов
+  const [categories, setCategories] = useState({});
+  const [products, setProducts] = useState({});
 
-  // Если пользователь находится на главной странице ("/"), хлебные крошки не отображаем
-  // if (location.pathname === "/") {
-  //   return null;
-  // }
+  //  загружаем данные о категориях и продуктах при монтировании компонента
+  useEffect(() => {
+    // Получаем список категорий
+    getAllCategories().then((data) => {
+      // Преобразуем массив категорий в объект { id: название }
+      const categoryMap = data.reduce((acc, category) => {
+        acc[category.id] = category.title; // { "1": "Annuals", "2": "Nursery" }
+        return acc;
+      }, {});
+      setCategories(categoryMap); // сохраняем в состояние
+    });
 
-  // Формируем массив хлебных крошек, включая главную страницу "Main Page"
+    // получаем список продуктов
+    getAllProducts().then((data) => {
+      // преобразуем массив продуктов в объект 
+      const productMap = data.reduce((acc, product) => {
+        acc[product.id] = product.title;
+        return acc;
+      }, {});
+      setProducts(productMap); // сохраняем в состояние
+    });
+  }, []); // пустой массив зависимостей загрузится 1 раз при монтировании
+
+  //  разбиваем текущий URL на массив 
+  const pathnames = location.pathname.split("/").filter(Boolean); 
+  //  "/categories/1/5" =====> ["categories", "1", "5"]
+
+  //  формируем массив хлебных крошек
   const crumbs = [
-    {
-      label: "Main Page", // Отображаемый текст
-      link: "/", // Ссылка на главную страницу
-    },
+    { label: "Main Page", link: "/" }, // Главная страница всегда первая
     ...pathnames.map((value, index) => {
-      // Формируем URL для каждой крошки
-      // c помощью методп slice возвращаемновый массив, содержащий элементы с индексом 0 до index + 1 (не включая элемент с индексом index + 1!!!!)
-      // ставим '/' вначале тк join добавит только между элементами
+      const prevPath = index > 0 ? pathnames[index - 1] : ""; // Получаем предыдущий сегмент пути
+      const link = `/${pathnames.slice(0, index + 1).join("/")}`; // Создаем ссылку до текущего сегмента
 
-      const link = `/${pathnames.slice(0, index + 1).join("/")}`;
+      let breadcrumbLabel;
 
-      // Если в объекте breadcrumbNameMap есть человеческое название - используем его,
-      // иначе просто декодируем URL, чтоб не выдало undefined
-      const breadcrumbLabel = breadcrumbNameMap[value] || decodeURIComponent(value);
+      // проверяем, есть ли этот сегмент в статических маршрутах
+      if (staticRoutes[value]) {
+        breadcrumbLabel = staticRoutes[value];
+      }
+      // если предыдущий путь был `/categories`, значит `value` — это ID категории
+      else if (prevPath === "categories" && categories[value]) {
+        breadcrumbLabel = categories[value]; // Берем название категории
+      }
+      //  сли предыдущий путь был `/products`, значит `value` — это ID продукта
+      else if (prevPath === "products" && products[value]) {
+        breadcrumbLabel = products[value]; // Берем название продукта
+      }
+      // в остальных случаях просто отображаем сегмент пути
+      else {
+        breadcrumbLabel = decodeURIComponent(value);
+      }
 
-      return {
-        label: breadcrumbLabel, // Отображаемый текст
-        link, // Ссылка
-      };
+      return { label: breadcrumbLabel, link }; // Возвращаем объект для массива хлебных крошек
     }),
   ];
 
   return (
-    // <nav> с aria-label="breadcrumb" дает понять людям с ограниченными возможностями, которіе используют скринридеры, что это хлебные крошки
+    // <nav> с aria-label="breadcrumb" скринридеры понимают, что это хлебные крошки
     <nav aria-label="breadcrumb" className={styles.breadcrumbNav}>
-      {/* Список хлебных крошек */}
       <ul className={styles.breadcrumbList}>
         {crumbs.map((crumb, index) => {
-          // Проверяем, является ли текущая крошка последней (активной страницей)
-          const isLast = index === crumbs.length - 1;
+          const lastCrumb = index === crumbs.length - 1; // проверяем, является ли текущая крошка последней
 
           return (
-            // React.Fragment используем из-за key={crumb.link}, тк в <> </> нельзя прописать key
             <React.Fragment key={crumb.link}>
-              {/* Отдельный элемент хлебных крошек */}
-              <li
-                className={
-                  isLast
-                    ? `${styles.breadcrumbItem} ${styles.activeCrumb}`
-                    : styles.breadcrumbItem
-                }
-              >
-                {/* Если это последняя крошка, просто отображаем текст (без ссылки), иначе - ссылка */}
-                {isLast ? (
+              {/*ксли это последняя крошка, просто отображаем текст, иначе делаем ссылку */}
+              <li className={lastCrumb ? `${styles.breadcrumbItem} ${styles.activeCrumb}` : styles.breadcrumbItem}>
+                {lastCrumb ? (
                   <span>{crumb.label}</span>
                 ) : (
                   <Link to={crumb.link}>{crumb.label}</Link>
                 )}
               </li>
 
-              {/* полоска, рендерится после каждой крошки, КРОМЕ последней */}
-              {!isLast && (
+              {/*  разделительная полоска между крошками (не рендерится после последней крошки) */}
+              {!lastCrumb && (
                 <div className={styles.breadcrumbItemLineBlock}>
                   <div className={styles.breadcrumbItemLine}></div>
                 </div>
@@ -97,3 +110,4 @@ const Breadcrumbs = () => {
 };
 
 export default Breadcrumbs;
+

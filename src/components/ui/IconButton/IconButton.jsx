@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./IconButton.module.css";
 import { useNavigate } from "react-router";
-import { useAddToCart } from "../../../hooks/useAddToCart";
-import { useRemoveAll } from "../../../hooks/useRemoveAll";
+import { useCart } from "../../../hooks/useCart";
+import { useFavorites } from "../../../hooks/useFavorites";
 
 export default function IconButton({
   id,
@@ -22,10 +22,11 @@ export default function IconButton({
   // если компонент уже в корзине или избранном, то isActive = true.
   // В этом случае иконка окрашивается в зелёный цвет
 
-  // defaultState нужен для хранения этого исходного состояния. в будущем будем получать информацию из состояния
-  const [defaultState, setDefaultState] = useState(
-    isActive ? s.active : s.default
-  );
+    // defaultState нужен для хранения этого исходного состояния. в будущем будем получать информацию из состояния
+    const [defaultState, setDefaultState] = useState(isActive ? s.active : s.default);
+    useEffect(() => {
+        setDefaultState(isActive ? s.active : s.default);
+    }, [isActive]);
 
   // отслеживание наведения мыши (актуально только для variant "product")
   const [hovered, setHovered] = useState(false);
@@ -57,30 +58,45 @@ export default function IconButton({
   const combinedClass =
     variant === "header" ? baseClass : `${baseClass} ${stateClass}`;
 
-  // Инициализируем хуки для добавления и полного удаления товара из корзины
-  const addOne = useAddToCart();
-  const removeAll = useRemoveAll();
+    // Инициализируем хуки для добавления и полного удаления товара из корзины
+    const { addProductToCart, removeAllProductFromCart } = useCart();
+    const { addToFavorites, removeFromFavorites } = useFavorites();
+    const addOne = addProductToCart;
+    const removeAll = removeAllProductFromCart;
 
-  const svgClickHandler = () => {
-    if (variant === "product") {
-      if (type === "like") {
-      } else if (type === "cart") {
-        // При клике на продукт добавляем 1 единицу товара в корзину
-        // если товар уже есть в корзине,
-        // то клик удаляет все единицы этого товара из корзины
-        if (!isActive) {
-          addOne(product);
-          setDefaultState(s.active);
-        } else {
-          removeAll(id);
-          setDefaultState(s.default);
+    const svgClickHandler = () => {
+        if (variant === "product") {
+            if (type === "like") {
+                // При клике на продукт добавляем его в избранное
+                // если товар уже есть в избранном, 
+                // то клик удаляет этот товар из избранного
+                if (!isActive) {
+                    addToFavorites(product)
+                    setDefaultState(s.active)
+                } else {
+                    removeFromFavorites(id)
+                    setDefaultState(s.default)
+                }
+
+            } else if (type === "cart") {
+                // При клике на продукт добавляем 1 единицу товара в корзину
+                // если товар уже есть в корзине, 
+                // то клик удаляет все единицы этого товара из корзины
+                if (!isActive) {
+                    addOne(product)
+                    setDefaultState(s.active)
+                } else {
+                    removeAll(id)
+                    setDefaultState(s.default)
+                }
+
+            }
+
+        } else if (variant === "header") {
+            // для header, клик перенаправляет на нужную страницу
+            navigate(type === "like" ? "/favorites" : "/cart");
         }
-      }
-    } else if (variant === "header") {
-      // для header, клик перенаправляет на нужную страницу
-      navigate(type === "like" ? "/favorites" : "/cart");
-    }
-  };
+    };
 
   // определяем, какую иконку отрисовать в зависимости от типа (like или cart)
   const renderIcon = () => {

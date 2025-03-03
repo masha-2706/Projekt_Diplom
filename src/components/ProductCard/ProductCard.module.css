@@ -89,11 +89,9 @@
   .productCard_text {
     padding: 1.25rem 2rem 2rem 1.5rem;
   }
-
   .productCard_text_actualPrice {
     font-size: 2rem;
   }
-
   .productCard_text_regularPrice {
     font-size: 1.25rem;
   }
@@ -104,7 +102,6 @@
   .productCard_image>img {
     min-height: 250px;
   }
-
   .productCard_text {
     padding: 1.2rem 1.67rem 1.67rem 1.67rem;
   }
@@ -118,9 +115,8 @@
     font-size: 1.125rem;
     line-height: 1.46rem;
   }
-
   .productCard_text_actualPrice {
     font-size: 2.25rem;
     line-height: 2.47rem;
-  }
+  } 
 }

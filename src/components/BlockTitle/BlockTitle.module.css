@@ -50,6 +50,13 @@
     }
   }
 
+  /* для экранов менее 470px */
+  @media screen and (max-width: 470px) {
+    .CardsContainer_header_line, .CardsContainer_header_buttons{
+        display: none;
+    }
+  }
+
   /* для экранов менее 360px */
 @media screen and (max-width: 360px) {
     .CardsContainer_header > h2 {

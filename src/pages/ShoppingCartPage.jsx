@@ -2,7 +2,7 @@ import React from "react";
 import ShoppingCart from "../components/shoppingCart/ShoppingCart";
 import Breadcrumbs from "../components/ui/breadCrumbs/BreadCrumbs";
 
-function ShoppingCartPage() {
+export default function ShoppingCartPage() {
   return (
     <main>
       <Breadcrumbs />
@@ -10,5 +10,3 @@ function ShoppingCartPage() {
     </main>
   );
 }
-
-export default ShoppingCart;

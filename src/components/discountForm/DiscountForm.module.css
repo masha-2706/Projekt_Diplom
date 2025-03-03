@@ -43,7 +43,7 @@
 
 /* Правый блок: Форма */
 .formSection {
-  flex: 0.7; /* Занимает больше пространства */
+  flex: 0.7; 
 }
 
 .form {
@@ -66,22 +66,6 @@
   line-height: 1.625rem; /* 26px */
 }
 
-.button {
-  padding: 16px;
-  font-size: 1.25rem;
-  font-weight: bold;
-  background-color: var(--white);
-  color: var(--grey);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer; /* Указатель на кнопку */
-}
-
-.button:hover {
-  /* background-color: #e3e3e3; Светло-серый цвет при наведении */
-  background-color: var(--grey);
-  color: var(--white);
-}
 
 /* Контейнер для текста ошибки и иконки */
 .errorContent {

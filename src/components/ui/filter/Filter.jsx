@@ -1,31 +1,29 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import s from './Filter.module.css';
-import { setFilter, resetFilters } from '../../../redux/slices/filterSlice';
+import { useFilters } from '../../../hooks/useFilters';
 
-export default function Filter() {
-  const dispatch = useDispatch();
-  const filterOptions = useSelector((state) => state.filter);
+export default function Filter({ checkbox = true }) {
+  const { filters, updateFilter, reset } = useFilters();
+  const clearFilters = useRef(false)
+
+  // При первом монтировании сбрасываем фильтры
+  useEffect(() => {
+    if (!clearFilters.current) {
+      reset();
+      clearFilters.current = true;
+    }
+  }, [reset]);
+
 
   const handleInputChange = (e) => {
-    const inputName = e.target.name;
-    let inputValue = e.target.value;
-    // Если тип чекбокса, используем checked вместо value
-    if (e.target.type === "checkbox") {
-      inputValue = e.target.checked;
-    }
-    dispatch(setFilter({ [inputName]: inputValue }));
+    const { name, value, type, checked } = e.target;
+    const newValue = (type === 'checkbox' ? checked : value);
+    updateFilter({ [name]: newValue });
   };
-
-  // Сброс фильтров при размонтировании компонента
-  useEffect(() => {
-    return () => {
-      dispatch(resetFilters());
-    };
-  }, [dispatch]);
 
   return (
     <div className={s.filterContainer}>
+
       {/* Фильтрация по диапазону цен */}
       <div className={s.filterPrice}>
         <p>Price</p>
@@ -33,35 +31,39 @@ export default function Filter() {
           type="text"
           placeholder="from"
           name="minPrice"
-          value={filterOptions.minPrice}
+          value={filters.minPrice}
           onChange={handleInputChange}
         />
         <input
           type="text"
           placeholder="to"
           name="maxPrice"
-          value={filterOptions.maxPrice}
+          value={filters.maxPrice}
           onChange={handleInputChange}
         />
       </div>
+
       {/* Фильтрация по наличию скидки */}
-      <div>
-        <p>Discounted items</p>
-        <label className={s.filterDiscountCheckbox}>
-          <input
-            type="checkbox"
-            name="discontOnly"
-            checked={filterOptions.discontOnly}
-            onChange={handleInputChange}
-          />
-          <span></span>
-        </label>
-      </div>
+      {checkbox && (
+        <div>
+          <p>Discounted items</p>
+          <label className={s.filterDiscountCheckbox}>
+            <input
+              type="checkbox"
+              name="discontOnly"
+              checked={filters.discontOnly}
+              onChange={handleInputChange}
+            />
+            <span></span>
+          </label>
+        </div>
+      )}
+
       {/* Сортировка товаров */}
       <div className={s.filterSorted_wrapper}>
         <p>Sorted</p>
         <div className={s.filterSorted}>
-          <select name="sort" value={filterOptions.sort} onChange={handleInputChange}>
+          <select name="sort" value={filters.sort} onChange={handleInputChange}>
             <option value="default">by default</option>
             <option value="price:high-low">price: high-low</option>
             <option value="price:low-high">price: low-high</option>

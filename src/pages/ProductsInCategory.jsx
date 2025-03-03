@@ -1,34 +1,43 @@
 import { useParams } from "react-router";
-import CardsContainer from "../components/CardsContainer/CardsContainer";
 import Breadcrumbs from "../components/ui/breadCrumbs/BreadCrumbs";
-import { useSelector } from "react-redux";
-import { useInitializeData } from "../hooks/initializeData";
+import BlockTitle from "../components/BlockTitle/BlockTitle";
+import { useEffect, useState } from "react";
+import { getProductsByCategoryId } from "../services/baseBackEnd";
+import { useProducts } from "../hooks/useProducts";
+import Filter from "../components/ui/filter/Filter";
+import { useFilters } from "../hooks/useFilters";
+import { applyFilterLogic } from "../utils/applyFilterLogic";
+import CardsContainer from "../components/CardsContainer/CardsContainer";
 
-export default function ProductsInCategory({
-    breadCrumbs,
-}) {
-    useInitializeData() //обновляем справочник категорий и продуктов (id: title)
-
-    // записал в category идентификатор из адреса
+export default function ProductsInCategory() {
     const { category } = useParams();
+    const categoryId = Number(category);
+    const [title, setTitle] = useState("No title");
 
-    // достал список категорий из состояния
-    const categoriesList = useSelector((state) => state.categories)
+    // обновляю слайс продуктов
+    const { products, setProducts } = useProducts();
+    const [array, setArray] = useState([]);
+    useEffect(() => {
+        getProductsByCategoryId(categoryId)
+            .then((data) => {
+                setProducts(data.data);
+                setTitle(data.category.title);
+            })
+            .catch((error) => console.error("Ошибка при получении продуктов:", error));
+    }, [categoryId, setProducts]);
 
-    // взял нужную категорию из списка и вписал название оттуда в title
-    const title = categoriesList.filter(el => el.id === Number(category)).map(el => el.title)[0]
+    // получаю текущие фильтры из слайса filtersSlice и применяю их к продуктам
+    const { filters } = useFilters();
+    useEffect(() => {
+        setArray(applyFilterLogic(products, filters));
+    }, [products, filters]);
 
     return (
         <main>
-            {/* хлебные крошки */}
-            {breadCrumbs && <Breadcrumbs />}
-
-            <CardsContainer
-                title={title}
-                type="productsFromCategory"
-                filter={true}
-                id={category}
-            />
+            <Breadcrumbs />
+            <BlockTitle title={title} />
+            <Filter />
+            <CardsContainer array={array} />
         </main>
-    )
+    );
 }

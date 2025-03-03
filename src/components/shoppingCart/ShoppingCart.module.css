@@ -1,15 +1,40 @@
 .shoppingCart_container {
   max-width: 1360px;
-  margin: 0 auto;
+  margin: 0 40px;
   margin-bottom: 4vh;
 }
 
-.shoppingCart_title {
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 70.4px;
-  color: var(--grey);
+.shoppingCart_block_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 40px 0;
+}
+
+.shoppingCart_title {
+  font-size: 4rem;
+  line-height: 4.4rem;
+  font-weight: 700;
+  color: var(--grey);
+  margin-right: 2vw;
+}
+
+.crumbs_button {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 175px;
+}
+
+.crumbs_button_down {
+  display: none;
+}
+
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--divider_grey);
 }
 
 .shoppingCart_wrapper {
@@ -29,10 +54,9 @@
   background-color: var(--light_green);
   padding: 2rem;
   border-radius: 0.75rem;
-  max-height: 582px;
 }
 
-.shoppingCart_orderForm>h2 {
+.shoppingCart_orderForm > h2 {
   font-size: 2.5rem;
   line-height: 2.7rem;
   font-weight: 700;
@@ -69,7 +93,7 @@ form {
   margin-top: 32px;
 }
 
-form>input {
+form > input {
   min-height: 58px;
   border-radius: 5px;
   border: 1px solid var(--divider_grey);
@@ -79,4 +103,182 @@ form>input {
   font-weight: 500;
   line-height: 1.25rem;
   font-size: 1.25rem;
+}
+
+.form_error_block {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+  align-items: center;
+}
+
+.form_error_text {
+  font-size: 1rem;
+  line-height: 1.26rem;
+  font-weight: 600;
+  color: var(--dark_grey);
+}
+
+.form_error_img {
+  width: 20px;
+  height: 20px;
+}
+
+.shoppingCart_leerkorb_text {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  font-weight: 500;
+  color: var(--dark_grey);
+  margin-bottom: 32px;
+}
+
+.popUpModal_Window {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #28282866;
+}
+
+.popUpModal_block {
+  position: absolute;
+  top: 28vh;
+  left: 30vw;
+  max-width: 548px;
+  min-height: 236px;
+  border-radius: 12px;
+  padding: 42px;
+  background-color: var(--green);
+  color: var(--snow_white);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.popUpModal_text {
+  color: var(--snow_white);
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  font-weight: 600;
+}
+.popUpModal_text > h3 {
+  font-size: 2.5rem;
+  line-height: 2.75rem;
+}
+
+.popUpModal_text > p {
+  font-size: 1.25rem;
+  line-height: 1.375rem;
+}
+
+.popUpModal_closeButton {
+  max-width: 48px;
+  max-height: 48px;
+  background-color: var(--green);
+  border: none;
+  cursor: pointer;
+}
+
+/* **** ** adaptive ** **** */
+
+/* для экранов менее 1000px */
+@media screen and (max-width: 1000px) {
+  .shoppingCart_container {
+    margin: 0 20px;
+  }
+  .shoppingCart_products {
+    width: 55%;
+  }
+  .shoppingCart_orderForm {
+    width: 44%;
+  }
+}
+
+/* для экранов менее 900px */
+@media screen and (max-width: 900px) {
+  .shoppingCart_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .shoppingCart_products,
+  .shoppingCart_orderForm {
+    width: 100%;
+  }
+  .shoppingCart_products {
+    gap: 12px;
+  }
+}
+
+/* для экранов менее 768px */
+@media screen and (max-width: 768px) {
+  .shoppingCart_title {
+    font-size: 3.5rem;
+    line-height: 3.85rem;
+  }
+  .shoppingCart_orderForm > h2 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+  }
+  .shoppingCart_orderForm {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+  .orderForm_totalSum {
+    font-size: 3.5rem;
+    line-height: 3.85rem;
+  }
+}
+
+/* для экранов менее 530px */
+@media screen and (max-width: 530px) {
+  .shoppingCart_title {
+    font-size: 2.9rem;
+  }
+}
+
+/* для экранов менее 480px */
+@media screen and (max-width: 480px) {
+  .shoppingCart_title {
+    font-size: 3rem;
+    line-height: 3.3rem;
+  }
+  .crumbs_button {
+    display: none;
+  }
+  .crumbs_button_down {
+    display: block;
+    margin: 40px;
+    text-align: center;
+  }
+  .shoppingCart_orderForm > h2 {
+    font-size: 1.75rem;
+    line-height: 1.925rem;
+  }
+  .shoppingCart_orderForm {
+    font-size: 1.75rem;
+    line-height: 2.28rem;
+  }
+  .orderForm_totalSum {
+    font-size: 3rem;
+    line-height: 3.3rem;
+  }
+  form > input,
+  .shoppingCart_leerkorb_text {
+    font-size: 1.125rem;
+    line-height: 1.46rem;
+  }
+  .shoppingCart_leerkorb_text {
+    margin-bottom: 24px;
+  }
+}
+
+/* для экранов менее 360px */
+@media screen and (max-width: 360px) {
+  .shoppingCart_title,
+  .orderForm_totalSum {
+    font-size: 2.5rem;
+    line-height: 2.75rem;
+  }
 }
