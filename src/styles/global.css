@@ -40,17 +40,19 @@ body.light svg {
   stroke: var(--grey);
 
 }
- /* body.dark svg {  */
+ body.dark svg { 
   /* контур сердечка и пакетика */
-  /* stroke: var(--snow_white); */
-  
-  
- /* }  */
+  stroke: var(--snow_white);
+  }  
 
-/* body.light a { */
-  /* color: var(--grey); */
 
-/* } */
+
+
+
+ body.light a { 
+   color: var(--grey); 
+
+} 
 /* Стили для темной темы . Светлый цвет текста ссылки в нав.меню*/
 body.dark a {
   color: var(--snow_white);
@@ -89,12 +91,4 @@ body.dark .dark-modal {
   background-color: var(--grey);
   color: var(--snow_white);
 }
-/* 
-body.light .activeCrumb { 
-  color: red;
-}  */
- /* Стили для темной темы  */
-  /* body.dark .activeCrumb {
-  /* color: var(--snow_white); */
-  /* color: red; */
-/* }  */ 
+

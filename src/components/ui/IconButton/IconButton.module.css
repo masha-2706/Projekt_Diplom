@@ -7,16 +7,18 @@
 .header {
     /* стили для header */
     position: relative;
+   stroke:white;
     stroke-width: 2.2;
-    stroke: var(--grey);
+    /* stroke: var(--grey); */
     width: 48px;
     height: 48px;
+    fill: transparent;
 }
 
-.header>.cartContour {
+/* .header>.cartContour { */
     /* стили для контура корзины */
-    fill: var(--grey);
-}
+    /* fill: var(--grey);
+} */
 
 .product {
     /* стили для product */
@@ -31,17 +33,21 @@
     stroke: var(--green);
 }
 
-.default {
+/* .default { */
     /* стили для неактивного состояния */
-    stroke-width: 2.2;
-    stroke: var(--grey);
-}
+    /* stroke-width: 2.2; */
+    /* stroke: var(--grey); */
+/* } */
 
 .default>.cartContour {
     /* стили для контура корзины */
-    fill: var(--grey);
+   
+    fill: var(--snow_white);
 }
-
+/* .combinedClass{
+    background-color: rgb(0, 238, 255);
+    color: rgb(9, 255, 0) */
+/* } */
 .hovered {
     /* стили для hover-состояния */
     fill: var(--grey);
@@ -69,6 +75,3 @@
     /* отключение курсора при наведении */
 }
 
-/* body.dark svg path{
-    fill: var(--white) !important;
-} */
