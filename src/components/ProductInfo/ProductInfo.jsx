@@ -34,7 +34,7 @@ export default function ProductInfo({ id, title, price, discont_price, descripti
             title,
             price,
             discont_price,
-            image,
+            image: `${BASE_URL}${image}`,
             quantity: quantityToAdd,
         })
     };
