@@ -64,8 +64,6 @@ function App() {
           }
         />
 
-
-
         {/* Страница "Товар по ID" */}
         <Route
           path="/categories/:categoryId/:productId"

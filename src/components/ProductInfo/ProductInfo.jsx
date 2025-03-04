@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
 import s from './ProductInfo.module.css'
 import IconButton from "../ui/IconButton/IconButton"
