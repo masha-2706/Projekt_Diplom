@@ -5,7 +5,6 @@ import Breadcrumbs from "../components/ui/breadCrumbs/BreadCrumbs";
 export default function ShoppingCartPage() {
   return (
     <main>
-      <Breadcrumbs />
       <ShoppingCart />
     </main>
   );

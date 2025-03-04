@@ -1,21 +1,33 @@
-.categoryCard>img {
+.categoryCard > img {
   width: 100%;
   max-width: 316px;
   max-height: 350px;
   object-fit: cover;
   height: 21.875rem;
   border-radius: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.categoryCard > img:hover {
+  width: 100%;
+  max-width: 316px;
+  max-height: 350px;
+  object-fit: cover;
+  height: 21.875rem;
+  border-radius: 0.75rem;
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
-.categoryCard>h3 {
+.categoryCard > h3 {
   text-align: center;
   margin-top: 1rem;
   font-size: 1.25rem;
   font-weight: 500;
 }
 
-.categoryCard>h3:hover {
+.categoryCard > h3:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -24,28 +36,28 @@
 /*  ** **  adaptive  ** ** */
 /* для экранов менее 1000px */
 @media screen and (max-width: 1000px) {
-  .categoryCard>img {
+  .categoryCard>img, .categoryCard > img:hover {
     max-width: 225px;
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .categoryCard>img {
+  .categoryCard>img, .categoryCard > img:hover {
     max-width: 354px;
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .categoryCard>img {
+  .categoryCard>img, .categoryCard > img:hover {
     max-width: 210px;
     max-height: 260px;
   }
 }
 
 @media screen and (max-width: 360px) {
-  .categoryCard>img {
+  .categoryCard>img, .categoryCard > img:hover {
     max-width: 320px;
     max-height: 220px;
   }
