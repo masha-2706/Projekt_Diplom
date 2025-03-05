@@ -3,23 +3,30 @@ import styles from "./DiscountForm.module.css";
 import Button from "../ui/button/Button";
 
 function DiscountForm() {
-  // локальноое состояние для хранения данных формы (имя, телефон, email)
+  // локальное состояние для хранения данных формы
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
   });
 
-  // переменные для хранения путей к изображениям
-  const handsImage = '/media/discountFormImages/image.png'; // Изображение рук с инструментами
-  const error = '/media/discountFormImages/x-octagon.png'; // Иконка ошибки
+  // состояние для хранения ошибок ввода
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
 
-  // локальное состояние для управления сообщениями пользователю
-  const [message, setMessage] = useState(""); // Текст сообщения
-  const [isSuccess, setIsSuccess] = useState(false); // Флаг успешного ввода
-  const [showMessage, setShowMessage] = useState(false); // Флаг отображения сообщения
+  // пути к изображениям
+  const handsImage = '/media/discountFormImages/image.png';
+  const errorIcon = '/media/discountFormImages/x-octagon.png';
 
-  // функция обработки изменений в полях формы
+  // локальное состояние для отображения сообщений пользователю
+  const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+
+  // обработчик изменений в полях формы
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -27,31 +34,51 @@ function DiscountForm() {
       [name]: value,
     }));
 
-    setShowMessage(false); // при изменении данных скрываем сообщение об ошибке или успехе
+    // очистка ошибок при изменении значения
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
+    setShowMessage(false);
   };
 
-  // функция валидации введенных пользователем данныах
+  // функция валидации данных формы
   const validateInput = () => {
-    const nameValid = /^[a-zA-Z\s]+$/.test(formData.name.trim()); // Проверка, что имя содержит только буквы и пробелы
-    const phoneValid = /^[0-9]{10,15}$/.test(formData.phone.trim()); // Проверка номера телефона (от 10 до 15 цифр)
-    const emailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email.trim()); // Проверка email
+    let isValid = true;
+    let newErrors = { name: "", phone: "", email: "" };
 
-    return nameValid && phoneValid && emailValid; // Все поля должны быть валидными
+    // проверка имени (только буквы и пробелы)
+    if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      newErrors.name = "Name should only contain letters and spaces";
+      isValid = false;
+    }
+
+    // проверка номера телефона (от 10 до 15 цифр)
+    if (!/^[0-9]{10,15}$/.test(formData.phone.trim())) {
+      newErrors.phone = "Phone number should be between 10 and 15 digits";
+      isValid = false;
+    }
+
+    // проверка email (корректный формат почты)
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email.trim())) {
+      newErrors.email = "Invalid email format";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
-  // функция обработки отправки формы
+  // обработчик отправки формы
   const handleSubmit = (e) => {
-    e.preventDefault(); // предотвращаем перезагрузку страницы при отправке формы
-
+    e.preventDefault();
     if (validateInput()) {
-      setMessage("The discount has been successfully sent by email"); // сообщение об успешной отправке
-      setIsSuccess(true); // Сообщение об ошибке
+      setMessage("The discount has been successfully sent by email");
+      setIsSuccess(true);
       setShowMessage(true);
-
-      // Очищаем форму после успешной отправки
       setFormData({ name: "", phone: "", email: "" });
     } else {
-      setMessage("Wrong input. Try again");   // сообщение об ошибке
+      setMessage("Wrong input. Check the errors and try again.");
       setIsSuccess(false);
       setShowMessage(true);
     }
@@ -59,13 +86,11 @@ function DiscountForm() {
 
   return (
     <div className={styles.banner}>
-      {/* заголовок формы */}
       <div className={styles.textSection}>
         <h2 className={styles.title}>5% off on the first order</h2>
       </div>
 
       <div className={styles.content}>
-        {/* секция с изображением */}
         <div className={styles.imageSection}>
           <img
             src={handsImage}
@@ -74,7 +99,6 @@ function DiscountForm() {
           />
         </div>
 
-        {/* форма для ввода данных */}
         <div className={styles.formSection}>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {/* поле ввода имени */}
@@ -86,7 +110,9 @@ function DiscountForm() {
               onChange={handleChange}
               className={styles.input}
             />
-            {/* поле ввода номера телефона */}
+            {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+
+            {/* поле ввода телефона */}
             <input
               type="tel"
               name="phone"
@@ -95,6 +121,8 @@ function DiscountForm() {
               onChange={handleChange}
               className={styles.input}
             />
+            {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
+
             {/* поле ввода email */}
             <input
               type="text"
@@ -104,25 +132,24 @@ function DiscountForm() {
               onChange={handleChange}
               className={styles.input}
             />
+            {errors.email && <span className={styles.errorText}>{errors.email}</span>}
 
-            {/* блок отображения сообщений об успехе или ошибке */}
+            {/* сообщение об ошибке или успехе */}
             {showMessage && (
               <div>
                 {isSuccess ? (
-                  <span className={styles.successText}>{message}</span> // Сообщение об успешной отправке
+                  <span className={styles.successText}>{message}</span>
                 ) : (
                   <div className={styles.errorContent}>
-                    <img src={error} alt="Error" className={styles.errorIcon} />
-                    <span className={styles.errorText}>{message}</span> 
-                    {/* // Сообщение об ошибке */}
+                    <img src={errorIcon} alt="Error" className={styles.errorIcon} />
+                    <span className={styles.errorText}>{message}</span>
                   </div>
                 )}
               </div>
             )}
 
-            {/* Кнопка отправки формы */}
-        
-            <Button  text="Get a discount" type="submit"  variant="getDiscountBtn"  />
+            {/* кнопка отправки */}
+            <Button text="Get a discount" type="submit" variant="getDiscountBtn" />
           </form>
         </div>
       </div>
@@ -131,3 +158,4 @@ function DiscountForm() {
 }
 
 export default DiscountForm;
+
