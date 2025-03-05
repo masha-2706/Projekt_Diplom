@@ -42,19 +42,14 @@ export function getProductsByCategoryId(id) {
         }
         return response.json();
       })
-      .then((data) => data)
-
-      // Не могу понять какой тип данных получает API в результате этого запроса.
-      // Илья, хелп
-
-      // .then(data => {
-      //     console.log("Ответ API:", data);
-      //     if (!Array.isArray(data)) {
-      //         throw new Error("Некорректный формат данных: ожидался массив продуктов по категориям");
-      //     }
-      //     return data;
-      // })
-
+      .then((data) => {
+        if (!Array.isArray(data.data)) {
+          throw new Error(
+            "Некорректный формат данных: ожидался массив продуктов по категориям"
+          );
+        }
+        return data;
+      })
       .catch((error) => {
         console.error("Ошибка при получении продуктов по категории:", error);
         throw error;
@@ -120,11 +115,11 @@ export function getAllDiscounts() {
       return response.json();
     })
     .then((data) => {
-        if(!Array.isArray(data)) {
-            throw new Error(
-                `Некорректный формат данных: ожидался массив продуктов со скидками`
-              );
-        }
+      if (!Array.isArray(data)) {
+        throw new Error(
+          `Некорректный формат данных: ожидался массив продуктов со скидками`
+        );
+      }
       return data.filter((item) => item.discont_price !== null);
-    })
+    });
 }
