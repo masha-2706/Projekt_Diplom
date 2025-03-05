@@ -1,7 +1,6 @@
 .footer_wrapper {
   max-width: 1440px;
-  padding: 0 2.5rem 5rem;
-  margin: 0 auto;
+  margin: 80px 40px ;
 }
 .footer_title {
   font-weight: 700;
@@ -78,6 +77,9 @@
 
 /* для экранов менее 1000px */
 @media screen and (max-width: 1000px) {
+  .footer_wrapper {
+    margin: 60px 20px ;
+  }
   .footer_container {
     gap: 1.25rem;
   }
@@ -132,6 +134,9 @@
 
 /* для экранов менее 480px */
 @media screen and (max-width: 480px) {
+  .footer_wrapper {
+    margin: 56px 20px ;
+  }
   .footer_contact_phone,
   .footer_contact_address,
   .footer_contact_socials,

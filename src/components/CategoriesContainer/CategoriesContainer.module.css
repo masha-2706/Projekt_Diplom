@@ -1,19 +1,15 @@
 .categoriesContainer {
     width: 100%;
     max-width: 1360px;
-    margin-top: 3.75vh;
     margin: 4vh auto;
-}
 
-.categoriesContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
-    margin-top: 4.2vh;
 }
 
-/*  ** **  adaptive  ** ** */
-@media screen and (max-width: 1000px) {
+ /* ** **  adaptive  ** ** * */
+ @media screen and (max-width: 1000px) {
     .categoriesContainer {
         grid-template-columns: repeat(3, 1fr);
     }
