@@ -7,8 +7,10 @@ import Icon from "../ui/themeSwitchElement/Icon";
 import { useModal } from "../../context/ModalContext";
 import { useCart } from "../../hooks/useCart";
 import { useFavorites } from "../../hooks/useFavorites";
+
 // Это наш Header в котором мы распологаем :
 export default function Header() {
+  
   const { setIsModalOpen } = useModal();
   const { isMobile } = useModal();
   const logoImage = "/media/logo/logo.png";
@@ -50,3 +52,4 @@ export default function Header() {
     </header>
   );
 }
+

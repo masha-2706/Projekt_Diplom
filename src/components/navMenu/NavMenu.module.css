@@ -1,18 +1,18 @@
-.buttonContainer{
+.buttonContainer {
   display: flex;
   justify-content: center;
 }
-.link{
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 26px;
-    display: block;
-    text-decoration: none;
-    color: var(--grey); 
+.link {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  display: block;
+  text-decoration: none;
+  color: var(--grey);
 }
 
 .link:hover {
-  color: #92A134; 
+  color: #92a134;
 }
 
 .nav {
@@ -44,9 +44,35 @@
 
 @media (max-width: 650px) {
   .navMenuContainer {
-    display: none;  
+    display: none;
   }
-  .burgerNav{
+  .burgerNav {
     display: block;
   }
+}
+
+.darkBtn,
+.lightBtn {
+  background: var(--green);
+  color: var(--snow_white);
+}
+.btn {
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+border:none;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
+
+.lightBtn:hover{
+  background: var(--grey);
+  color: var(--snow_white); 
+}
+
+.darkBtn:hover{
+  background: var(--white);
+  color: var(--grey); 
 }

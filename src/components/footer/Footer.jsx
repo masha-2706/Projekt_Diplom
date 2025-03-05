@@ -1,4 +1,5 @@
 import style from "./Footer.module.css";
+import Icon from "../ui/themeSwitchElement/Icon";
 
 function Footer() {
   // url адреса на Google Maps вынесен в константу
@@ -26,20 +27,15 @@ function Footer() {
 
         <article className={style.footer_contact_socials}>
           <p className={style.footer_contact_title}>Socials</p>
-          <a href={instagramLink}>
-            {/* <img src={iconInstagramm} alt="instagram" /> */}
-            <svg width="43" height="44" viewBox="0 0 43 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M31.5 3H12.5C7.27546 3 3 7.27361 3 12.5V31.5C3 36.7245 7.27546 41 12.5 41H31.5C36.7245 41 41 36.7245 41 31.5V12.5C41 7.27361 36.7245 3 31.5 3ZM22 29.9164C17.6271 29.9164 14.0832 26.3709 14.0832 22C14.0832 17.6271 17.6271 14.0832 22 14.0832C26.3709 14.0832 29.9168 17.6271 29.9168 22C29.9168 26.3709 26.3709 29.9164 22 29.9164ZM32.2918 14.0832C30.9789 14.0832 29.9168 13.0196 29.9168 11.7082C29.9168 10.3967 30.9789 9.33318 32.2918 9.33318C33.6047 9.33318 34.6668 10.3967 34.6668 11.7082C34.6668 13.0196 33.6047 14.0832 32.2918 14.0832Z" fill="#FFFFF1"/>
-</svg>
-
-          </a>
-          <a href={whatsappLink}>
-            {/* <img src={iconWhatsapp} alt="whatsapp" /> */}
-            <svg width="39" height="38" viewBox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M19.959 0C9.48239 0 0.958984 8.52279 0.958984 19C0.958984 22.6862 2.01598 26.24 4.02236 29.3263L1.06165 36.2348C0.857552 36.7098 0.963932 37.2628 1.33008 37.6289C1.57253 37.8714 1.89661 38 2.22565 38C2.39388 38 2.56396 37.9666 2.72477 37.8973L9.6333 34.936C12.7189 36.9436 16.2728 38 19.959 38C30.4362 38 38.959 29.4772 38.959 19C38.959 8.52279 30.4362 0 19.959 0ZM29.7113 25.8009C29.7113 25.8009 28.1317 27.8271 26.99 28.3008C24.088 29.502 19.9911 28.3008 15.324 23.635C10.6581 18.9678 9.45641 14.871 10.6581 11.969C11.1319 10.826 13.1581 9.24766 13.1581 9.24766C13.7073 8.81966 14.5608 8.87285 15.0531 9.36517L17.3452 11.6573C17.8376 12.1496 17.8376 12.9561 17.3452 13.4484L15.9066 14.8858C15.9066 14.8858 15.324 16.6349 18.8234 20.1355C22.3229 23.635 24.0732 23.0523 24.0732 23.0523L25.5105 21.6137C26.0029 21.1214 26.8094 21.1214 27.3017 21.6137L29.5938 23.9059C30.0861 24.3982 30.1393 25.2505 29.7113 25.8009Z" fill="#FFFFF1"/>
-</svg>
-
-          </a>
+          
+          <div className={style.iconsDiv}>
+            <a className={style.iconsLink} href={instagramLink}>
+              <Icon className={style.iconSocial} id="icon-instagram" />
+            </a>
+            <a className={style.iconsLink} href={whatsappLink}>
+              <Icon className={style.iconSocial} id="icon-whatsapp" />
+            </a>
+          </div>
         </article>
 
         <article className={style.footer_contact_address}>

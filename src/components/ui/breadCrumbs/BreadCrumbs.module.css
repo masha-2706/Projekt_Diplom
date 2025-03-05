@@ -11,7 +11,7 @@
   .breadcrumbItem {
     display: inline-block;  /* ширина подстраивается под текст */
     padding: 6px 12px;
-    /* color: var(--light_grey);theme */
+    color: var(--light_grey);
     border: 1px solid var(--divider_grey);     /* внутренние отступы: формируют «пилюлю» */
     border-radius: 4px;     /* закруглённые углы, меняйте при необходимости */
   }
@@ -28,13 +28,21 @@
   
   /* ссылки внутри «пилюли» */
   .breadcrumbItem a {
-    color: inherit;         /* унаследует цвет (#fff) */
+    color: var(--light_grey);
+    /* color: inherit;         унаследует цвет (#fff) */
     text-decoration: none;  /* убираем стандартное подчеркивание */
   }
   
-  /* .activeCrumb {
-    color: var(--grey);
+  .activeCrumb {
+    color:  var(--grey);
    
-  }  Я не увидела на сайте активную ячейку , потому приняла стили темной и светлой темы как прописаны в логике*/
+  }  
+ .lightBtn{
+  color:  var(--grey);
+
+ }
+ .darkBtn{
+  color: var(--snow_white);
+ }
 
   
