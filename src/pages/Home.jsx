@@ -19,8 +19,17 @@ function Home() {
   const [discounts, setDiscounts] = useState([])
   useEffect(() => {
     getAllDiscounts()
-      .then(data => getRandomArray(data, 4))
+      .then(data =>  {
+        if (!Array.isArray(data)) {
+          throw new Error ("Получен некорректный формат данных. Страница Home")
+        }
+        return getRandomArray(data, 4)
+        }       
+      )
       .then(data => setDiscounts(data))
+      .catch(error => {
+        console.error("Ошибка при загрузке базы данных на странице Home:", error);
+      });
   }, [])
 
   return (

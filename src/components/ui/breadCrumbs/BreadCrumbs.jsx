@@ -23,13 +23,20 @@ const Breadcrumbs = () => {
   //  загружаем данные о категориях и продуктах при монтировании компонента
   useEffect(() => {
     // Получаем список категорий
-    getAllCategories().then((data) => {
+    getAllCategories()
+    .then((data) => {
       // Преобразуем массив категорий в объект { id: название }
       const categoryMap = data.reduce((acc, category) => {
         acc[category.id] = category.title; // { "1": "Annuals", "2": "Nursery" }
         return acc;
       }, {});
-      setCategories(categoryMap); // сохраняем в состояние
+      setCategories(categoryMap); // сохраняем в состояние     
+    })
+    // Обработка ошибки
+    .catch((error) => {
+      console.error("Ошибка при получении категорий (компонент BreadCrums/getAllCategories):", error);
+      
+      setCategories({});
     });
 
     // получаем список продуктов
@@ -40,7 +47,14 @@ const Breadcrumbs = () => {
         return acc;
       }, {});
       setProducts(productMap); // сохраняем в состояние
+    })
+
+    // Обработка ошибки
+    .catch((error) => {
+      console.error("Ошибка при получении продуктов (компонент BreadCrums/getAllProducts):", error);
+      setProducts({});
     });
+
   }, []); // пустой массив зависимостей загрузится 1 раз при монтировании
 
   //  разбиваем текущий URL на массив 
