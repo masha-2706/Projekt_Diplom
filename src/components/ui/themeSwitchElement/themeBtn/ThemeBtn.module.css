@@ -52,7 +52,7 @@
   background-color: var(--light_grey); /* серый фон кружка, для темной темы */
 }
 .themeSwitch:checked + .btn::before {
-  transform: translateX(33px); /* перемещаем кружок вправо */
+  transform: translateX(27px); /* перемещаем кружок вправо */
 }
 /* Стили для иконок солнце/луна на кнопке */
 
@@ -64,7 +64,11 @@
 }
 .iconMoon {
   left: 60%;
-}
+
+ }
+
+
+
 .iconSun {
    right: 60%;
 }

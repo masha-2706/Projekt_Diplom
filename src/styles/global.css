@@ -45,6 +45,37 @@ body.light svg {
   stroke: var(--snow_white);
   }  
 
+ /* Темная тема *//* Цвет в темной теме */
+/* body.dark-theme .header .icon-moon {
+  fill: white; 
+} */
+
+
+body.dark .footer_contact_map {
+  /* filter: invert(90%) hue-rotate(180deg); */
+  filter: grayscale(80%) brightness(50%); /* Затемняем карту */
+}
+body.dark .footer_contact_map::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Добавляем тёмный слой */
+  pointer-events: none;
+}
+
+
+
+
+/* На сайте нет активной ячейки  */
+body.light activeCrumb {
+  stroke: var(--grey);
+  }
+body.dark activeCrumb {
+  color: var(--snow_white);
+} 
 
 
 
