@@ -1,5 +1,8 @@
 .productCard {
-  background-color: var(--snow_white);
+  /* background-color: var(--snow_white);theme */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--divider_grey);
   border-radius: 1rem;
   position: relative;
@@ -71,7 +74,7 @@
 .productCard_text_actualPrice {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--grey);
+  /* color: var(--grey); theme */
   cursor: pointer;
 }
 
@@ -81,7 +84,7 @@
   font-weight: 500;
   text-align: left;
   text-decoration-line: line-through;
-  color: var(--light_grey);
+  /* color: var(--light_grey); theme*/
   margin-bottom: 0.25rem;
 }
 

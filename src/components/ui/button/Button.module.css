@@ -10,36 +10,27 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
+.btn {
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
 .baseButton:hover {
   background: var(--grey);
   color: var(--snow_white);
 }
 
-.linkButton {
+.getDiscountBtn {
+  margin-bottom: 20px; 
   padding: 16px 56px;
-  line-height: 26px;
-  background: var(--green);
-  color: var(--white);
-  text-decoration: none;
+  min-height: 58px;
 }
 
-.oneDayDiscount {
-  padding: 6px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  background: var(--green);
-  color: var(--snow_white);
-  margin-bottom: 12px;
-  text-decoration: none;
-}
-
-.getDiscountBtn{
-  margin-bottom: 20px;
-}
-
-.modulWindowBtn{
+.modulWindowBtn {
   padding: 16px 32px;
   font-size: 20px;
   font-weight: 600;
@@ -68,5 +59,29 @@
   .shoppingCart_leerkorb {
     padding: 16px 40px;
   }
+}
 
+.darkBtn,
+.lightBtn {
+  background: var(--green);
+  color: var(--snow_white);
+}
+.btn {
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
+.lightBtn:hover {
+  background: var(--grey);
+  color: var(--snow_white);
+}
+
+.darkBtn:hover {
+  background: var(--white);
+  color: var(--grey);
 }

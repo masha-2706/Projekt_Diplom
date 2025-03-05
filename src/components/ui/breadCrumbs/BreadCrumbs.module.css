@@ -1,10 +1,11 @@
 /* Контейнер, в котором лежат ссылки (ul) */
 .breadcrumbList {
-    display: flex;          /* размещаем в строку */
-    list-style: none;       /* убираем стандартные маркеры списка */
-    padding: 0;
-    margin: 40px;
-  }
+  display: flex; /* размещаем в строку */
+  /* расстояние между «пилюлями» */
+  list-style: none; /* убираем стандартные маркеры списка */
+  padding: 0;
+  margin: 40px;
+}
 
   /* Каждый li списка */
   .breadcrumbItem {
@@ -27,11 +28,21 @@
   
   /* ссылки внутри «пилюли» */
   .breadcrumbItem a {
-    color: inherit;         /* унаследует цвет (#fff) */
+    color: var(--light_grey);
+    /* color: inherit;         унаследует цвет (#fff) */
     text-decoration: none;  /* убираем стандартное подчеркивание */
   }
   
   .activeCrumb {
-    color: var(--grey);
-  }
+    color:  var(--grey);
+   
+  }  
+ .lightBtn{
+  color:  var(--grey);
+
+ }
+ .darkBtn{
+  color: var(--snow_white);
+ }
+
   

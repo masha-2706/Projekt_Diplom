@@ -1,4 +1,5 @@
 import style from "./Footer.module.css";
+import Icon from "../ui/themeSwitchElement/Icon";
 
 function Footer() {
   // url адреса на Google Maps вынесен в константу
@@ -14,7 +15,7 @@ function Footer() {
       {/* Блок-обертка для отступа от края страницы */}
       <h2 className={style.footer_title}>Contact</h2>
       <div className={style.footer_container}>
-        <div className={style.footer_contact_phone}>
+        <article className={style.footer_contact_phone}>
           <p className={style.footer_contact_title}>Phone</p>
           <a
             href="tel:+49 999 999 99 99"
@@ -22,29 +23,32 @@ function Footer() {
           >
             +49 999 999 99 99
           </a>
-        </div>
+        </article>
 
-        <div className={style.footer_contact_socials}>
+        <article className={style.footer_contact_socials}>
           <p className={style.footer_contact_title}>Socials</p>
-          <a href={instagramLink}>
-            <img src={iconInstagramm} alt="instagram" />
-          </a>
-          <a href={whatsappLink}>
-            <img src={iconWhatsapp} alt="whatsapp" />
-          </a>
-        </div>
+          
+          <div className={style.iconsDiv}>
+            <a className={style.iconsLink} href={instagramLink}>
+              <Icon className={style.iconSocial} id="icon-instagram" />
+            </a>
+            <a className={style.iconsLink} href={whatsappLink}>
+              <Icon className={style.iconSocial} id="icon-whatsapp" />
+            </a>
+          </div>
+        </article>
 
-        <div className={style.footer_contact_address}>
+        <article className={style.footer_contact_address}>
           <p className={style.footer_contact_title}>Address</p>
           <p className={style.footer_contact_description}>
             Linkstraße 2, 8 OG, 10 785, Berlin, Deutschland
           </p>
-        </div>
+        </article>
 
-        <div className={style.footer_contact_workingHours}>
+        <article className={style.footer_contact_workingHours}>
           <p className={style.footer_contact_title}>Working Hours</p>
           <p className={style.footer_contact_description}>24 hours a day</p>
-        </div>
+        </article>
         {/*  Блок-карта */}
         <iframe
           className={style.footer_contact_map}

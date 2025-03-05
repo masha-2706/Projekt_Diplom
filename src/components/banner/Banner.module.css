@@ -84,3 +84,32 @@
   }
 }
 
+.linkButton {
+  padding: 16px 56px;
+  line-height: 26px;
+  color: var(--snow_white);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.darkBtn,
+.lightBtn {
+  background: var(--green);
+  color: var(--snow_white);
+}
+
+
+.lightBtn:hover{
+  background: var(--grey);
+  color: var(--snow_white); 
+}
+
+.darkBtn:hover{
+  background: var(--white);
+  color: var(--grey); 
+}

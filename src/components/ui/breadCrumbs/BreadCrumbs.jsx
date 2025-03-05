@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./BreadCrumbs.module.css";
 import { getAllCategories, getAllProducts } from "../../../services/baseBackEnd";
+import { useTheme } from "../../../context/ThemeContext";
+
 
 
 // объект для статических маршрутов чтобы отображать нормальные названия страниц
@@ -14,6 +16,7 @@ const staticRoutes = {
 };
 
 const Breadcrumbs = () => {
+  const { isDarkTheme } = useTheme();
   const location = useLocation(); // Получаем текущий URL из React Router
 
   // состояния для хранения загруженных категорий и продуктов
@@ -76,7 +79,8 @@ const Breadcrumbs = () => {
       return { label: breadcrumbLabel, link }; // Возвращаем объект для массива хлебных крошек
     }),
   ];
-
+  
+  const themeColor=isDarkTheme ?  `${styles.breadcrumbItem} ${styles.darkBtn }` : `${styles.breadcrumbItem} ${styles.lightBtn }`
   return (
     // <nav> с aria-label="breadcrumb" скринридеры понимают, что это хлебные крошки
     <nav aria-label="breadcrumb" className={styles.breadcrumbNav}>
@@ -87,7 +91,7 @@ const Breadcrumbs = () => {
           return (
             <React.Fragment key={crumb.link}>
               {/*ксли это последняя крошка, просто отображаем текст, иначе делаем ссылку */}
-              <li className={lastCrumb ? `${styles.breadcrumbItem} ${styles.activeCrumb}` : styles.breadcrumbItem}>
+              <li className={lastCrumb ? `${themeColor} ${styles.activeCrumb}` : themeColor}>
                 {lastCrumb ? (
                   <span>{crumb.label}</span>
                 ) : (
@@ -110,4 +114,13 @@ const Breadcrumbs = () => {
 };
 
 export default Breadcrumbs;
+
+{/* <Button text="1 day discount!" type="button" onClick={handleOpenModal} className={` ${s.btn}
+${isDarkTheme ? s.darkBtn : s.lightBtn}`}/> */}
+
+// className={`${s.modal} ${isDarkTheme ? "dark-modal" : "light-modal"}`}
+
+// import { useTheme } from "../../context/ThemeContext";
+
+//   const { isDarkTheme } = useTheme();
 

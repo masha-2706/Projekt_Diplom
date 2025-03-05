@@ -3,10 +3,11 @@ import { NavLink } from "react-router";
 import s from "./NavMenu.module.css";
 import Button from "../ui/button/Button";
 import ModalWindow from "../modalWindow/ModalWindow";
+import { useTheme } from "../../context/ThemeContext";
 
 function NavMenu() {
   const [modalWindowOpen, setModalWindowOpen] = useState(false); // Состояние для открытия модального окна
-
+  const { isDarkTheme } = useTheme();
   const handleOpenModal = () => {
     setModalWindowOpen(true);
   };
@@ -15,7 +16,8 @@ function NavMenu() {
 
     <div className={s.navMenuContainer}>
       <div className={s.buttonContainer}>
-        <Button text="1 day discount!" variant="oneDayDiscount" onClick={handleOpenModal} />
+        <Button text="1 day discount!" type="button" onClick={handleOpenModal} className={` ${s.btn}
+          ${isDarkTheme ? s.darkBtn : s.lightBtn}`}/>
       </div>
 
       <div className={s.nav}>

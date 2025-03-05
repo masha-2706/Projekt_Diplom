@@ -2,7 +2,7 @@
   /* **  Палитра основных цветов **  */
 
   /*  Light theme */
-  
+
   --snow_white: #ffffff;
   --white: #fffff1;
   --divider_grey: #dddddd; /* серый для перегородок и линий*/
@@ -11,9 +11,104 @@
   --dark_grey: #282828; /* темно-серый цвет */
   --black: #000000; /* черный цвет */
   --green: #92a134; /* зеленый цвет */
-  --light_green: #F2F6D3;
-  --orange: #F26D22; /* оранжевый цвет */
+  --light_green: #f2f6d3;
+  --orange: #f26d22; /* оранжевый цвет */
+  --contact-color-dark: #383a2c; /*цвет контакта*/
 }
 
 /*  Применение в файлах стилей  */
 /* color: var(--green); */
+
+body.light {
+  background-color: var(--white);
+  color: var(--grey);
+}
+/* Стили для темной темы */
+body.dark {
+  background-color: var(--grey);
+  color: var(--snow_white);
+}
+body.dark article {
+  background-color: var(--contact-color-dark);
+  color: var(--snow_white);
+}
+body.light article {
+  background-color: var(--light_green);
+  color: var(--grey);
+}
+body.light svg {
+  stroke: var(--grey);
+
+}
+ body.dark svg { 
+  /* контур сердечка и пакетика */
+  stroke: var(--snow_white);
+  }  
+
+ /* Темная тема *//* Цвет в темной теме */
+/* body.dark-theme .header .icon-moon {
+  fill: white; 
+} */
+
+
+
+
+
+
+
+/* На сайте нет активной ячейки  */
+/* body.light activeCrumb {
+  stroke: var(--grey);
+  }
+body.dark activeCrumb {
+  color: var(--snow_white);
+}  */
+
+
+
+/* 
+ body.light a { 
+   color: var(--grey);  */
+
+/* }  */
+/* Стили для темной темы . Светлый цвет текста ссылки в нав.меню*/
+body.dark a {
+  color: var(--snow_white);
+}
+
+/* стили темы .productCard */
+/* Стили для светлой темы */
+body.light .productCard {
+  background-color: var(--white);
+  color: var(--grey);
+}
+/* Стили для темной темы */
+body.dark .productCard {
+  background-color: var(--grey);
+  color: var(--snow_white);
+}
+
+/* Стили для темной темы */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #fffff1;
+    background-color: #424436;
+  }
+  a:hover {
+    color: #92a134;
+  }
+
+}
+body.light .light-modal {
+  background-color: var(--white);
+  color: var(--grey);
+}
+body.dark .dark-modal {
+  background-color: var(--grey);
+  color: var(--snow_white);
+}
+
+body.light   button {
+  background-color: #92a134;
+}
+
