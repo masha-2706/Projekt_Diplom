@@ -48,7 +48,7 @@
   margin-top: 16px;
 }
 .shoppingCartOrder {
-  padding: 16px 56px;
+  padding: 16px 0;
   background: var(--green);
   color: var(--white);
   width: 100%;

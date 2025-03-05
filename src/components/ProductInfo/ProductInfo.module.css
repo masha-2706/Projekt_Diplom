@@ -1,4 +1,4 @@
-.productInfoContainer {
+.productInfo_container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto minmax(0, 1fr);
@@ -85,6 +85,7 @@
 
 .addToCartBlock .Button {
     width: 100%;
+    max-height: 58px;
 }
 
 .addToCartBlock .ProductCount {
@@ -110,6 +111,7 @@
 
 .description .hidden {
     display: -webkit-box;
+    line-clamp:inherit;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -120,36 +122,37 @@
     font-family: Montserrat;
     font-weight: 500;
     font-size: 16px;
-
     text-decoration: underline;
     cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-    .productInfoContainer {
+    .productInfo_container {
         grid-template-areas:
             "image title"
             "image cart"
             "descr descr";
     }
-
     .addToCartBlock {
         flex-wrap: wrap;
+    }
+    .imageContainer img {
+        width: 100%;
+        min-width: 360px;
+        min-height: 286px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .productInfoContainer {
+    .productInfo_container {
         grid-template-areas:
             "title title"
             "image cart"
             "descr descr";
     }
-
     .cart .discountAmount {
         display: none;
     }
-
     .imageContainer .discountAmount {
         position: absolute;
         top: 1rem;
@@ -167,11 +170,9 @@
             "cart"
             "descr";
     }
-
     .cart .priceBlock {
         justify-content: center;
     }
-
     .cart .addToCartBlock {
         justify-content: center;
     }

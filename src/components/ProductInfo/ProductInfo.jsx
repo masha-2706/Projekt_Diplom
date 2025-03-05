@@ -45,7 +45,7 @@ export default function ProductInfo({ id, title, price, discont_price, descripti
 
 
     return (
-        <section className={s.productInfoContainer}>
+        <section className={s.productInfo_container}>
 
             {/* бокс с картинкой */}
             <div className={`${s.imageContainer} ${s.box}`}>
