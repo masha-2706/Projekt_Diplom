@@ -37,12 +37,12 @@ const ModalWindow = ({ onClose }) => {
     // обработчик добавления товара в корзину
     const handleAddToCart = () => {
         if (!randomProduct) return;
-        addProductToCart({ ...randomProduct, image: `${BASE_URL}${randomProduct.image}` });
+        addProductToCart({ ...randomProduct, discont_price: (randomProduct.price / 2).toFixed(2) });
     };
 
     // проверка, есть ли товар в избранном
     const { favorites } = useFavorites();
-    const isFavorite = favorites.find(item => item.id === randomProduct.id) ? true : false;
+    const isFavorite = !!favorites.find(item => item.id === randomProduct?.id);
 
     return (
         randomProduct && (
