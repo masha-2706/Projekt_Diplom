@@ -37,12 +37,12 @@ const ModalWindow = ({ onClose }) => {
     // обработчик добавления товара в корзину
     const handleAddToCart = () => {
         if (!randomProduct) return;
-        addProductToCart({ ...randomProduct, image: `${BASE_URL}${randomProduct.image}`,price: randomProduct.discont_price || (randomProduct.price / 2).toFixed(2) });
+        addProductToCart({ ...randomProduct, image: `${BASE_URL}${randomProduct.image}`, price: randomProduct.discont_price || (randomProduct.price / 2).toFixed(2) });
     };
 
     // проверка, есть ли товар в избранном
     const { favorites } = useFavorites();
-    const isFavorite = favorites.find(item => item.id === randomProduct.id) ? true : false;
+    const isFavorite = !!favorites.find(item => item.id === randomProduct?.id);
 
     return (
         randomProduct && (
@@ -81,13 +81,13 @@ const ModalWindow = ({ onClose }) => {
                         </div>
 
                         {/* изображение продукта */}
-                        <div className={styles.modal_img_container}> 
+                        <div className={styles.modal_img_container}>
                             <img
-                            src={`${BASE_URL}${randomProduct.image}`}
-                            alt={randomProduct.title || "No Title"}
-                            className={styles.modal__image}
-                        /></div>
-                       
+                                src={`${BASE_URL}${randomProduct.image}`}
+                                alt={randomProduct.title || "No Title"}
+                                className={styles.modal__image}
+                            /></div>
+
 
                         {/* разделительная линия */}
                         <div className={styles.modal__divider}></div>

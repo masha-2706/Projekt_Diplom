@@ -5,7 +5,7 @@ export const useCart = () => {
     const dispatch = useDispatch();
 
     const cart = useSelector(state => state.cart.cart);
-    const totalQuantity = useSelector(state => state.cart.totalQuantity);
+    const totalQuantity = cart.length;
     const totalSum = useSelector(state => state.cart.totalSum);
 
     const addProductToCart = (product) => {

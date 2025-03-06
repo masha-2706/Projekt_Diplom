@@ -56,7 +56,7 @@ export default function ProductCard({
                     variant={"product"}
                     isActive={isInCart}
                     id={id}
-                    product={{ id, title, image: `${BASE_URL}${image}`, price, discont_price }} />
+                    product={{ id, title, image, price, discont_price }} />
             </div>
 
             {/* если есть скидка - отображаем блок скидки */}

@@ -3,6 +3,7 @@ import ProductCount from "../ui/productCount/ProductCount";
 import s from "./ProductCartItem.module.css";
 import { useCart } from "../../hooks/useCart";
 import { useNavigate } from "react-router";
+import { BASE_URL } from "../../services/baseBackEnd";
 
 const ProductCartItem = ({ product, quantity, onDelete }) => {
     const { id, categoryId, image, title, discont_price, price } = product;
@@ -22,10 +23,13 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
         navigate(`/categories/${categoryId}/${id}`);
     };
 
+    const actual_price = discont_price != null
+        ? Number(discont_price).toFixed(2)
+        : Number(price).toFixed(2);
 
     return (
         <div className={s.productItem}>
-            <img className={s.productItem_image} src={image} alt={title} onClick={handleClick} />
+            <img className={s.productItem_image} src={`${BASE_URL}${image}`} alt={title} onClick={handleClick} />
 
             <div className={s.productItem_description}>
                 <div className={s.productItem_title}>
@@ -38,14 +42,11 @@ const ProductCartItem = ({ product, quantity, onDelete }) => {
                     {/* Отрисовка количества товара */}
                     <ProductCount quantity={quantity} increment={handleIncrement} decrement={handleDecrement} />
                     <div className={s.productItem_price}>
-                        {discont_price ? (
-                            <>
-                                <p className={s.actual_price}>${discont_price}</p>
-                                <p className={s.old_price}>${price}</p>
-                            </>
-                        ) : (
-                            <p className={s.actual_price}>${price}</p>
-                        )}
+                        <>
+                            <p className={s.actual_price}>${+actual_price}</p>
+                            {discont_price && <p className={s.old_price}>${+price}</p>}
+                        </>
+
                     </div>
                 </div>
             </div>
