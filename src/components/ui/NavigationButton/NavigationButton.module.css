@@ -11,6 +11,8 @@
 }
 .navigationButton:hover {
   background-color: rgba(242, 246, 211, 1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /*  ** **  adaptive  ** ** */
