@@ -66,11 +66,18 @@ function App() {
 
 
 
-        {/* Страница "Товар по ID" */}
-        <Route
-          path="/categories/:categoryId/:productId"
-          element={<ProductPage />}
-        />
+        {/* Новый маршрут для продуктов через "All Products" */}
+        <Route path="/products/:productId" 
+        element={
+        <ProductPage />
+        } />
+
+        {/* Страница "Товар по категории и ID" */}
+        <Route path="/categories/:categoryId/:productId" 
+        element={
+        <ProductPage
+         />} />
+
 
         {/* Страница "Корзина" */}
 

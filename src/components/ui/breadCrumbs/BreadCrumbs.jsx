@@ -8,6 +8,7 @@ const staticRoutes = {
   products: "All Products",
   sales: "All Sales",
   favorites: "Favorites",
+  cart: "Shopping Cart",
 };
 
 const Breadcrumbs = () => {
@@ -36,16 +37,13 @@ const Breadcrumbs = () => {
       .catch((error) => console.error("Error loading data:", error));
   }, []);
 
-  const pathnames = location.pathname.split("/").filter(Boolean);
-  console.log("Current pathnames:", pathnames);
+  if (!dataLoaded) return null;
 
-  if (!dataLoaded) {
-    console.log("Data not loaded yet...");
-    return null;
-  }
+  const pathnames = location.pathname.split("/").filter(Boolean);
+  const isProductPage = pathnames.length >= 2 && products[pathnames[pathnames.length - 1]];
+  const isFromAllProducts = location.state?.fromAllProducts || pathnames.includes("products");
 
   const crumbs = [{ label: "Main Page", link: "/" }];
-  const isFromAllProducts = pathnames.length === 2 && pathnames[0] === "products";
 
   pathnames.forEach((value, index) => {
     const prevPath = index > 0 ? pathnames[index - 1] : "";
@@ -54,15 +52,16 @@ const Breadcrumbs = () => {
 
     let breadcrumbLabel = decodeURIComponent(value);
 
-    if (value === "categories") {
-      breadcrumbLabel = "Categories";
-    } else if (prevPath === "categories" && categories[value]) {
+    // это статическая страница (sales, favorites, cart)
+    if (staticRoutes[value]) {
+      breadcrumbLabel = staticRoutes[value];
+    } 
+    // это категория
+    else if (prevPath === "categories" && categories[value]) {
       breadcrumbLabel = categories[value];
-    } else if (value === "products") {
-      breadcrumbLabel = "All Products";
-    } else if (isFromAllProducts && isLastSegment && products[value]) {
-      breadcrumbLabel = products[value].title;
-    } else if (!isFromAllProducts && prevPath in categories && isLastSegment && products[value]) {
+    } 
+    // это продукт (определяем, из "All Products" он или из категории)
+    else if (isProductPage && isLastSegment && products[value]) {
       breadcrumbLabel = products[value].title;
     }
 
@@ -82,7 +81,6 @@ const Breadcrumbs = () => {
               <li className={lastCrumb ? `${styles.breadcrumbItem} ${styles.activeCrumb}` : styles.breadcrumbItem}>
                 {lastCrumb ? <span>{crumb.label}</span> : <Link to={crumb.link}>{crumb.label}</Link>}
               </li>
-
               {!lastCrumb && (
                 <div className={styles.breadcrumbItemLineBlock}>
                   <div className={styles.breadcrumbItemLine}></div>
@@ -97,4 +95,6 @@ const Breadcrumbs = () => {
 };
 
 export default Breadcrumbs;
+
+
 
