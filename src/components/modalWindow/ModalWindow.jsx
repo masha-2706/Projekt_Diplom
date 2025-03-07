@@ -37,7 +37,7 @@ const ModalWindow = ({ onClose }) => {
     // обработчик добавления товара в корзину
     const handleAddToCart = () => {
         if (!randomProduct) return;
-        addProductToCart({ ...randomProduct, image: `${BASE_URL}${randomProduct.image}`, price: randomProduct.discont_price || (randomProduct.price / 2).toFixed(2) });
+        addProductToCart({ ...randomProduct, discont_price: (randomProduct.price / 2).toFixed(2) });
     };
 
     // проверка, есть ли товар в избранном
