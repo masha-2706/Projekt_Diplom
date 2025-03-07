@@ -1,6 +1,7 @@
 .productItem_count {
   display: flex;
   max-height: 58px;
+  background-color: var(--snow_white);
 }
 
 .productItem_count>button {

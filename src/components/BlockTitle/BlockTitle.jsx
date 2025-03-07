@@ -14,7 +14,7 @@ export default function BlockTitle({ title, navButton }) {
             {title === "Categories" && (
               <NavigationButton text="All сategories" link="/categories" />
             )}
-            {title === "Sales" && (
+            {title === "Sale" && (
               <NavigationButton text="All sales" link="/sales" />
             )}
           </div>

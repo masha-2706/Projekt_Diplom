@@ -19,10 +19,10 @@ function NavMenu() {
       </div>
 
       <div className={s.nav}>
-        <NavLink className={s.link} to="/">Main Page</NavLink>
-        <NavLink className={s.link} to="/categories">Categories</NavLink>
-        <NavLink className={s.link} to="/products">All products</NavLink>
-        <NavLink className={s.link} to="/sales">All sales</NavLink>
+        <NavLink className={s.link} to="/">Main Page<span/></NavLink>
+        <NavLink className={s.link} to="/categories">Categories<span/></NavLink>
+        <NavLink className={s.link} to="/products">All products<span/></NavLink>
+        <NavLink className={s.link} to="/sales">All sales<span/></NavLink>
       </div>
 
       {/* Вставляем модальное окно, оно рендерится, когда isModalOpen === true */}

@@ -3,7 +3,7 @@
     display: flex;          /* размещаем в строку */
     list-style: none;       /* убираем стандартные маркеры списка */
     padding: 0;
-    margin: 40px;
+    margin: 40px 0;
   }
 
   /* Каждый li списка */
@@ -35,3 +35,11 @@
     color: var(--grey);
   }
   
+
+  /* ** adaptive ** */
+  @media screen and (max-width: 480px) {
+    .breadcrumbNav {
+      display: none;
+    }
+  }
+ 

@@ -3,16 +3,37 @@
   justify-content: center;
 }
 .link{
+  position: relative;
     font-size: 20px;
     font-weight: 500;
     line-height: 26px;
     display: block;
     text-decoration: none;
     color: var(--grey); 
+    transition: .5s;
 }
 
 .link:hover {
-  color: #92A134; 
+  color: var(--green); 
+
+}
+.link span {
+  position: absolute;
+  top: 8px;
+  left: -12px;
+  width: 120%;
+  height: 100%;
+  z-index: -1;
+  border-bottom: 3px solid var(--green);
+  border-radius: 15px;
+  transform: scale(0) translateY(20px);
+  opacity: 0;
+  transition: .5s;
+}
+
+.link:hover span {
+  transform: scale(1) translateY(0);
+  opacity: 1;
 }
 
 .nav {
@@ -39,6 +60,9 @@
   }
   .link {
     font-size: 14px;
+  }
+  .link span {
+    left: -9px;
   }
 }
 
