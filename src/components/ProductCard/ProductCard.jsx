@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { BASE_URL } from "../../services/baseBackEnd";
 import { getDiscount } from "../../utils/cardRenderLogic";
 import IconButton from "../ui/IconButton/IconButton";
@@ -26,10 +26,16 @@ export default function ProductCard({
     // При клике на карточку категории происходит переход
     // на страницу с карточками товаров этой категории
     const navigate = useNavigate();
+    const location = useLocation();
     const handleClick = () => {
-        navigate(`/categories/${categoryId}/${id}`);
+        const isFromAllProducts = location.pathname.startsWith("/products");
+    //проверка на переход 
+        navigate(
+            isFromAllProducts ? `/products/${id}` : `/categories/${categoryId}/${id}`,
+            { state: { fromAllProducts: isFromAllProducts } }
+        );
     };
-
+    
     // проверка, есть ли товар в корзине
     const { cart } = useCart();
     const isInCart = cart.find((item) => item.id === id);
