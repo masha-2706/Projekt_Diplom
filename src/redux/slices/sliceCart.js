@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    cart: [], // массив продуктов для отображения
+    cart: [], // массив товаров
     totalQuantity: 0, // количество уникальных товаров в корзине
     totalSum: 0, // общая сумма товаров в корзине
 };
@@ -11,61 +11,57 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state, action) {
-            // ожидается, что action.payload содержит: 
-            // id, title, price, discont_price, image, и опционально quantity
             const product = action.payload;
-
-            // если количество не указано - добавляем 1 единицу товара
             const quantityToAdd = product.quantity ? product.quantity : 1;
 
-            // если товар уже в корзине - просто увеличиваем количество
             const existingItem = state.cart.find(item => item.id === product.id);
+
             if (existingItem) {
+                // Если товар уже есть, увеличиваем количество
+                existingItem.price = product.price;
+                existingItem.discont_price = product.discont_price;
                 existingItem.quantity += quantityToAdd;
             } else {
+                // Если товара нет, добавляем как обычно
                 state.cart.push({ ...product, quantity: quantityToAdd });
             }
 
-            // Обновление общих показателей корзины
-            state.totalQuantity = state.cart.length;
-            state.totalSum += (product.discont_price || product.price) * quantityToAdd;
-            state.totalSum = parseFloat(state.totalSum.toFixed(2));//пришлось округлять, иначе баг из-за плавающей запятой
+            state.totalSum = state.cart.reduce((sum, item) => {
+                const itemPrice = item.discont_price != null ? item.discont_price : item.price;
+                return sum + itemPrice * item.quantity;
+            }, 0);
+            state.totalSum = +state.totalSum.toFixed(2);
         },
 
-        // удаление одной единицы товара по id
-        removeOneFromCart: (state, action) => {
-            // action.payload - id товара
+
+        removeOneFromCart(state, action) {
             const id = action.payload;
             const existingItem = state.cart.find(item => item.id === id);
 
-            if (existingItem) { // если найден по id, обновляем поля слайса
+            if (existingItem) {
                 existingItem.quantity -= 1;
-                state.totalQuantity = state.cart.length;
-                state.totalSum -= existingItem.discont_price || existingItem.price;
-                state.totalSum = parseFloat(state.totalSum.toFixed(2)); //пришлось округлять, иначе баг из-за плавающей запятой
-
-                // если товара в корзине 0 или меньше - пересоздаем массив элементов,
-                // но уже без этого товара
                 if (existingItem.quantity <= 0) {
                     state.cart = state.cart.filter(item => item.id !== id);
                 }
             }
+            state.totalQuantity = state.cart.length;
+            state.totalSum = state.cart.reduce((sum, item) => {
+                const itemEffectivePrice = item.discont_price != null ? item.discont_price : item.price;
+                return sum + itemEffectivePrice * item.quantity;
+            }, 0);
+            state.totalSum = parseFloat(state.totalSum.toFixed(2));
         },
 
-        // Удаление всех единиц товара из корзины
-        removeAllFromCart: (state, action) => {
-            // action.payload - id товара
+        removeAllFromCart(state, action) {
             const id = action.payload;
-            const existingItem = state.cart.find(item => item.id === id);
-
-            if (existingItem) {
-                state.totalQuantity = state.cart.length;
-                state.totalSum -= (existingItem.discont_price || existingItem.price) * existingItem.quantity;
-                state.totalSum = parseFloat(state.totalSum.toFixed(2)); //пришлось округлять, иначе баг из-за плавающей запятой
-                state.cart = state.cart.filter(item => item.id !== id);
-            }
+            state.cart = state.cart.filter(item => item.id !== id);
+            state.totalQuantity = state.cart.length;
+            state.totalSum = state.cart.reduce((sum, item) => {
+                const itemEffectivePrice = item.discont_price != null ? item.discont_price : item.price;
+                return sum + itemEffectivePrice * item.quantity;
+            }, 0);
+            state.totalSum = parseFloat(state.totalSum.toFixed(2));
         },
-
     },
 });
 

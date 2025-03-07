@@ -7,6 +7,7 @@ import Icon from "../ui/themeSwitchElement/Icon";
 import { useModal } from "../../context/ModalContext";
 import { useCart } from "../../hooks/useCart";
 import { useFavorites } from "../../hooks/useFavorites";
+import { useEffect, useState } from "react";
 // Это наш Header в котором мы распологаем :
 export default function Header() {
   const { setIsModalOpen } = useModal();
@@ -17,10 +18,15 @@ export default function Header() {
   };
 
   const { totalQuantity: quantityCart } = useCart(); // заменил на quantityCart, чтобы было понятнее
-  const amountInCart = quantityCart
-
+  const [amountInCart, setAmountInCart] = useState(0);
   const { favoritesQuantity } = useFavorites();
-  const amountInFavorites = favoritesQuantity;
+  const [amountInFavorites, setAmountInFavorites] = useState(0);
+
+  useEffect(() => {
+    setAmountInCart(quantityCart);
+    setAmountInFavorites(favoritesQuantity);
+  }, [quantityCart, favoritesQuantity]);
+
 
   return (
     <header className={s.header}>
