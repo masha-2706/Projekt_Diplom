@@ -1,9 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// функция для загрузки корзины из localStorage
+const loadCartFromLocalStorage = () => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+};
+
+// функция для сохранения корзины в localStorage
+const saveCartToLocalStorage = (cart) => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
+
+// начальное состояние (загружается из localStorage)
 const initialState = {
-    cart: [], // массив товаров
-    totalQuantity: 0, // количество уникальных товаров в корзине
-    totalSum: 0, // общая сумма товаров в корзине
+    cart: loadCartFromLocalStorage(), // загружаем сохранённую корзину
+    totalQuantity: 0, // Количество уникальных товаров в корзине
+    totalSum: 0, // Общая сумма товаров в корзине
 };
 
 const cartSlice = createSlice({
@@ -17,12 +29,10 @@ const cartSlice = createSlice({
             const existingItem = state.cart.find(item => item.id === product.id);
 
             if (existingItem) {
-                // Если товар уже есть, увеличиваем количество
                 existingItem.price = product.price;
                 existingItem.discont_price = product.discont_price;
                 existingItem.quantity += quantityToAdd;
             } else {
-                // Если товара нет, добавляем как обычно
                 state.cart.push({ ...product, quantity: quantityToAdd });
             }
 
@@ -31,8 +41,9 @@ const cartSlice = createSlice({
                 return sum + itemPrice * item.quantity;
             }, 0);
             state.totalSum = +state.totalSum.toFixed(2);
-        },
 
+            saveCartToLocalStorage(state.cart); // сохранение корзины в localStorage
+        },
 
         removeOneFromCart(state, action) {
             const id = action.payload;
@@ -50,6 +61,8 @@ const cartSlice = createSlice({
                 return sum + itemEffectivePrice * item.quantity;
             }, 0);
             state.totalSum = parseFloat(state.totalSum.toFixed(2));
+
+            saveCartToLocalStorage(state.cart); // сохранение корзины в localStorage
         },
 
         removeAllFromCart(state, action) {
@@ -61,6 +74,8 @@ const cartSlice = createSlice({
                 return sum + itemEffectivePrice * item.quantity;
             }, 0);
             state.totalSum = parseFloat(state.totalSum.toFixed(2));
+
+            saveCartToLocalStorage(state.cart); // сохранение корзины в localStorage
         },
     },
 });
