@@ -1,172 +1,208 @@
 section {
-    max-width: 1360px;
+  max-width: 1360px;
 }
 
 .productInfo_container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 32px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 32px;
+  position: relative;
 }
 
 .productInfo_image {
-    width: 50vw;
+  width: 50vw;
 }
 
-.productInfo_image img{
-    width: 100%;
-    max-width: 780px;
-    max-height: 572px;
-    object-fit: cover;
-    object-position: top;
-    border: 1px solid var(--divider_grey);
-    box-shadow: 2px 5px 5px 1px grey;
-    border-radius: 1rem;
+.productInfo_image img {
+  width: 100%;
+  max-width: 780px;
+  max-height: 572px;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--divider_grey);
+  box-shadow: 2px 5px 5px 1px grey;
+  border-radius: 1rem;
 }
 
 .productInfo_infoBlock {
-    width: 40vw;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .productInfo_title {
-    max-width: 39vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 10px;
+  max-width: 39vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
 }
 
 .productInfo_title h2 {
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-right: 1rem;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-right: 1rem;
 }
 
 .productInfo_priceBlock_wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .productInfo_priceBlock {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 32px;
 }
 
 .productInfo_priceBlock_price {
-    font-weight: 700;
-    font-size: 4rem;
+  font-weight: 700;
+  font-size: 4rem;
 }
 
 .productInfo_priceBlock_oldPrice {
-    font-weight: 500;
-    font-size: 2.5rem;
-    line-height: 52px;
-    letter-spacing: 0%;
-    text-decoration: line-through;
-    color: var(--light_grey);
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 52px;
+  letter-spacing: 0%;
+  text-decoration: line-through;
+  color: var(--light_grey);
 }
 
 .discountAmount {
-    padding: 0.25rem 0.5rem;
-    background-color: var(--orange);
-    border-radius: 0.25rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--snow_white);
-    align-self: flex-start;
-    box-shadow: 1px 1px 3px 1px grey;
-  }
+  padding: 0.25rem 0.5rem;
+  background-color: var(--orange);
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--snow_white);
+  align-self: flex-start;
+  box-shadow: 1px 1px 3px 1px grey;
+}
 
-  .productInfo_addToCartBlock {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-  }
+.productInfo_addToCartBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
 
-  .addToCartBlock_ProductCount {
-    border-radius: 1rem;
-  }
+.addToCartBlock_ProductCount {
+  border-radius: 1rem;
+}
 
-  .productInfo_description h3 {
-    font-weight: 600;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
+.description h3 {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
 
-  .description_text {
-    font-weight: 400;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
+.text {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
 
-  .description_text .hidden {
-    display: -webkit-box;
-    line-clamp: inherit;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .description_text .readMore {
-    font-weight: 500;
-    font-size: 16px;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+.description .hidden {
+  display: -webkit-box;
+  line-clamp: inherit;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description .readMore {
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.desc_media {
+  display: none;
+}
 
 /* ** adaptive ** */
 
- @media screen and (max-width: 768px) {
-    .productInfo_title h2 {
-        font-size: 2rem;
-      }
-      .productInfo_priceBlock_price {
-        font-size: 3.5rem;
-    }
-    .productInfo_priceBlock_oldPrice {
-        font-size: 2rem;
-    }
+@media screen and (max-width: 1260px) {
+  .productInfo_image {
+    width: 47vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .productInfo_addToCartBlock {
+    gap: 10px;
+  }
+  .productInfo_priceBlock_wrapper {
+    gap: 20px;
+  }
+  .productInfo_infoBlock {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .productInfo_title h2 {
+    font-size: 2rem;
+  }
+  .productInfo_priceBlock {
+    gap: 20px;
+  }
+  .productInfo_priceBlock_price {
+    font-size: 2.5rem;
+  }
+  .productInfo_priceBlock_oldPrice {
+    font-size: 2rem;
+  }
+  .hidden_desc {
+    display: none;
+  }
+  .desc_media {
+    display: block;
+    width: 100%;
+  }
+  .productInfo_container {
+    flex-wrap: wrap;
+  }
+  .productInfo_addToCartBlock {
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .productInfo_title h2 {
-        font-size: 1.75rem;
-      }
-      .productInfo_priceBlock_price {
-        font-size: 3rem;
-    }
-    .productInfo_priceBlock_oldPrice {
-        font-size: 1.75rem;
-    }
-    .productInfo_description h3 {
-        font-size: 1.125rem;
-      }
+  .productInfo_title h2 {
+    font-size: 1.75rem;
+  }
+  .productInfo_priceBlock_price {
+    font-size: 3rem;
+  }
+  .productInfo_priceBlock_oldPrice {
+    font-size: 1.75rem;
+  }
+  .productInfo_description h3 {
+    font-size: 1.125rem;
+  }
+  .description .text {
+    font-size: 0.875rem;
+  }
+
+  .productInfo_title {
+    position: absolute;
+    top: -90px;
+    max-width: 100%;
+  }
+
+  .productInfo_container {
+    margin-top: 100px;
+  }
+
 }
-
-@media screen and (max-width: 360px) {
-
-}
-
-
-
-/*
-
-
- */
-
-
-
-
 
 /* ** adaptive ** */
-
 
 /* @media screen and (max-width: 480px) {
 
@@ -184,9 +220,5 @@ section {
     font-size: 1.125rem;
   }
  
-  .description .text {
-    font-size: 0.875rem;
-  }
+
 } */
-
-

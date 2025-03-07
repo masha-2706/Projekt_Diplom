@@ -87,11 +87,13 @@ export default function ProductInfo({
                 <p
                   className={s.productInfo_priceBlock_price}
                 >{`$${discont_price}`}</p>
-                  <p className={s.productInfo_priceBlock_oldPrice}>{`$${price}`}</p>
-                  {/* % скидки для экранов шириной БОЛЬШЕ 480px */}
-                  <div className={s.discountAmount}>
-                    <p>{`-${discontAmount}%`}</p>
-                  </div>
+                <p
+                  className={s.productInfo_priceBlock_oldPrice}
+                >{`$${price}`}</p>
+                {/* % скидки для экранов шириной БОЛЬШЕ 480px */}
+                <div className={s.discountAmount}>
+                  <p>{`-${discontAmount}%`}</p>
+                </div>
               </>
             )}
           </div>
@@ -114,17 +116,34 @@ export default function ProductInfo({
           </div>
         </div>
 
-        {/* бокс для описания */}
-        <div className={s.productInfo_description}>
+       {/* бокс для описания */}
+       <div className={`${s.description} ${s.box} `}>
+          <div className={s.hidden_desc}>
           <h3>Description</h3>
-          <p className={`${s.description_text} ${isTextHidden ? s.hidden : ""}`}>
+          <p className={`${s.text} ${isTextHidden ? s.hidden : ""}`}>
             {description}
           </p>
-          <p className={s.description_readMore} onClick={readMoreClickHandler}>
+          <p className={s.readMore} onClick={readMoreClickHandler}>
             {isTextHidden ? "Read more" : "Hide text"}
           </p>
+          </div>
         </div>
       </div>
+
+
+        {/* бокс для описания для экранов шириной МЕНЬШЕ 768px*/}
+        <div className={`${s.description} ${s.box} `}>
+          <div className={s.desc_media}>
+          <h3>Description</h3>
+          <p className={`${s.text} ${isTextHidden ? s.hidden : ""}`}>
+            {description}
+          </p>
+          <p className={s.readMore} onClick={readMoreClickHandler}>
+            {isTextHidden ? "Read more" : "Hide text"}
+          </p>
+          </div>
+        </div>
+
 
       {showModal && (
         <ProductInfoModal

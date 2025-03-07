@@ -37,11 +37,11 @@
   text-decoration: none;
 }
 
-.getDiscountBtn{
+.getDiscountBtn {
   margin-bottom: 20px;
 }
 
-.modulWindowBtn{
+.modulWindowBtn {
   padding: 16px 32px;
   font-size: 20px;
   font-weight: 600;
@@ -72,10 +72,18 @@
   width: 20vw;
 }
 
+/* ** adaptive ** */
+
+/* для экранов менее 768hpx */
+@media screen and (max-width: 768px) {
+  .productInfo {
+    width: 35vw;
+  }
+}
+
 /* для экранов менее 360px */
 @media screen and (max-width: 360px) {
   .shoppingCart_leerkorb {
     padding: 16px 40px;
   }
-
 }
