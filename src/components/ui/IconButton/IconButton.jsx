@@ -125,7 +125,7 @@ export default function IconButton({ id, type, variant, count = 0, isActive, pro
                 </svg>
             );
         }
-        return null; // * Возвращаем null, если вдруг type не соответствует "like" или "cart"
+        return null; // Возвращаем null, если вдруг type не соответствует "like" или "cart"
     };
 
     return (
