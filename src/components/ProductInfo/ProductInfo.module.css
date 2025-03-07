@@ -11,7 +11,7 @@ section {
 }
 
 .productInfo_image {
-  width: 50vw;
+  width: 43vw;
 }
 
 .productInfo_image img {
@@ -129,7 +129,7 @@ section {
 
 @media screen and (max-width: 1260px) {
   .productInfo_image {
-    width: 47vw;
+    width: 44vw;
   }
 }
 
@@ -141,7 +141,10 @@ section {
     gap: 20px;
   }
   .productInfo_infoBlock {
-    gap: 20px;
+    gap: 5px;
+  }
+  .productInfo_title h2 {
+    font-size: 2.3rem;
   }
 }
 
@@ -173,6 +176,42 @@ section {
   }
 }
 
+@media screen and (max-width: 630px) {
+  .productInfo_title h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .productInfo_title h2 {
+    font-size: 1.5rem;
+  }
+  .productInfo_priceBlock {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .productInfo_title {
+    position: absolute;
+    top: -110px;
+    left: 0;
+    max-width: 100%;
+    width: 90vw;
+  }
+  .productInfo_container {
+    margin-top: 115px;
+  }
+  .productInfo_infoBlock {
+    width: 35vw;
+  }
+  .discountAmount {
+    position: absolute;
+    left: 30vw;
+    top: 20px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .productInfo_title h2 {
     font-size: 1.75rem;
@@ -190,35 +229,35 @@ section {
     font-size: 0.875rem;
   }
 
-  .productInfo_title {
-    position: absolute;
-    top: -90px;
-    max-width: 100%;
-  }
-
-  .productInfo_container {
-    margin-top: 100px;
-  }
-
 }
 
-/* ** adaptive ** */
 
-/* @media screen and (max-width: 480px) {
-
-  .cart .discountAmount {
-    display: none;
+@media screen and (max-width: 420px) {
+  .productInfo_image {
+    width: 85vw;
   }
-  .imageContainer .discountAmount {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: block;
-  }
-
   .discountAmount {
-    font-size: 1.125rem;
+    left: 62vw;
   }
- 
+  .productInfo_title h2 {
+    font-size: 1.5rem;
+  }
+  .productInfo_infoBlock {
+    width: 85vw;
+  }
 
-} */
+  .productInfo_priceBlock {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .addToCartBlock_ProductCount {
+    display: flex;
+    justify-content: center;
+  }
+  .addToCartBlock_button {
+    width: 85vw;
+    display: flex;
+    justify-content: center;
+  }
+}

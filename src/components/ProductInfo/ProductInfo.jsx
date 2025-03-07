@@ -90,7 +90,7 @@ export default function ProductInfo({
                 <p
                   className={s.productInfo_priceBlock_oldPrice}
                 >{`$${price}`}</p>
-                {/* % скидки для экранов шириной БОЛЬШЕ 480px */}
+                {/* % скидки*/}
                 <div className={s.discountAmount}>
                   <p>{`-${discontAmount}%`}</p>
                 </div>

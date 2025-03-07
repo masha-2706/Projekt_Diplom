@@ -1,3 +1,6 @@
+.categoryCard {
+  justify-self: center;
+}
 .categoryCard > img {
   width: 100%;
   max-width: 316px;
@@ -8,6 +11,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
+
 .categoryCard > img:hover {
   width: 100%;
   max-width: 316px;

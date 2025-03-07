@@ -43,7 +43,7 @@
 
 .modulWindowBtn {
   padding: 16px 32px;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
   width: 100%;
   background: var(--white);
@@ -74,16 +74,35 @@
 
 /* ** adaptive ** */
 
-/* для экранов менее 768hpx */
+/* для экранов менее 1000px */
+@media screen and (max-width: 1000px) {
+  .productInfo {
+    font-size: 1.1rem;
+  }
+}
+
+/* для экранов менее 768px */
 @media screen and (max-width: 768px) {
   .productInfo {
     width: 35vw;
   }
 }
 
+/* для экранов менее 480px */
+@media screen and (max-width: 480px) {
+  .productInfo {
+    font-size: 0.8rem;
+    padding: 16px 40px;
+  }
+}
+
 /* для экранов менее 360px */
 @media screen and (max-width: 360px) {
   .shoppingCart_leerkorb {
-    padding: 16px 40px;
+    padding: 16px 10px;
+  }
+  .productInfo {
+    font-size: 1.125rem;
+    width: 85vw;
   }
 }

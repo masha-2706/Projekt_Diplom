@@ -59,4 +59,7 @@ main {
     max-width: 360px;
     font-size: 6px;
   }
+  main {
+    margin: 0 15px;
+  }
 }

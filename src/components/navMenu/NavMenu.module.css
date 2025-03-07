@@ -61,6 +61,9 @@
   .link {
     font-size: 14px;
   }
+  .link span {
+    left: -9px;
+  }
 }
 
 @media (max-width: 650px) {

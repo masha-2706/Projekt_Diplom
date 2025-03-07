@@ -11,7 +11,6 @@
   height: 80vh;
   max-height: 600px;
   padding-left: 40px;
-  margin: 0 -40px;
   margin-bottom: 80px;
 }
 
@@ -32,7 +31,6 @@
   .section {
     background-image: url('../../../public/media/banner/hero1000.jpg');
     max-height: 476px;
-    margin: 0 -20px;
     margin-bottom: 60px;
   }
   .title {

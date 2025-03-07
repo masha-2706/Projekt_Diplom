@@ -12,9 +12,8 @@
   width: 44px;
   height: 44px;
   stroke: #424436;
- 
- 
 }
+
 .logoContainer {
   display: flex;
   align-items: center;
@@ -50,6 +49,10 @@ img.logo {
     max-width: 68px;
     /* Уменьшаем размер */
   }
+
+  .iconsContainer {
+    gap: 11px;
+  }
 }
 
 /* Для экранов шириной до 768px */
@@ -64,6 +67,9 @@ img.logo {
   img.logo {
     max-width: 60px;
     /* Еще меньше */
+  }
+  .iconsContainer {
+    gap: 10px;
   }
 }
 
