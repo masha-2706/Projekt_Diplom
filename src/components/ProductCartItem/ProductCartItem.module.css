@@ -13,6 +13,7 @@
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   object-fit: cover;
+  object-position: top;
 }
 .productItem_image:hover {
   cursor: pointer;
@@ -118,9 +119,13 @@
     .productItem_container {
         align-items: center;
         flex-direction: row;
+        margin-top: 30px;
       }
       .productItem_image {
         max-width: 229px;
+      }
+      .productItem_description {
+        margin-top: 10px;
       }
   }
 
@@ -144,7 +149,7 @@
 /* для экранов менее 480px */
 @media screen and (max-width: 480px) {
   .productItem_image {
-    min-width: 100px;
+    min-width: 36vw;
   }
 }
 

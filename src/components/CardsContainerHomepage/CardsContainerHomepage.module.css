@@ -1,7 +1,11 @@
+.cardsContainer_homePage_wrapper {
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
 .CardsContainer_container {
     width: 100%;
-    max-width: 1360px;
-    margin-top: 3.75vh;
+    margin-top: 3.75vh; 
     margin: 4vh auto;
 }
 
