@@ -5,7 +5,7 @@ import s from "./CardsContainerHomepage.module.css";
 
 export default function CardsContainerHomepage({ title, array }) {
     return (
-        <section>
+        <section className={s.cardsContainer_homePage_wrapper}>
             <BlockTitle title={title} navButton={true} />
             <div className={s.CardsContainer_container}>
 
