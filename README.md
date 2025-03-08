@@ -68,7 +68,7 @@ API-запросы выполняются к base backend.
  ├── `ShoppingCartPage.jsx` → Страница корзины 
  
 ### 📂 redux → состояние приложения, управляемое через Redux  
- ├── 📂 `slices` → Слайсы
+ ├── 📂 `slices` → Слайсы  
  ├── `store.js` → Основное хранилище Redux  
  
 
