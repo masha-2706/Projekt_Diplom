@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3333";
+export const BASE_URL = "https://telran-project-backend-a392.onrender.com";
 
 // Получить все категории
 export function getAllCategories() {
