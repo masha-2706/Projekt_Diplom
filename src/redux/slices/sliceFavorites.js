@@ -1,10 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    favorites: [], // массив продуктов в избранном для отображения
-    quantity: 0, // количество продуктов в избранном
+// загружаем избранное из localStorage
+const loadFavoritesFromLocalStorage = () => {
+    const favorites = localStorage.getItem('favorites');
+    return favorites ? JSON.parse(favorites) : [];
 };
 
+const initialState = {
+    favorites: loadFavoritesFromLocalStorage(), // загружаем избранное из localStorage
+    quantity: loadFavoritesFromLocalStorage().length, // кол-во продуктов в избранном
+};
 const favoritesSlice = createSlice({
     name: 'favorites',
     initialState,
@@ -20,12 +25,14 @@ const favoritesSlice = createSlice({
             }];
             state.quantity = state.favorites.length; // обновляем количество продуктов в избранном. 
             // можно было просто написать state.quantity += 1, но так надёжнее
+            localStorage.setItem('favorites', JSON.stringify(state.favorites)); // сохраняем в localStorage
         },
         removeFavorite(state, action) {
             // action.payload ожидается как id удаляемого продукта
             state.favorites = state.favorites.filter(product => product.id !== action.payload);
             state.quantity = state.favorites.length; // обновляем количество продуктов в избранном. 
             // можно было просто написать state.quantity -= 1, но так надёжнее
+            localStorage.setItem('favorites', JSON.stringify(state.favorites)); // обновляем localStorage
         },
 
     },
