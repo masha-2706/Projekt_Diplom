@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import s from "./ShoppingCart.module.css";
 import Button from "../ui/button/Button";
@@ -16,7 +16,19 @@ export default function ShoppingCart() {
   const { cart, totalSum, totalQuantity, removeAllProductFromCart } = useCart();
   const products = cart;
   const sum = totalSum;
-  const removeAll = removeAllProductFromCart;;
+  const removeAll = removeAllProductFromCart;
+
+  const [storedTotalSum, setStoredTotalSum] = useState(() => {
+    return localStorage.getItem("totalSum") ? JSON.parse(localStorage.getItem("totalSum")) : 0;
+  });
+  
+
+  useEffect(() => {
+    localStorage.setItem("totalSum", JSON.stringify(totalSum));
+    setStoredTotalSum(totalSum);
+  }, [totalSum]);
+  
+
 
   // маркер пустой корзины
   const leerkorb_Marker = products.length;
@@ -25,7 +37,10 @@ export default function ShoppingCart() {
   const onSubmit = (data) => {
     console.log("Форма отправлена", data);
     setPopUpOpen(true);
+    localStorage.removeItem("totalSum"); // Очищаем localStorage после заказа
   };
+  
+
 
   // состояние для отображения popUp
   const [popUpOpen, setPopUpOpen] = useState(false);
