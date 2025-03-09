@@ -11,6 +11,7 @@ const loadTotalQuantityFromLocalStorage = () => {
     const savedQuantity = localStorage.getItem('totalQuantity');
     return savedQuantity ? JSON.parse(savedQuantity) : 0;
 };
+
 const loadTotalSumFromLocalStorage = () => {
     const savedSum = localStorage.getItem('totalSum');
     return savedSum ? JSON.parse(savedSum) : 0;
