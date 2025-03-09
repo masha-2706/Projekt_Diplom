@@ -1,7 +1,6 @@
-
-
 .section {
-  background-image: url('../../../public/media/banner/hero1440.jpg'); /* изображение по умолчанию для десктопа */
+  background-image: url('../../../public/media/banner/hero1440.jpg');
+  /* изображение по умолчанию для десктопа */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,7 +11,6 @@
   max-width: 1440px;
   margin: 0 auto;
   margin-bottom: 80px;
-  width: 100vw;
 }
 
 .title {
@@ -24,7 +22,10 @@
   margin-bottom: 40px;
 }
 
-
+.container {
+  margin-left: calc(var(--container-padding) * -1);
+  margin-right: calc(var(--container-padding) * -1);
+}
 
 /*  ** **  adaptive  ** ** */
 
@@ -34,6 +35,7 @@
     max-height: 476px;
     margin-bottom: 60px;
   }
+
   .title {
     font-size: 4.4rem;
     line-height: 5.8rem;
@@ -46,6 +48,7 @@
     background-image: url('../../../public/media/banner/hero768.jpg');
     max-height: 634px;
   }
+
   .title {
     font-size: 3.75rem;
     line-height: 4.125rem;
@@ -60,12 +63,14 @@
     max-height: 600px;
     margin-bottom: 56px;
   }
+
   .title {
     font-size: 3.4rem;
     padding-top: 4vh;
     margin-bottom: 24px;
     line-height: 3.6rem;
   }
+
   .btn {
     padding: 12px 52px;
     font-size: 1.125rem;
@@ -77,9 +82,9 @@
   .section {
     background-image: url('../../../public/media/banner/hero360.jpg');
   }
+
   .title {
     font-size: 2.9rem;
     line-height: 3.3rem;
   }
 }
-
