@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import s from "./ShoppingCart.module.css";
 import Button from "../ui/button/Button";
-import NavigationButton from "../ui/NavigationButton/NavigationButton";
-import { useSelector } from "react-redux";
-import { useRemoveAll } from "../../hooks/useRemoveAll";
 import ProductCartItem from "../ProductCartItem/ProductCartItem";
-import { selectCartItems, selectCartTotalQuantity, selectCartTotalSum } from "../../redux/selectors/cartSliceSelectors";
+import { useCart } from "../../hooks/useCart";
+import NavigationButton from "../ui/NavigationButton/NavigationButton";
 
 export default function ShoppingCart() {
   const {
@@ -15,11 +13,10 @@ export default function ShoppingCart() {
     formState: { errors }
   } = useForm();
 
-  const products = useSelector(selectCartItems);
-  const quantityProducts = useSelector(selectCartTotalQuantity);
-  const totalSum = useSelector(selectCartTotalSum);
-
-  const removeAll = useRemoveAll();
+  const { cart, totalSum, totalQuantity, removeAllProductFromCart } = useCart();
+  const products = cart;
+  const sum = totalSum;
+  const removeAll = removeAllProductFromCart;;
 
   // маркер пустой корзины
   const leerkorb_Marker = products.length;
@@ -27,14 +24,12 @@ export default function ShoppingCart() {
   // имитация отправки введеных данных в форму
   const onSubmit = (data) => {
     console.log("Форма отправлена", data);
+    setPopUpOpen(true);
   };
 
   // состояние для отображения popUp
   const [popUpOpen, setPopUpOpen] = useState(false);
 
-  const click_Senden_Form = () => {
-    setPopUpOpen(true);
-  };
 
   const error = "/media/discountFormImages/x-octagon.png"; // Иконка ошибки
   // путь к иконке закрытия модального окна
@@ -86,10 +81,10 @@ export default function ShoppingCart() {
         {/* форма "Детали заказа" */}
         <div className={s.shoppingCart_orderForm}>
           <h2>Order details</h2>
-          <p>{quantityProducts} items</p>
+          <p>{totalQuantity} items</p>
           <div className={s.orderForm_sum}>
             <p>Total</p>
-            <p className={s.orderForm_totalSum}>${totalSum}</p>
+            <p className={s.orderForm_totalSum}>${sum}</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -170,7 +165,7 @@ export default function ShoppingCart() {
               type="submit"
               submittedText="Request Submitted"
               variant="shoppingCartOrder"
-              onClick={click_Senden_Form}
+              onClick={handleSubmit(onSubmit)}
             />
           </form>
         </div>

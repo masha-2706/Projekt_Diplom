@@ -1,4 +1,3 @@
-import React from "react";
 import NavMenu from "../navMenu/NavMenu";
 import ThemeBtn from "../ui/themeSwitchElement/themeBtn/ThemeBtn";
 import s from "./Header.module.css";
@@ -6,8 +5,9 @@ import IconButton from "../ui/IconButton/IconButton";
 import { NavLink } from "react-router";
 import Icon from "../ui/themeSwitchElement/Icon";
 import { useModal } from "../../context/ModalContext";
-import { useSelector } from "react-redux";
-import { selectCartTotalQuantity } from "../../redux/selectors/cartSliceSelectors";
+import { useCart } from "../../hooks/useCart";
+import { useFavorites } from "../../hooks/useFavorites";
+import { useEffect, useState } from "react";
 // Это наш Header в котором мы распологаем :
 export default function Header() {
   const { setIsModalOpen } = useModal();
@@ -17,7 +17,16 @@ export default function Header() {
     setIsModalOpen((prevState) => !prevState);
   };
 
-  const amountInCart = useSelector(selectCartTotalQuantity)
+  const { totalQuantity: quantityCart } = useCart(); // заменил на quantityCart, чтобы было понятнее
+  const [amountInCart, setAmountInCart] = useState(0);
+  const { favoritesQuantity } = useFavorites();
+  const [amountInFavorites, setAmountInFavorites] = useState(0);
+
+  useEffect(() => {
+    setAmountInCart(quantityCart);
+    setAmountInFavorites(favoritesQuantity);
+  }, [quantityCart, favoritesQuantity]);
+
 
   return (
     <header className={s.header}>
@@ -33,7 +42,7 @@ export default function Header() {
       <NavMenu /> {/* навигация по сайту  */}
       {/* блок иконок (лайк и корзина ) */}
       <div className={s.iconsContainer}>
-        <IconButton type="like" variant={"header"} count={0} />
+        <IconButton type="like" variant={"header"} count={amountInFavorites} />
         {/* передаем количество товаров в корзине через count */}
         <IconButton type="cart" variant={"header"} count={amountInCart} />
         {isMobile && (

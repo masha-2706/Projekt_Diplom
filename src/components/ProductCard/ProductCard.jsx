@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { BASE_URL } from "../../services/baseBackEnd";
 import { getDiscount } from "../../utils/cardRenderLogic";
 import IconButton from "../ui/IconButton/IconButton";
 import s from "./ProductCard.module.css";
-import { useSelector } from "react-redux";
-import { selectCartTotalQuantity, selectIsProductInCart } from "../../redux/selectors/cartSliceSelectors";
+import { useCart } from "../../hooks/useCart";
+import { useFavorites } from "../../hooks/useFavorites";
 
 export default function ProductCard({
     title,
@@ -26,12 +26,23 @@ export default function ProductCard({
     // При клике на карточку категории происходит переход
     // на страницу с карточками товаров этой категории
     const navigate = useNavigate();
+    const location = useLocation();
     const handleClick = () => {
-        navigate(`/categories/${categoryId}/${id}`);
+        const isFromAllProducts = location.pathname.startsWith("/products");
+    //проверка на переход 
+        navigate(
+            isFromAllProducts ? `/products/${id}` : `/categories/${categoryId}/${id}`,
+            { state: { fromAllProducts: isFromAllProducts } }
+        );
     };
-
+    
     // проверка, есть ли товар в корзине
-    const isInCart = useSelector(state => selectIsProductInCart(state, id));
+    const { cart } = useCart();
+    const isInCart = cart.find((item) => item.id === id);
+
+    // проверка, есть ли товар в избранном
+    const { favorites } = useFavorites();
+    const isFavorite = favorites.find((item) => item.id === id);
 
     return (
         <div className={s.productCard}>
@@ -42,7 +53,7 @@ export default function ProductCard({
                 <IconButton
                     type="like"
                     variant="product"
-                    isActive={false}
+                    isActive={isFavorite}
                     id={id}
                     product={{ id, title, image: image, price, discont_price }}
                 />
@@ -51,7 +62,7 @@ export default function ProductCard({
                     variant={"product"}
                     isActive={isInCart}
                     id={id}
-                    product={{ id, title, image: `${BASE_URL}${image}`, price, discont_price }} />
+                    product={{ id, title, image, price, discont_price }} />
             </div>
 
             {/* если есть скидка - отображаем блок скидки */}

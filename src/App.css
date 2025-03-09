@@ -21,7 +21,6 @@ main {
   margin: 0 40px;
 }
 
-
 /*  ** **  adaptive  ** ** */
 @media screen and (max-width: 1440px) {
   body {
@@ -59,5 +58,8 @@ main {
   body {
     max-width: 360px;
     font-size: 6px;
+  }
+  main {
+    margin: 0 15px;
   }
 }

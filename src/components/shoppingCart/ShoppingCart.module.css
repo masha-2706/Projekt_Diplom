@@ -1,6 +1,5 @@
 .shoppingCart_container {
   max-width: 1360px;
-  margin: 0 40px;
   margin-bottom: 4vh;
 }
 
@@ -54,7 +53,6 @@
   background-color: var(--light_green);
   padding: 2rem;
   border-radius: 0.75rem;
-  max-height: 582px;
 }
 
 .shoppingCart_orderForm > h2 {
@@ -184,14 +182,17 @@ form > input {
 
 /* для экранов менее 1000px */
 @media screen and (max-width: 1000px) {
-  .shoppingCart_container {
-    margin: 0 20px;
-  }
   .shoppingCart_products {
     width: 55%;
   }
   .shoppingCart_orderForm {
     width: 44%;
+  }
+  .orderForm_sum, .shoppingCart_orderForm {
+    font-size: 2.1rem;
+  }
+  .orderForm_totalSum {
+    font-size: 3.6rem;
   }
 }
 
@@ -241,6 +242,9 @@ form > input {
 
 /* для экранов менее 480px */
 @media screen and (max-width: 480px) {
+  .shoppingCart_container {
+    margin: 0;
+  }
   .shoppingCart_title {
     font-size: 3rem;
     line-height: 3.3rem;

@@ -5,19 +5,16 @@ import Header from "./components/header/Header";
 import CardsPage from "./pages/CardsPage";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
-import IconButton from "./components/ui/IconButton/IconButton";
 import ShoppingCartPage from './pages/ShoppingCartPage'
 import NotFound from "./pages/NotFound";
 import ModalBurgerMenu from './components/modalBurgerMenu/ModalBurgerMenu';
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import ProductPage from "./pages/ProductPage";
 import ProductsInCategory from "./pages/ProductsInCategory";
-import { useInitializeData } from "./hooks/initializeData";
-import Categories from "./pages/Categories";
+import CategoriesPage from "./pages/CategoriesPage";
 
 function App() {
-  //при первой загрузке приложения составляется справочник категорий с названиями
-  useInitializeData() //кастомный хук для этого
+
   return (
     <div className="App">
       <ScrollToTop />
@@ -29,10 +26,7 @@ function App() {
         {/* Страница "Все категории" */}
         <Route path="/categories"
           element={
-            <Categories
-              title="Categories"
-              type='categories'
-              breadCrumbs={true} />}
+            <CategoriesPage />}
         />
 
         {/* Страница "Товары определенной категории" */}
@@ -46,38 +40,44 @@ function App() {
           }
         />
 
-        {/* Страница "Все скидки" */}
-        <Route
-          path="/sales"
-          element={
-            <CardsPage
-              title="All sales"
-              filter={true}
-              type="randomSales"
-              breadCrumbs={true}
-              checkbox={false}
-            />
-          }
-        />
-
         {/* Страница "Все продукты" */}
         <Route
           path="/products"
           element={
-            <CardsPage
-              title="All products"
-              filter={true}
-              type="productsAll"
-              breadCrumbs={true}
-            />
+            <CardsPage />
           }
         />
 
-        {/* Страница "Товар по ID" */}
+        {/* Страница "Все скидки" */}
         <Route
-          path="/categories/:categoryId/:productId"
-          element={<ProductPage />}
+          path="/sales"
+          element={
+            <CardsPage />
+          }
         />
+
+        {/* Страница "Избранное" */}
+        <Route
+          path="/favorites"
+          element={
+            <CardsPage />
+          }
+        />
+
+
+
+        {/* Новый маршрут для продуктов через "All Products" */}
+        <Route path="/products/:productId" 
+        element={
+        <ProductPage />
+        } />
+
+        {/* Страница "Товар по категории и ID" */}
+        <Route path="/categories/:categoryId/:productId" 
+        element={
+        <ProductPage
+         />} />
+
 
         {/* Страница "Корзина" */}
 
@@ -91,7 +91,7 @@ function App() {
             />} />
 
         {/* Страница Not Found */}
-            <Route path="*" element={<NotFound />} /> 
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />

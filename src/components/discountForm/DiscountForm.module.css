@@ -6,7 +6,7 @@
     rgba(85, 97, 11, 1)
   ); /* Градиентный фон */
   max-width: 1360px;
-  margin: 0 auto;
+  margin: 80px auto 108px;
   border-radius: 16px;
   padding-top: 40px;
   color: var(--snow_white);
@@ -81,9 +81,14 @@
   height: 20px;
 }
 
+
+
 /*  ** **  adaptive  ** ** */
 /* Адаптивность для экранов до 1000px */
 @media (max-width: 1000px) {
+  .banner {
+    margin: 60px auto;
+  }
   .content {
     display: flex;
     justify-content: space-between;
@@ -113,7 +118,7 @@
     min-width: 334px;
   }
 }
-/* Адаптивность для экранов до 590px */
+/* Адаптивность для экранов до 655px */
 @media (max-width: 655px) {
   .formSection {
     min-width: 280px;
@@ -127,6 +132,9 @@
 
 /* Адаптивность для экранов до 480px */
 @media (max-width: 480px) {
+  .banner {
+    margin: 56px auto;
+  }
   .title {
     font-size: 3rem;
     padding: 0 20px;

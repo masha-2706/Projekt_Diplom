@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./IconButton.module.css";
 import { useNavigate } from "react-router";
-import { useAddToCart } from "../../../hooks/useAddToCart";
-import { useRemoveAll } from "../../../hooks/useRemoveAll";
+import { useCart } from "../../../hooks/useCart";
+import { useFavorites } from "../../../hooks/useFavorites";
 
 export default function IconButton({ id, type, variant, count = 0, isActive, product }) {
     // type - тип иконки (cart, like)
@@ -16,6 +16,9 @@ export default function IconButton({ id, type, variant, count = 0, isActive, pro
 
     // defaultState нужен для хранения этого исходного состояния. в будущем будем получать информацию из состояния
     const [defaultState, setDefaultState] = useState(isActive ? s.active : s.default);
+    useEffect(() => {
+        setDefaultState(isActive ? s.active : s.default);
+    }, [isActive]);
 
     // отслеживание наведения мыши (актуально только для variant "product")
     const [hovered, setHovered] = useState(false);
@@ -47,12 +50,24 @@ export default function IconButton({ id, type, variant, count = 0, isActive, pro
     const combinedClass = variant === "header" ? baseClass : `${baseClass} ${stateClass}`;
 
     // Инициализируем хуки для добавления и полного удаления товара из корзины
-    const addOne = useAddToCart();
-    const removeAll = useRemoveAll();
+    const { addProductToCart, removeAllProductFromCart } = useCart();
+    const { addToFavorites, removeFromFavorites } = useFavorites();
+    const addOne = addProductToCart;
+    const removeAll = removeAllProductFromCart;
 
     const svgClickHandler = () => {
         if (variant === "product") {
             if (type === "like") {
+                // При клике на продукт добавляем его в избранное
+                // если товар уже есть в избранном, 
+                // то клик удаляет этот товар из избранного
+                if (!isActive) {
+                    addToFavorites(product)
+                    setDefaultState(s.active)
+                } else {
+                    removeFromFavorites(id)
+                    setDefaultState(s.default)
+                }
 
             } else if (type === "cart") {
                 // При клике на продукт добавляем 1 единицу товара в корзину
@@ -110,7 +125,7 @@ export default function IconButton({ id, type, variant, count = 0, isActive, pro
                 </svg>
             );
         }
-        return null; // * Возвращаем null, если вдруг type не соответствует "like" или "cart"
+        return null; // Возвращаем null, если вдруг type не соответствует "like" или "cart"
     };
 
     return (

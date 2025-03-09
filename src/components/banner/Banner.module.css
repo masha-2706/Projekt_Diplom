@@ -1,7 +1,4 @@
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
+
 
 .section {
   background-image: url('../../../public/media/banner/hero1440.jpg'); /* изображение по умолчанию для десктопа */
@@ -11,7 +8,10 @@
   height: 80vh;
   max-height: 600px;
   padding-left: 40px;
-  margin: 0 -40px;
+  margin-bottom: 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-bottom: 80px;
 }
 
 .title {
@@ -31,7 +31,7 @@
   .section {
     background-image: url('../../../public/media/banner/hero1000.jpg');
     max-height: 476px;
-    margin: 0 -20px;
+    margin-bottom: 60px;
   }
   .title {
     font-size: 4.4rem;
@@ -57,6 +57,7 @@
   .section {
     background-image: url('../../../public/media/banner/hero480.jpg');
     max-height: 600px;
+    margin-bottom: 56px;
   }
   .title {
     font-size: 3.4rem;

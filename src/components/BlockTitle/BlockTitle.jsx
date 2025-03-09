@@ -6,15 +6,15 @@ export default function BlockTitle({ title, navButton }) {
     <div>
       <div className={s.CardsContainer_header}>
         <h2>{title}</h2>
-        {/* если  navButton = true - отрисуется линия от заголовка и сам navButton */}
 
+        {/* если  navButton = true - отрисуется линия от заголовка и сам navButton */}
         {navButton && <div className={s.CardsContainer_header_line}></div>}
         {navButton && (
           <div className={s.CardsContainer_header_buttons}>
             {title === "Categories" && (
               <NavigationButton text="All сategories" link="/categories" />
             )}
-            {title === "Sales" && (
+            {title === "Sale" && (
               <NavigationButton text="All sales" link="/sales" />
             )}
           </div>
