@@ -1,21 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// функция для загрузки корзины из localStorage
+// функция загрузки корзины из localStorage
 const loadCartFromLocalStorage = () => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    try {
+        const savedCart = localStorage.getItem('cart');
+        return savedCart && savedCart !== "undefined" ? JSON.parse(savedCart) : [];
+    } catch (error) {
+        console.error("Ошибка при загрузке корзины из localStorage:", error);
+        return [];
+    }
 };
 
-// функция для сохранения корзины в localStorage
-const saveCartToLocalStorage = (cart) => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+const loadTotalQuantityFromLocalStorage = () => {
+    try {
+        const savedQuantity = localStorage.getItem('totalQuantity');
+        return savedQuantity && savedQuantity !== "undefined" ? JSON.parse(savedQuantity) : 0;
+    } catch (error) {
+        console.error("Ошибка при загрузке количества товаров:", error);
+        return 0;
+    }
 };
+
+const loadTotalSumFromLocalStorage = () => {
+    try {
+        const savedSum = localStorage.getItem('totalSum');
+        return savedSum && savedSum !== "undefined" ? JSON.parse(savedSum) : 0;
+    } catch (error) {
+        console.error("Ошибка при загрузке суммы корзины:", error);
+        return 0;
+    }
+};
+
+
+// функция для сохранения корзины в localStorage
+const saveCartToLocalStorage = (cart, totalQuantity, totalSum) => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('totalQuantity', JSON.stringify(totalQuantity));
+    localStorage.setItem('totalSum', JSON.stringify(totalSum)); // Теперь точно сохраняем сумму
+};
+
 
 // начальное состояние (загружается из localStorage)
 const initialState = {
     cart: loadCartFromLocalStorage(), // загружаем сохранённую корзину
-    totalQuantity: 0, // Количество уникальных товаров в корзине
-    totalSum: 0, // Общая сумма товаров в корзине
+    totalQuantity: loadTotalQuantityFromLocalStorage(), // Количество уникальных товаров в корзине
+    totalSum: loadTotalSumFromLocalStorage(), // Общая сумма товаров в корзине
 };
 
 const cartSlice = createSlice({
@@ -42,7 +71,7 @@ const cartSlice = createSlice({
             }, 0);
             state.totalSum = +state.totalSum.toFixed(2);
 
-            saveCartToLocalStorage(state.cart); // сохранение корзины в localStorage
+            saveCartToLocalStorage(state.cart, state.totalQuantity, state.totalSum);// сохранение корзины в localStorage
         },
 
         removeOneFromCart(state, action) {
@@ -62,7 +91,7 @@ const cartSlice = createSlice({
             }, 0);
             state.totalSum = parseFloat(state.totalSum.toFixed(2));
 
-            saveCartToLocalStorage(state.cart); // сохранение корзины в localStorage
+            saveCartToLocalStorage(state.cart, state.totalQuantity, state.totalSum);// сохранение корзины в localStorage
         },
 
         removeAllFromCart(state, action) {
@@ -75,7 +104,7 @@ const cartSlice = createSlice({
             }, 0);
             state.totalSum = parseFloat(state.totalSum.toFixed(2));
 
-            saveCartToLocalStorage(state.cart); // сохранение корзины в localStorage
+            saveCartToLocalStorage(state.cart, state.totalQuantity, state.totalSum); // сохранение корзины в localStorage
         },
     },
 });
