@@ -2,17 +2,41 @@
   /* **  Палитра основных цветов **  */
 
   /*  Light theme */
-  
+
   --snow_white: #ffffff;
   --white: #fffff1;
-  --divider_grey: #dddddd; /* серый для перегородок и линий*/
-  --light_grey: #8b8b8b; /* светло-cерый цвет*/
-  --grey: #424436; /* серый цвет */
-  --dark_grey: #282828; /* темно-серый цвет */
-  --black: #000000; /* черный цвет */
-  --green: #92a134; /* зеленый цвет */
+  --divider_grey: #dddddd;
+  /* серый для перегородок и линий*/
+  --light_grey: #8b8b8b;
+  /* светло-cерый цвет*/
+  --grey: #424436;
+  /* серый цвет */
+  --dark_grey: #282828;
+  /* темно-серый цвет */
+  --black: #000000;
+  /* черный цвет */
+  --green: #92a134;
+  /* зеленый цвет */
   --light_green: #F2F6D3;
-  --orange: #F26D22; /* оранжевый цвет */
+  --orange: #F26D22;
+  /* оранжевый цвет */
+
+  /* отступы для баннера на главной странице при адаптиве */
+  --container-padding: 40px;
+
+
+}
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --container-padding: 20px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  :root {
+    --container-padding: 15px;
+  }
 }
 
 /*  Применение в файлах стилей  */
